@@ -1,0 +1,259 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "ls": {
+        "meaning": "Individual ID"
+    },
+    "ah03a": {
+        "meaning": "HHM owns living house?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03b": {
+        "meaning": "HHM owns other house/building?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03c": {
+        "meaning": "HHM owns bicycles?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03d": {
+        "meaning": "HHM owns motor vehicle?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03d1": {
+        "meaning": "HHM owns motor car?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03e": {
+        "meaning": "HHM owns electronic device?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03f": {
+        "meaning": "HHM owns wash machine/stove?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03g": {
+        "meaning": "HHM owns domestic appliance?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03h": {
+        "meaning": "HHM owns financial assets/afores?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03i": {
+        "meaning": "HHM owns machinary/tractor?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03j": {
+        "meaning": "HHM owns bull/cow?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03k": {
+        "meaning": "HHM owns horses/mules?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03l": {
+        "meaning": "HHM owns pigs/goats?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03m": {
+        "meaning": "HHM owns poultry?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah03n": {
+        "meaning": "HHM owns other assets?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "ah04a_1": {
+        "meaning": "Value living house?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04a_2": {
+        "meaning": "Value living house"
+    },
+    "ah04b_1": {
+        "meaning": "Value other house?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04b_2": {
+        "meaning": "Value other house"
+    },
+    "ah04c_1": {
+        "meaning": "Value bicycles?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04c_2": {
+        "meaning": "Value bicycles"
+    },
+    "ah04d_1": {
+        "meaning": "Value motor vehicle?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04d_2": {
+        "meaning": "Value motor vehicle"
+    },
+    "ah04d1_1": {
+        "meaning": "Value motor car?"
+    },
+    "ah04d1_2": {
+        "meaning": "Value motor car"
+    },
+    "ah04e_1": {
+        "meaning": "Value electronic device?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04e_2": {
+        "meaning": "Value electronic device"
+    },
+    "ah04f_1": {
+        "meaning": "Value wash machine/stove?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04f_2": {
+        "meaning": "Value wash machine/stove"
+    },
+    "ah04g_1": {
+        "meaning": "Value domestic appliance?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04g_2": {
+        "meaning": "Value domestic appliance"
+    },
+    "ah04h_1": {
+        "meaning": "Value financial assets/afores?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04h_2": {
+        "meaning": "Value financial assets/afores"
+    },
+    "ah04i_1": {
+        "meaning": "Value machinary/tractor?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04i_2": {
+        "meaning": "Value machinary/tractor"
+    },
+    "ah04j_1": {
+        "meaning": "Value bull/cow?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04j_2": {
+        "meaning": "Value bull/cow"
+    },
+    "ah04k_1": {
+        "meaning": "Value horses/mules?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04k_2": {
+        "meaning": "Value horses/mules"
+    },
+    "ah04l_1": {
+        "meaning": "Value pigs/goats?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04l_2": {
+        "meaning": "Value pigs/goats"
+    },
+    "ah04m_1": {
+        "meaning": "Value poultry?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04m_2": {
+        "meaning": "Value poultry"
+    },
+    "ah04n_1": {
+        "meaning": "Value other assets?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "ah04n_2": {
+        "meaning": "Value other assets"
+    }
+}

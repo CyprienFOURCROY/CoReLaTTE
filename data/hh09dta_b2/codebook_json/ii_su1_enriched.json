@@ -1,0 +1,403 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "secuencia": {
+        "meaning": "Sequence"
+    },
+    "su06_1a": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "The respondent": "1"
+        }
+    },
+    "su06_1b": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "The respondent's spouse": "2"
+        }
+    },
+    "su06_1c": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        }
+    },
+    "su06_1d": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "The respondent's parents": "4"
+        }
+    },
+    "su06_1e": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        }
+    },
+    "su06_1f": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        }
+    },
+    "su06_1g": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        }
+    },
+    "su06_1h": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "All the household members": "8"
+        }
+    },
+    "su06_1i": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "Others (specify)": "9"
+        }
+    },
+    "su06_1j": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "Someone else / Not owned / Rented": "10"
+        }
+    },
+    "su06_1k": {
+        "meaning": "Which household members owns plot?",
+        "values_label": {
+            "DK": "98"
+        }
+    },
+    "su07_1": {
+        "meaning": "Whatever measures plot?",
+        "values_label": {
+            "Hectares": "1",
+            "Square meters": "2",
+            "DK": "8"
+        }
+    },
+    "su07_11": {
+        "meaning": "Surface in hectares"
+    },
+    "su07_12": {
+        "meaning": "Surface in meters"
+    },
+    "su08_1": {
+        "meaning": "What is the state of ownership of the plot/land",
+        "values_label": {
+            "Private property": "1",
+            "Communal parcel": "2",
+            "Rented": "3",
+            "Taken in sharecropping": "4",
+            "Borrowed": "5",
+            "In society": "6",
+            "Other (specify)": "7"
+        }
+    },
+    "su09_1": {
+        "meaning": "Documents guarantee plot ownership",
+        "values_label": {
+            "Script or private property certificate": "1",
+            "Parcel certificate or certificate of agricultural Rights": "2",
+            "Other (specify)": "3",
+            "None": "4"
+        }
+    },
+    "su10": {
+        "meaning": "Last 12 months production of plot",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "su12": {
+        "meaning": "Last 12 months total plot/land area used",
+        "values_label": {
+            "100%": "1",
+            "More than a half (75%)": "2",
+            "A half (50%)": "3",
+            "Some (aprox 25%)": "4",
+            "A little (less than 10%)": "5"
+        }
+    },
+    "su141_1": {
+        "meaning": "Last 12 months units amount first plot/land",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other (specify)": "6",
+            "Nothing": "7",
+            "Nothing has been farmed from any crop": "8"
+        }
+    },
+    "su141_21": {
+        "meaning": "Last 12 months amount first plot/land"
+    },
+    "su142_1": {
+        "meaning": "Last 12 months units amount second plot/land",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Others": "6",
+            "Nothing": "7",
+            "You have not harvested anything": "8"
+        }
+    },
+    "su142_21": {
+        "meaning": "Last 12 months amount second plot/land"
+    },
+    "su143_1": {
+        "meaning": "Last 12 months units amount third plot/land",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other (specify)": "6",
+            "Nothing": "7",
+            "Nothing has been farmed from any crop": "8"
+        }
+    },
+    "su143_21": {
+        "meaning": "Last 12 months amount third plot/land"
+    },
+    "su151_1": {
+        "meaning": "Units sell first plot/land during the last 12 months",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other (specify)": "6",
+            "Nothing": "7"
+        }
+    },
+    "su151_21": {
+        "meaning": "Amount sell first plot/land during the last 12 months"
+    },
+    "su152_1": {
+        "meaning": "Units sell second plot/land during the last 12 months",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other (specify)": "6",
+            "Nothing": "7"
+        }
+    },
+    "su152_21": {
+        "meaning": "Amount sell second plot/land during the last 12 months"
+    },
+    "su153_1": {
+        "meaning": "Units sell third plot/land during the last 12 months",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other (specify)": "6",
+            "Nothing": "7"
+        }
+    },
+    "su153_21": {
+        "meaning": "Amount sell third plot/land during the last 12 months"
+    },
+    "su161_1": {
+        "meaning": "Money obtained from the first product cultivated",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "su161_2": {
+        "meaning": "Amount obtained from the first product cultivated"
+    },
+    "su162_1": {
+        "meaning": "Money obtained from the second product cultivated",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "su162_2": {
+        "meaning": "Amount obtained from the second product cultivated"
+    },
+    "su163_1": {
+        "meaning": "Money obtained from the third product cultivated",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "su163_2": {
+        "meaning": "Amount obtained from the third product cultivated"
+    },
+    "su16a_a": {
+        "meaning": "Amount estimate from the first product cultivated",
+        "values_label": {
+            "Less 50,000": "1",
+            "More $50,000 and less $150,000": "2",
+            "More $150,000 and less $400,000": "3",
+            "More $400,000 and less $800,000": "4",
+            "More $800,000 and less $2,000,000": "5",
+            "More $2,000,000": "6"
+        }
+    },
+    "su16a_b": {
+        "meaning": "Amount estimate from the second product cultivated",
+        "values_label": {
+            "Less 50,000": "1",
+            "More $50,000 and less $150,000": "2",
+            "More $150,000 and less $400,000": "3",
+            "More $400,000 and less $800,000": "4",
+            "More $800,000 and less $2,000,000": "5",
+            "More $2,000,000": "6"
+        }
+    },
+    "su16a_c": {
+        "meaning": "Amount estimate from the third product cultivated",
+        "values_label": {
+            "Less 50,000": "1",
+            "More $50,000 and less $150,000": "2",
+            "More $150,000 and less $400,000": "3",
+            "More $400,000 and less $800,000": "4",
+            "More $800,000 and less $2,000,000": "5",
+            "More $2,000,000": "6"
+        }
+    },
+    "su171_1": {
+        "meaning": "Measurement 1st plot used feed HHM/animals",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other": "6",
+            "Nothing": "7"
+        }
+    },
+    "su171_21": {
+        "meaning": "Amount 1st plot used feed HHM/animals"
+    },
+    "su172_1": {
+        "meaning": "Measurement 2nd plot used feed HHM/animals",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other": "6",
+            "Nothing": "7"
+        }
+    },
+    "su172_21": {
+        "meaning": "Amount 2nd plot used feed HHM/animals"
+    },
+    "su173_1": {
+        "meaning": "Measurement 3rd plot used feed HHM/animals",
+        "values_label": {
+            "Kilograms": "1",
+            "Tons": "2",
+            "Roll": "3",
+            "Gross": "4",
+            "Sacks": "5",
+            "Other": "6",
+            "Nothing": "7"
+        }
+    },
+    "su173_21": {
+        "meaning": "Amount use to feed third plot/land"
+    },
+    "su18_1a": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "The respondent": "1"
+        }
+    },
+    "su18_1b": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "The respondent's spouse": "2"
+        }
+    },
+    "su18_1c": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        }
+    },
+    "su18_1d": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "The respondent's parents": "4"
+        }
+    },
+    "su18_1e": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        }
+    },
+    "su18_1f": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        }
+    },
+    "su18_1g": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        }
+    },
+    "su18_1h": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "All the household members": "8"
+        }
+    },
+    "su18_1i": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "Others (specify)": "9"
+        }
+    },
+    "su18_1j": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "Someone else / not owned/rented": "10"
+        }
+    },
+    "su18_1k": {
+        "meaning": "Which household members helped in preparing and harvesting plot/land",
+        "values_label": {
+            "DK": "98"
+        }
+    },
+    "su19_1": {
+        "meaning": "Last 12 months #people worked on plot besides HHM",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "su19_2": {
+        "meaning": "Last 12 months #people worked on plot besides HHM"
+    }
+}

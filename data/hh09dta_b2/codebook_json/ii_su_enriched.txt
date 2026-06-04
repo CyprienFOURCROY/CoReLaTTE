@@ -1,0 +1,82 @@
+Column "folio" means: Household ID.
+
+Column "su01" means: HHM use a plot/land for showing/farming/vegetable.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "su03" means: # Total plots/pieces of land.
+
+Column "su021" means: Parcels/Owned Land.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "su022" means: # Parcels/someone else's land.
+
+Column "su22a_1" means: Weight/measure unit a roll.
+Possible values:
+  - 1: Kg.
+  - 2: Ton.
+  - 3: Cubic meters
+  - 8: DK
+
+Column "su22a_2" means: Weight/measure a Roll.
+
+Column "su22b_1" means: Weight/measure unit gross.
+Possible values:
+  - 1: Kg.
+  - 2: Ton.
+  - 3: Cubic meters
+  - 8: DK
+
+Column "su22b_2" means: Weight/measure gross.
+
+Column "su22c_1" means: Unit sack.
+Possible values:
+  - 1: Kg.
+  - 2: Ton.
+  - 3: Cubic meters
+  - 8: DK
+
+Column "su22c_2" means: Other weight/measure sack.
+
+Column "su22d_1" means: Other Weight/measure unit.
+Possible values:
+  - 1: Kg.
+  - 2: Ton.
+  - 3: Cubic meters
+  - 8: DK
+
+Column "su22d_21" means: Other weight/measure.
+
+Column "su22e_1" means: Weight/measure other unit.
+Possible values:
+  - 1: Kg
+  - 2: Ton
+  - 3: Cubic meters
+  - 8: DK
+
+Column "su22e_21" means: Other weight/measure.
+
+Column "su231" means: Expense in chemical fertilizer.
+
+Column "su232" means: Expense in manure.
+
+Column "su233" means: Expense in pesticides.
+
+Column "su234" means: Expense in seeds.
+
+Column "su235" means: Expense in tractor rental.
+
+Column "su236" means: Expense in yoke.
+
+Column "su237" means: Expense in workers.
+
+Column "su238" means: Expense in water.
+
+Column "su239" means: Expense in fuel.
+
+Column "su2310" means: Doesn't apply/specify/remember.
+
+Column "su2311_1" means: Other expense specify.

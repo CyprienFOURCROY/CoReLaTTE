@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Values differ from the gold, one required state (26.0) is missing, extra/mismatched counts are present, and the ranking is incorrect."
+}

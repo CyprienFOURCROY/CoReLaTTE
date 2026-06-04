@@ -1,0 +1,235 @@
+Column "folio" means: Household ID.
+
+Column "in01a2_1" means: Last 12 months amount received PROCAMPO.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a2_2" means: Last 12 months amount received PROCAMPO.
+
+Column "in01a3_1" means: Last 12 months amount received TU CASA Y VIVIENDA RURAL.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a3_2" means: Last 12 months amount received TU CASA Y VIVIENDA SOCIAL.
+
+Column "in01a5_1" means: Last 12 months amount received COINVERSION SOCIAL.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a5_2" means: Last 12 months amount received COINVERSION SOCIAL.
+
+Column "in01a6_1" means: Last 12 months amount received PET.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a6_2" means: Last 12 months amount received PET.
+
+Column "in01a7_1" means: Last 12 months amount received ALIANZA PARA EL CAMPO.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a7_2" means: Last 12 months amount received ALIANZA PARA EL CAMPO.
+
+Column "in01a9_1" means: Last 12 months amount received FONAES.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a9_2" means: Last 12 months amount received FONAES.
+
+Column "in01a10_1" means: Last 12 months amount received Other Government Program.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a10_2" means: Last 12 months amount received Other Government Program.
+
+Column "in01a11_1" means: Last 12 months amount received 70 y más.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a11_2" means: Last 12 months amount received 70 y más.
+
+Column "in01a12_1" means: Last 12 months amount received apoyo alimentario.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a12_21" means: Last 12 months amount received apoyo alimentario.
+
+Column "in01a13_1" means: Last 12 months amount received opciones productivas.
+Possible values:
+  - 1: Participates in the program and have received income
+  - 2: Participate in the program but have not received income
+  - 3: None of the household members participate in the program
+  - 8: DK
+
+Column "in01a13_21" means: Last 12 months amount received opciones productivas.
+
+Column "in01b_1" means: Last 12 months amount received scholarship not progresa?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01b_2" means: Last 12 months amount received scholarship not progresa.
+
+Column "in01c_1" means: Last 12 months amount received firing liquidation?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01c_2" means: Last 12 months amount received firing liquidation.
+
+Column "in01d_1" means: Last 12 months amount received gift family?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01d_2" means: Last 12 months amount received gift family.
+
+Column "in01e_1" means: Last 12 months amount received pension?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01e_2" means: Last 12 months amount received pension.
+
+Column "in01f_1" means: Last 12 months amount received life insurance?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01f_2" means: Last 12 months amount received life insurance.
+
+Column "in01g_1" means: Total income received inheritance?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01g_2" means: Amount income received inheritance.
+
+Column "in01h_1" means: Total income received sale land?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01h_2" means: Amount income received sale land.
+
+Column "in01i_1" means: Total income received sale machinary?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01i_2" means: Amount income received sale machinary.
+
+Column "in01j_1" means: Total income received sale values?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01j_2" means: Amount income received sale values.
+
+Column "in01k_1" means: Total income received other nonlabor income?.
+Possible values:
+  - 1: Value in pesos
+  - 3: No
+  - 8: DK
+
+Column "in01k_21" means: Amount income received other nonlabor income.
+
+Column "in02a2" means: Amount received directly PROCAMPO.
+
+Column "in02a3" means: Amount received directly Tu Casa y Vivienda Rural.
+
+Column "in02a5" means: Amount received directly Coinversión Social.
+
+Column "in02a6" means: Amount received directly PET Programa de Empleo Temporal.
+
+Column "in02a7" means: Amount received directly Alianza para el Campo.
+
+Column "in02a9" means: Amount received directly Fonaes.
+
+Column "in02a10" means: Amount received directly Other Government Program.
+
+Column "in02a11" means: Amount received directly 70 y más.
+
+Column "in02a12" means: Amount received directly Apoyo Alimentario.
+
+Column "in02a13" means: Amount received directly Opciones Productivas.
+
+Column "in02b" means: Amount received directly Scholarship Not Oportunidades.
+
+Column "in02c" means: Amount received directly Compensation illness/dismissal.
+
+Column "in02d" means: Amount received directly Gift Family.
+
+Column "in02e" means: Amount received directly Retirement/Pension.
+
+Column "in02f" means: Amount received directly Life Insurance.
+
+Column "in02g" means: Amount received directly Inheritance/Chance Games.
+
+Column "in02h" means: Amount received directly Sell houses/vehicles.
+
+Column "in02i" means: Amount received directly Sell Machinery.
+
+Column "in02j" means: Amount received directly Sell Stocks/Bonuses.
+
+Column "in02k" means: Amount received directly Other Non Labor Income.
+
+Column "in03a" means: Last 12 months received Liconsa Milk?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "in03b" means: Last 12 months received Pronjag?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "in03c_1" means: Last 12 months received Other Government Help?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "in03d" means: Last 12 months received daycare/estancias infantiles.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK

@@ -1,0 +1,325 @@
+Column "folio" means: Household ID.
+
+Column "vlh01a" means: District buildings abandoned?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01b" means: District gather gangs/factions?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01c" means: District persons using drugs in streets?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01d" means: District prostitutes streets?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01e" means: District conflicts neighbors?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01f" means: District groups neighbors protection?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01g" means: District guards whites/paramilitaries?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01h" means: District military reserves/soldiers?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01i" means: District neighbor armed streets?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01j_1" means: Locality situations make feel unsafe?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh01k" means: Locality close?.
+Possible values:
+  - 1: Completely agree
+  - 2: Agree
+  - 3: Disagree
+  - 4: Completely disagree
+  - 8: DK
+
+Column "vlh01l" means: People willing to help their neighbors?.
+Possible values:
+  - 1: Completely agree
+  - 2: Agree
+  - 3: Disagree
+  - 4: Completely disagree
+  - 8: DK
+
+Column "vlh01m" means: People locality same values?.
+Possible values:
+  - 1: Completely agree
+  - 2: Agree
+  - 3: Disagree
+  - 4: Completely disagree
+  - 8: DK
+
+Column "vlh01n" means: People locality trustworthy?.
+Possible values:
+  - 1: Completely agree
+  - 2: Agree
+  - 3: Disagree
+  - 4: Completely disagree
+  - 8: DK
+
+Column "vlh01o" means: Youths locality skipped class neighbors did something?.
+Possible values:
+  - 1: Very probable
+  - 2: Probable
+  - 3: Less probable
+  - 4: Least probable
+  - 8: DK
+
+Column "vlh01p" means: Youths locality graffiti neighbors did something?.
+Possible values:
+  - 1: Very probable
+  - 2: Probable
+  - 3: Less probable
+  - 4: Least probable
+  - 8: DK
+
+Column "vlh01q" means: Youths locality disrespectful adult neighborhood said something?.
+Possible values:
+  - 1: Very probable
+  - 2: Probable
+  - 3: Less probable
+  - 4: Least probable
+  - 8: DK
+
+Column "vlh01r" means: Threaten/beaten neighbor stop the fight?.
+Possible values:
+  - 1: Very probable
+  - 2: Probable
+  - 3: Less probable
+  - 4: Least probable
+  - 8: DK
+
+Column "vlh01s" means: Closest police station neighbor stop this?.
+Possible values:
+  - 1: Very probable
+  - 2: Probable
+  - 3: Less probable
+  - 4: Least probable
+  - 8: DK
+
+Column "vlh01t" means: Often people locality do favors each other.
+Possible values:
+  - 1: Never
+  - 2: Rarely
+  - 3: Frequently
+  - 4: Always
+  - 8: DK
+
+Column "vlh01u" means: Neighbor away other neighbors watch his house?.
+Possible values:
+  - 1: Never
+  - 2: Rarely
+  - 3: Frequently
+  - 4: Always
+  - 8: DK
+
+Column "vlh01v" means: Often people locality ask advice.
+Possible values:
+  - 1: Never
+  - 2: Rarely
+  - 3: Frequently
+  - 4: Always
+  - 8: DK
+
+Column "vlh01w" means: Often people locality make parties.
+Possible values:
+  - 1: Never
+  - 2: Rarely
+  - 3: Frequently
+  - 4: Always
+  - 8: DK
+
+Column "vlh01x" means: Often people locality visit house?.
+Possible values:
+  - 1: Never
+  - 2: Rarely
+  - 3: Frequently
+  - 4: Always
+  - 8: DK
+
+Column "vlh02_1" means: Since what year lives in house?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "vlh02_2" means: Since what year lives in house.
+
+Column "vlh03" means: Age in which he arrived in house?.
+
+Column "vlh04" means: Feel safe at home?.
+Possible values:
+  - 1: Very safe
+  - 2: Safe
+  - 3: Unsafe
+  - 4: Very unsafe
+
+Column "vlh05" means: Ask neighbor to look after house?.
+Possible values:
+  - 1: Yes
+  - 2: No
+  - 9: NA
+
+Column "vlh06" means: Leave lights on as a security method?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 9: NA
+
+Column "vlh07a" means: House wire/sting/grating/colter?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh07b" means: House window bars street?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh07c" means: House security system.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh08a" means: Do you know family/friend who has been robbed house/business in the last 5 years?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh08b" means: Do you know family/friend who has been assaulted house/business in the last 5 years?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh08c" means: Do you know family/friend who has been kidnapped house/business in the last 5 years?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh09a" means: Number family/friend robbed house/business.
+
+Column "vlh09b" means: Number family/friend assaulted.
+
+Column "vlh09c" means: Number family/friend kidnapped.
+
+Column "vlh10a" means: Do you know family/friend who has been robbed house/business in the last 12 months?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh10b" means: Do you know family/friend who has been assaulted house/business in the last 12 months?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh10c" means: Do you know family/friend who has been kidnapped house/business in the last 12 months?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh11a" means: Number family/friend robbed house/business.
+
+Column "vlh11b" means: Number family/friend assaulted.
+
+Column "vlh11c" means: Number family/friend kidnapped.
+
+Column "vlh12a" means: Entered force rob in HH.
+Possible values:
+  - 1: Yes, into the dwelling you currently live in
+
+Column "vlh12b" means: Entered force rob in HH.
+Possible values:
+  - 2: Yes, into another dwelling where you used to live
+
+Column "vlh12c" means: Entered force rob in HH.
+Possible values:
+  - 3: No
+
+Column "vlh12a_a" means: Entered force rob in HH after 2005?.
+Possible values:
+  - 1: Yes, into the dwelling you currently live in
+
+Column "vlh12a_b" means: Entered force rob in HH after 2005?.
+Possible values:
+  - 2: Yes, into another dwelling where you used to live
+
+Column "vlh12a_c" means: No had entered force rob in HH since 2005?.
+Possible values:
+  - 3: No
+
+Column "vlh13" means: Number of times robbed in HH.
+
+Column "vlh13a" means: Number of times robbed in HH since 2005.
+
+Column "vlh14" means: Entered force rob in business.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 9: NA
+
+Column "vlh14a" means: Entered force rob in business since 2005.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 9: NA
+
+Column "vlh15" means: Number times rob/force business.
+
+Column "vlh15a" means: Number times rob/force business since 2005.
+
+Column "vlh16" means: Entered force rob parcel.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 9: NA
+
+Column "vlh16a" means: Entered force rob parcel since 2005.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 9: NA
+
+Column "vlh17" means: Number of times entered/rob parcel.
+
+Column "vlh17a" means: Number of times entered/rob parcel since 2005.
+
+Column "vlh18" means: Total times entered rob house/business/parcel.
+
+Column "vlh18a" means: Total times entered rob house/business/parcel since 2005.

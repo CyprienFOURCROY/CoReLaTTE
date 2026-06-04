@@ -1,0 +1,16 @@
+{
+    "anio": "Year of visit",
+    "anioprox": "Year of next visit",
+    "folio": "Household ID",
+    "hrs": "Time Interview started: hrs",
+    "hrsfin": "Time Interview ended: hrs",
+    "hrsprox": "Time next visit: hrs",
+    "mes": "Month visit",
+    "mesprox": "Month next visit",
+    "min": "Time Interview: min",
+    "minfin": "Time Interview ended: min",
+    "minprox": "Time next visit: min",
+    "rev": "Result of visit",
+    "secuencia": "Sequence Day",
+    "visita": "Number of visits"
+}

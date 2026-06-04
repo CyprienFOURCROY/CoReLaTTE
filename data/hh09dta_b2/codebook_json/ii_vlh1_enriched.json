@@ -1,0 +1,274 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "secuencia": {
+        "meaning": "Sequence"
+    },
+    "vlh21": {
+        "meaning": "Place 1 incident",
+        "values_label": {
+            "HHold's dwelling": "1",
+            "HHold's business": "2",
+            "HHold's parcel/land": "3"
+        }
+    },
+    "vlh22_1": {
+        "meaning": "Knows year 1 incident",
+        "values_label": {
+            "Year": "1",
+            "DK": "8"
+        }
+    },
+    "vlh22_2": {
+        "meaning": "Year 1 incident"
+    },
+    "vlh23_1": {
+        "meaning": "Knows age 1 incident",
+        "values_label": {
+            "Year": "1",
+            "DK": "8"
+        }
+    },
+    "vlh23_2": {
+        "meaning": "Age 1 incident"
+    },
+    "vlh24a": {
+        "meaning": "Robbed money/jewelry",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24b": {
+        "meaning": "Robbed electronic appliances",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24c": {
+        "meaning": "Robbed domestic appliance/furniture",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24d": {
+        "meaning": "Robbed animals",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24e": {
+        "meaning": "Robbed harvest",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24f": {
+        "meaning": "Robbed tools",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24g": {
+        "meaning": "Robbed vehicle",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh24h": {
+        "meaning": "Robbed other",
+        "values_label": {
+            "Other (specify)": "h"
+        }
+    },
+    "vlh24i": {
+        "meaning": "Nothing robbed",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh25_1": {
+        "meaning": "Money robbed",
+        "values_label": {
+            "Stolen amount of money": "1",
+            "Money was not stolen": "2",
+            "DK": "8"
+        }
+    },
+    "vlh25_2": {
+        "meaning": "Quantity money robbed"
+    },
+    "vlh26_1": {
+        "meaning": "Knows value robbed objects",
+        "values_label": {
+            "Value": "1",
+            "Objects were not stolen": "2",
+            "DK": "8"
+        }
+    },
+    "vlh26_2": {
+        "meaning": "Value robbed objects"
+    },
+    "vlh27": {
+        "meaning": "Incident hurted HHM without robbery",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "vlh28": {
+        "meaning": "Denounced incident",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "vlh29": {
+        "meaning": "Any HHM present in incident",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "vlh30_1a": {
+        "meaning": "Who interviewed present",
+        "values_label": {
+            "The respondent": "1"
+        }
+    },
+    "vlh30_1b": {
+        "meaning": "Spouse present",
+        "values_label": {
+            "The respondent's spouse": "2"
+        }
+    },
+    "vlh30_1c": {
+        "meaning": "Sons present",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        }
+    },
+    "vlh30_1d": {
+        "meaning": "Parents present",
+        "values_label": {
+            "The respondent's parents": "4"
+        }
+    },
+    "vlh30_1e": {
+        "meaning": "Parents in-law present",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        }
+    },
+    "vlh30_1f": {
+        "meaning": "Sibling present",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        }
+    },
+    "vlh30_1g": {
+        "meaning": "Sibling in-law present",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        }
+    },
+    "vlh30_1h": {
+        "meaning": "Other HHM present",
+        "values_label": {
+            "Other household members (specify)": "8"
+        }
+    },
+    "vlh30_1i": {
+        "meaning": "No one present",
+        "values_label": {
+            "Nobody": "9"
+        }
+    },
+    "vlh31_1": {
+        "meaning": "How many delinquents incident?",
+        "values_label": {
+            "Persons who participated": "1",
+            "DK": "8"
+        }
+    },
+    "vlh31_2": {
+        "meaning": "Number delinquents incidents"
+    },
+    "vlh32": {
+        "meaning": "Knew HHM delinquent?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh33": {
+        "meaning": "Delinquent carried weapon?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "vlh34_1a": {
+        "meaning": "Gun incident",
+        "values_label": {
+            "Gun, or any other fire weapon": "1"
+        }
+    },
+    "vlh34_1b": {
+        "meaning": "Knife/jackknife inc_bident",
+        "values_label": {
+            "Knife, jackknife, or machete": "2"
+        }
+    },
+    "vlh34_1c": {
+        "meaning": "Other weapon delinquent",
+        "values_label": {
+            "Other (specify)": "3"
+        }
+    },
+    "vlh34_1d": {
+        "meaning": "Do not know weapon delinquent",
+        "values_label": {
+            "DK": "8"
+        }
+    },
+    "vlh35": {
+        "meaning": "Migration due incident",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "vlh36": {
+        "meaning": "Medical attention incident",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "vlh37": {
+        "meaning": "HHM died in incident",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    }
+}

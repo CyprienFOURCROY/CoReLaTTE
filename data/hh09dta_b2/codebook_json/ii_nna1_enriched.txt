@@ -1,0 +1,311 @@
+Column "folio" means: Household ID.
+
+Column "nna05_1" means: Date HH started op/acquired business?.
+Possible values:
+  - 1: Month and year
+  - 8: DK
+
+Column "nna05_21" means: Month HH started op/acquired business.
+
+Column "nna05_22" means: Year HH started op/acquired business.
+
+Column "nna07_1a" means: Money begin business.
+Possible values:
+  - 1: Banking Institution
+
+Column "nna07_1b" means: Money begin business.
+Possible values:
+  - 2: Savings fund, credit fund Union
+
+Column "nna07_1c" means: Money begin business.
+Possible values:
+  - 3: Private money lenders or batch
+
+Column "nna07_1d" means: Money begin business.
+Possible values:
+  - 4: Home members savings
+
+Column "nna07_1e" means: Money begin business.
+Possible values:
+  - 5: Liquidation of previous job any HHM
+
+Column "nna07_1f" means: Money begin business.
+Possible values:
+  - 6: Clients credits
+
+Column "nna07_1g" means: Money begin business.
+Possible values:
+  - 7: Providers credit
+
+Column "nna07_1h" means: Money begin business.
+Possible values:
+  - 8: Support from relatives who are not household members
+
+Column "nna07_1i" means: Money begin business.
+Possible values:
+  - 9: Sale of non financial assets
+
+Column "nna07_1j" means: Money begin business.
+Possible values:
+  - 10: Contribution from partner who is not a household member
+
+Column "nna07_1k" means: Money begin business: other.
+Possible values:
+  - 11: Other (specify)
+
+Column "nna08" means: Business fully belong HHM began.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "nna09" means: % business owned by HHM began.
+Possible values:
+  - 1: More than a half (75%)
+  - 2: A half (50%)
+  - 3: Some (aprox 25%)
+  - 4: A little (less than 10%)
+
+Column "nna10_1a" means: Which household member worked in the business began.
+Possible values:
+  - 1: The respondent
+
+Column "nna10_1b" means: Which household member worked in the business began.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "nna10_1c" means: Which household member worked in the business began.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "nna10_1d" means: Which household member worked in the business began.
+Possible values:
+  - 4: The respondent's parents
+
+Column "nna10_1e" means: Which household member worked in the business began.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "nna10_1f" means: Which household member worked in the business began.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "nna10_1g" means: Which household member worked in the business began.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "nna10_1h" means: Which household member worked in the business began.
+Possible values:
+  - 8: All the household members
+
+Column "nna10_1i" means: Which household member worked in the business began.
+Possible values:
+  - 9: Others (specify)
+
+Column "nna10_1j" means: Which household member worked in the business began.
+Possible values:
+  - 10: Nobody
+
+Column "nna10_1k" means: Which household member worked in the business began.
+Possible values:
+  - 98: DK
+
+Column "nna11_1" means: How many people not HHM worked business began.
+Possible values:
+  - 1: Workers
+  - 8: DK
+
+Column "nna11_2" means: # persons worked business began beside him.
+
+Column "nna12" means: Business run outside house.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "nna13a" means: Benefits business began.
+Possible values:
+  - 1: Written contract to its workers
+
+Column "nna13b" means: Benefits business began.
+Possible values:
+  - 2: Oral or word contract (does not have a contract)
+
+Column "nna13c" means: Benefits business began.
+Possible values:
+  - 3: Social Security (IMSS)
+
+Column "nna13d" means: Benefits business began.
+Possible values:
+  - 4: Private medical insurance by the business (different than IMSS)
+
+Column "nna13e" means: Benefits business began.
+Possible values:
+  - 5: AFORE or SAR (retirement savings system)
+
+Column "nna13f" means: Benefits business began.
+Possible values:
+  - 9: Does not have social benefits
+
+Column "nna13g" means: Benefits business began.
+Possible values:
+  - 10: Incapacity/Illness
+
+Column "nna14_1a" means: Which household members took decisions of business.
+Possible values:
+  - 1: The respondent
+
+Column "nna14_1b" means: Which household members took decisions of business.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "nna14_1c" means: Which household members took decisions of business.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "nna14_1d" means: Which household members took decisions of business.
+Possible values:
+  - 4: The respondent's parents
+
+Column "nna14_1e" means: Which household members took decisions of business.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "nna14_1f" means: Which household members took decisions of business.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "nna14_1g" means: Which household members took decisions of business.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "nna14_1h" means: Which household members took decisions of business.
+Possible values:
+  - 8: All the household members
+
+Column "nna14_1i" means: Which household members took decisions of business.
+Possible values:
+  - 9: Others (specify)
+
+Column "nna14_1j" means: Which household members took decisions of business.
+Possible values:
+  - 10: Nobody
+
+Column "nna14_1k" means: Which household members took decisions of business.
+Possible values:
+  - 98: DK
+
+Column "nna15" means: Currently HH runs the business.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "nna16_1" means: When close business?.
+Possible values:
+  - 1: Sold
+  - 2: Closed
+  - 8: DK
+
+Column "nna16_11" means: Date sold business?.
+
+Column "nna16_12" means: Date close business?.
+
+Column "nna17_1" means: Same activity than business started.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "nna18_1a" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 1: The respondent
+
+Column "nna18_1b" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "nna18_1c" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "nna18_1d" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 4: The respondent's parents
+
+Column "nna18_1e" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "nna18_1f" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "nna18_1g" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "nna18_1h" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 8: All the household members
+
+Column "nna18_1i" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 9: Others (specify)
+
+Column "nna18_1j" means: Last 4 weeks which household members worked business before closed.
+Possible values:
+  - 10: Nobody
+
+Column "nna19_1" means: # persons beside HHM work business last month.
+Possible values:
+  - 1: Workers
+  - 8: DK
+
+Column "nna19_2" means: # people work business last month.
+
+Column "nna20a" means: Benefits workers.
+Possible values:
+  - 1: Written contract to its workers
+
+Column "nna20b" means: Benefits workers.
+Possible values:
+  - 2: Oral or contract
+
+Column "nna20c" means: Benefits workers.
+Possible values:
+  - 3: Social Security (IMSS)
+
+Column "nna20d" means: Benefits workers.
+Possible values:
+  - 4: Private medical insurance by the business (different than IMSS)
+
+Column "nna20e" means: Benefits workers.
+Possible values:
+  - 5: AFORE or SAR (retirement savings system)
+
+Column "nna20f" means: Benefits workers.
+Possible values:
+  - 9: Does not have social benefits
+
+Column "nna20g" means: Benefits workers.
+Possible values:
+  - 10: Incapacity/Illness
+
+Column "nna21_1" means: Last 12 months money business produce?.
+Possible values:
+  - 1: Value
+  - 8: DK
+
+Column "nna21_2" means: Quantity business produce last month before closed.
+
+Column "nna22_1" means: Last 12 month profit/losses business.
+Possible values:
+  - 1: Value in pesos of gross profits
+  - 2: Value in pesos of net profits (costs discounted)
+  - 3: Value in pesos of losses
+  - 8: DK
+
+Column "nna22_11" means: Value in pesos gross profits.
+
+Column "nna22_12" means: Value in pesos net profits.
+
+Column "nna22_13" means: Value in pesos losses.
+
+Column "secuencia" means: Sequence.

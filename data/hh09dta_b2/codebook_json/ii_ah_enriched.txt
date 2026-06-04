@@ -1,0 +1,180 @@
+Column "folio" means: Household ID.
+
+Column "ls" means: Individual ID.
+
+Column "ah03a" means: HHM owns living house?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03b" means: HHM owns other house/building?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03c" means: HHM owns bicycles?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03d" means: HHM owns motor vehicle?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03d1" means: HHM owns motor car?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03e" means: HHM owns electronic device?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03f" means: HHM owns wash machine/stove?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03g" means: HHM owns domestic appliance?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03h" means: HHM owns financial assets/afores?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03i" means: HHM owns machinary/tractor?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03j" means: HHM owns bull/cow?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03k" means: HHM owns horses/mules?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03l" means: HHM owns pigs/goats?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03m" means: HHM owns poultry?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah03n" means: HHM owns other assets?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "ah04a_1" means: Value living house?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04a_2" means: Value living house.
+
+Column "ah04b_1" means: Value other house?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04b_2" means: Value other house.
+
+Column "ah04c_1" means: Value bicycles?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04c_2" means: Value bicycles.
+
+Column "ah04d_1" means: Value motor vehicle?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04d_2" means: Value motor vehicle.
+
+Column "ah04d1_1" means: Value motor car?.
+
+Column "ah04d1_2" means: Value motor car.
+
+Column "ah04e_1" means: Value electronic device?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04e_2" means: Value electronic device.
+
+Column "ah04f_1" means: Value wash machine/stove?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04f_2" means: Value wash machine/stove.
+
+Column "ah04g_1" means: Value domestic appliance?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04g_2" means: Value domestic appliance.
+
+Column "ah04h_1" means: Value financial assets/afores?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04h_2" means: Value financial assets/afores.
+
+Column "ah04i_1" means: Value machinary/tractor?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04i_2" means: Value machinary/tractor.
+
+Column "ah04j_1" means: Value bull/cow?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04j_2" means: Value bull/cow.
+
+Column "ah04k_1" means: Value horses/mules?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04k_2" means: Value horses/mules.
+
+Column "ah04l_1" means: Value pigs/goats?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04l_2" means: Value pigs/goats.
+
+Column "ah04m_1" means: Value poultry?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04m_2" means: Value poultry.
+
+Column "ah04n_1" means: Value other assets?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "ah04n_2" means: Value other assets.

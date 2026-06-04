@@ -1,0 +1,234 @@
+Column "folio" means: Household ID.
+
+Column "inr02a" means: Last 12 months HHM produce/sell dairy food.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02b" means: Last 12 months HHM produce/sell canned goods.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02c" means: Last 12 months HHM produce/sell meat.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02d" means: Last 12 months HHM produce/sell egg.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02e" means: Last 12 months HHM produce/sell clothes.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02f" means: Last 12 months HHM produce/sell crafts.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02g" means: Last 12 months HHM produce/sell furniture.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02h" means: Last 12 months HHM produce/sell flowers/med plants.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02i" means: Last 12 months HHM produce/sell honey.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02j" means: Last 12 months HHM produce/sell fattening animals.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr02k" means: Last 12 months HHM produce/sell other.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "inr03a" means: Last 12 months quantity sold: dairy products.
+
+Column "inr03b" means: Last 12 months quantity sold: canned goods.
+
+Column "inr03c" means: Last 12 months quantity sold: meat.
+
+Column "inr03d" means: Last 12 months quantity sold: eggs.
+
+Column "inr03e" means: Last 12 months quantity sold: clothes.
+
+Column "inr03f" means: Last 12 months quantity sold: crafts.
+
+Column "inr03g" means: Last 12 months quantity sold: furniture.
+
+Column "inr03h" means: Last 12 months quantity sold: med plants.
+
+Column "inr03i" means: Last 12 months quantity sold: honey.
+
+Column "inr03j" means: Last 12 months quantity sold: fattening animals.
+
+Column "inr03k" means: Last 12 months quantity sold: other.
+
+Column "inr04a" means: Last month quantity sold: dairy products.
+
+Column "inr04b" means: Last month quantity sold: canned goods.
+
+Column "inr04c" means: Last month quantity sold: meat.
+
+Column "inr04d" means: Last month quantity sold: eggs.
+
+Column "inr04e" means: Last month quantity sold: clothes.
+
+Column "inr04f" means: Last month quantity sold: crafts.
+
+Column "inr04g" means: Last month quantity sold: furniture.
+
+Column "inr04h" means: Last month quantity sold: med plants.
+
+Column "inr04i" means: Last month quantity sold: honey.
+
+Column "inr04j" means: Last month quantity sold: fattening animals.
+
+Column "inr04k" means: Last month quantity sold: other.
+
+Column "inr05a_1" means: HHM decide money selling: dairy food.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05b_1" means: HHM decide money selling: canned goods.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05c_1" means: HHM decide money selling: meat.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05d_1" means: HHM decide money selling: eggs.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05e_1" means: HHM decide money selling: clothes.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05f_1" means: HHM decide money selling: crafts.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05g_1" means: HHM decide money selling: furniture.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05h_1" means: HHM decide money selling: flower/med plants.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05i_1" means: HHM decide money selling: honey.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05j_1" means: HHM decide money selling: fattening animals.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "inr05k_1" means: HHM decide money selling: other.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: Respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: All the household members
+  - 9: Others (specify)
+
+Column "ls" means: Individual ID Third Round.

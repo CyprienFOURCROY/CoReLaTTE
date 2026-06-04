@@ -1,0 +1,21 @@
+state_code,state_name,robbery_since_2005,average_age,respondent_count
+31,Yucatán,Yes,51.0,2
+31,Yucatán,No,44.190475,63
+15,Estado de México,Yes,50.0,1
+15,Estado de México,No,46.613182,349
+20,Oaxaca,Yes,49.0,3
+20,Oaxaca,No,51.07173,237
+10,Durango,Yes,48.4,5
+10,Durango,No,49.12838,296
+3,Baja California Sur,Yes,47.0,2
+3,Baja California Sur,No,47.155174,116
+30,Veracruz,Yes,46.666668,3
+30,Veracruz,No,47.064724,309
+11,Guanajuato,Yes,46.5,2
+11,Guanajuato,No,46.86842,152
+25,Sinaloa,Yes,44.333332,3
+25,Sinaloa,No,47.06431,311
+17,Morelos,Yes,43.666668,6
+17,Morelos,No,45.42723,213
+21,Puebla,Yes,31.0,2
+21,Puebla,No,47.64,150

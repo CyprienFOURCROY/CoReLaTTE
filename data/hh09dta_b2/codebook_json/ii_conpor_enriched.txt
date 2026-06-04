@@ -1,0 +1,27 @@
+Column "anio" means: Year of visit.
+
+Column "anioprox" means: Year of next visit.
+
+Column "folio" means: Household ID.
+
+Column "hrs" means: Time Interview started: hrs.
+
+Column "hrsfin" means: Time Interview ended: hrs.
+
+Column "hrsprox" means: Time next visit: hrs.
+
+Column "mes" means: Month visit.
+
+Column "mesprox" means: Month next visit.
+
+Column "min" means: Time Interview: min.
+
+Column "minfin" means: Time Interview ended: min.
+
+Column "minprox" means: Time next visit: min.
+
+Column "rev" means: Result of visit.
+
+Column "secuencia" means: Sequence Day.
+
+Column "visita" means: Number of visits.

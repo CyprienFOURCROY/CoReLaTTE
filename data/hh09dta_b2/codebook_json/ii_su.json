@@ -1,0 +1,118 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "su01": {
+        "meaning": "HHM use a plot/land for showing/farming/vegetable",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "su03": {
+        "meaning": "# Total plots/pieces of land"
+    },
+    "su021": {
+        "meaning": "Parcels/Owned Land",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "su022": {
+        "meaning": "# Parcels/someone else's land"
+    },
+    "su22a_1": {
+        "meaning": "Weight/measure unit a roll",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        }
+    },
+    "su22a_2": {
+        "meaning": "Weight/measure a Roll"
+    },
+    "su22b_1": {
+        "meaning": "Weight/measure unit gross",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        }
+    },
+    "su22b_2": {
+        "meaning": "Weight/measure gross"
+    },
+    "su22c_1": {
+        "meaning": "Unit sack",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        }
+    },
+    "su22c_2": {
+        "meaning": "Other weight/measure sack"
+    },
+    "su22d_1": {
+        "meaning": "Other Weight/measure unit",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        }
+    },
+    "su22d_21": {
+        "meaning": "Other weight/measure"
+    },
+    "su22e_1": {
+        "meaning": "Weight/measure other unit",
+        "values_label": {
+            "Kg": "1",
+            "Ton": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        }
+    },
+    "su22e_21": {
+        "meaning": "Other weight/measure"
+    },
+    "su231": {
+        "meaning": "Expense in chemical fertilizer"
+    },
+    "su232": {
+        "meaning": "Expense in manure"
+    },
+    "su233": {
+        "meaning": "Expense in pesticides"
+    },
+    "su234": {
+        "meaning": "Expense in seeds"
+    },
+    "su235": {
+        "meaning": "Expense in tractor rental"
+    },
+    "su236": {
+        "meaning": "Expense in yoke"
+    },
+    "su237": {
+        "meaning": "Expense in workers"
+    },
+    "su238": {
+        "meaning": "Expense in water"
+    },
+    "su239": {
+        "meaning": "Expense in fuel"
+    },
+    "su2310": {
+        "meaning": "Doesn't apply/specify/remember"
+    },
+    "su2311_1": {
+        "meaning": "Other expense specify"
+    }
+}

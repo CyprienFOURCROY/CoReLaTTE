@@ -1,0 +1,327 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "in01a2_1": {
+        "meaning": "Last 12 months amount received PROCAMPO",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a2_2": {
+        "meaning": "Last 12 months amount received PROCAMPO"
+    },
+    "in01a3_1": {
+        "meaning": "Last 12 months amount received TU CASA Y VIVIENDA RURAL",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a3_2": {
+        "meaning": "Last 12 months amount received TU CASA Y VIVIENDA SOCIAL"
+    },
+    "in01a5_1": {
+        "meaning": "Last 12 months amount received COINVERSION SOCIAL",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a5_2": {
+        "meaning": "Last 12 months amount received COINVERSION SOCIAL"
+    },
+    "in01a6_1": {
+        "meaning": "Last 12 months amount received PET",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a6_2": {
+        "meaning": "Last 12 months amount received PET"
+    },
+    "in01a7_1": {
+        "meaning": "Last 12 months amount received ALIANZA PARA EL CAMPO",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a7_2": {
+        "meaning": "Last 12 months amount received ALIANZA PARA EL CAMPO"
+    },
+    "in01a9_1": {
+        "meaning": "Last 12 months amount received FONAES",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a9_2": {
+        "meaning": "Last 12 months amount received FONAES"
+    },
+    "in01a10_1": {
+        "meaning": "Last 12 months amount received Other Government Program",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a10_2": {
+        "meaning": "Last 12 months amount received Other Government Program"
+    },
+    "in01a11_1": {
+        "meaning": "Last 12 months amount received 70 y más",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a11_2": {
+        "meaning": "Last 12 months amount received 70 y más"
+    },
+    "in01a12_1": {
+        "meaning": "Last 12 months amount received apoyo alimentario",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a12_21": {
+        "meaning": "Last 12 months amount received apoyo alimentario"
+    },
+    "in01a13_1": {
+        "meaning": "Last 12 months amount received opciones productivas",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        }
+    },
+    "in01a13_21": {
+        "meaning": "Last 12 months amount received opciones productivas"
+    },
+    "in01b_1": {
+        "meaning": "Last 12 months amount received scholarship not progresa?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01b_2": {
+        "meaning": "Last 12 months amount received scholarship not progresa"
+    },
+    "in01c_1": {
+        "meaning": "Last 12 months amount received firing liquidation?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01c_2": {
+        "meaning": "Last 12 months amount received firing liquidation"
+    },
+    "in01d_1": {
+        "meaning": "Last 12 months amount received gift family?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01d_2": {
+        "meaning": "Last 12 months amount received gift family"
+    },
+    "in01e_1": {
+        "meaning": "Last 12 months amount received pension?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01e_2": {
+        "meaning": "Last 12 months amount received pension"
+    },
+    "in01f_1": {
+        "meaning": "Last 12 months amount received life insurance?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01f_2": {
+        "meaning": "Last 12 months amount received life insurance"
+    },
+    "in01g_1": {
+        "meaning": "Total income received inheritance?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01g_2": {
+        "meaning": "Amount income received inheritance"
+    },
+    "in01h_1": {
+        "meaning": "Total income received sale land?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01h_2": {
+        "meaning": "Amount income received sale land"
+    },
+    "in01i_1": {
+        "meaning": "Total income received sale machinary?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01i_2": {
+        "meaning": "Amount income received sale machinary"
+    },
+    "in01j_1": {
+        "meaning": "Total income received sale values?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01j_2": {
+        "meaning": "Amount income received sale values"
+    },
+    "in01k_1": {
+        "meaning": "Total income received other nonlabor income?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in01k_21": {
+        "meaning": "Amount income received other nonlabor income"
+    },
+    "in02a2": {
+        "meaning": "Amount received directly PROCAMPO"
+    },
+    "in02a3": {
+        "meaning": "Amount received directly Tu Casa y Vivienda Rural"
+    },
+    "in02a5": {
+        "meaning": "Amount received directly Coinversión Social"
+    },
+    "in02a6": {
+        "meaning": "Amount received directly PET Programa de Empleo Temporal"
+    },
+    "in02a7": {
+        "meaning": "Amount received directly Alianza para el Campo"
+    },
+    "in02a9": {
+        "meaning": "Amount received directly Fonaes"
+    },
+    "in02a10": {
+        "meaning": "Amount received directly Other Government Program"
+    },
+    "in02a11": {
+        "meaning": "Amount received directly 70 y más"
+    },
+    "in02a12": {
+        "meaning": "Amount received directly Apoyo Alimentario"
+    },
+    "in02a13": {
+        "meaning": "Amount received directly Opciones Productivas"
+    },
+    "in02b": {
+        "meaning": "Amount received directly Scholarship Not Oportunidades"
+    },
+    "in02c": {
+        "meaning": "Amount received directly Compensation illness/dismissal"
+    },
+    "in02d": {
+        "meaning": "Amount received directly Gift Family"
+    },
+    "in02e": {
+        "meaning": "Amount received directly Retirement/Pension"
+    },
+    "in02f": {
+        "meaning": "Amount received directly Life Insurance"
+    },
+    "in02g": {
+        "meaning": "Amount received directly Inheritance/Chance Games"
+    },
+    "in02h": {
+        "meaning": "Amount received directly Sell houses/vehicles"
+    },
+    "in02i": {
+        "meaning": "Amount received directly Sell Machinery"
+    },
+    "in02j": {
+        "meaning": "Amount received directly Sell Stocks/Bonuses"
+    },
+    "in02k": {
+        "meaning": "Amount received directly Other Non Labor Income"
+    },
+    "in03a": {
+        "meaning": "Last 12 months received Liconsa Milk?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in03b": {
+        "meaning": "Last 12 months received Pronjag?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in03c_1": {
+        "meaning": "Last 12 months received Other Government Help?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    },
+    "in03d": {
+        "meaning": "Last 12 months received daycare/estancias infantiles",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        }
+    }
+}

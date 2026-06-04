@@ -1,0 +1,416 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "se01a": {
+        "meaning": "Last 5 years HH: dead HHM",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se01b": {
+        "meaning": "Last 5 years HH: disease/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se01c": {
+        "meaning": "Last 5 years HH: unemployment/failure com HHM",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se01d": {
+        "meaning": "Last 5 years HH: lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se01e": {
+        "meaning": "Last 5 years HH: lost total crop",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se01f": {
+        "meaning": "Last 5 years HH: lost/robbery/dead animal production",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "se02aa_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02aa_2": {
+        "meaning": "Year HHM died"
+    },
+    "se02ab_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ab_2": {
+        "meaning": "Year HHM died"
+    },
+    "se02ac_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ac_2": {
+        "meaning": "Year HHM died"
+    },
+    "se02ba_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ba_2": {
+        "meaning": "Year illness/accident/hospital HHM?"
+    },
+    "se02bb_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02bb_2": {
+        "meaning": "Year illness/accident/hospital HHM?"
+    },
+    "se02bc_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02bc_2": {
+        "meaning": "Year illness/accident/hospital HHM?"
+    },
+    "se02ca_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ca_2": {
+        "meaning": "Year unemployment/failure com HHM?"
+    },
+    "se02cb_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02cb_2": {
+        "meaning": "Year unemployment/failure com HHM?"
+    },
+    "se02cc_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02cc_2": {
+        "meaning": "Year unemployment/failure com HHM?"
+    },
+    "se02da_1": {
+        "meaning": "Knows when lost viv/neg natural disaster?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02da_2": {
+        "meaning": "Year lost viv/neg natural disaster"
+    },
+    "se02db_1": {
+        "meaning": "Knows when lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02db_2": {
+        "meaning": "Year lost viv/neg natural disaster"
+    },
+    "se02dc_1": {
+        "meaning": "Knows when lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02dc_2": {
+        "meaning": "Year lost viv/neg natural disaster"
+    },
+    "se02ea_1": {
+        "meaning": "Knows when lost total harvest?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ea_2": {
+        "meaning": "Year lost total crop"
+    },
+    "se02eb_1": {
+        "meaning": "Knows when lost total crop",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02eb_2": {
+        "meaning": "Year lost total crop"
+    },
+    "se02ec_1": {
+        "meaning": "Knows when lost total crop?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02ec_2": {
+        "meaning": "Year lost total crop"
+    },
+    "se02fa_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02fa_2": {
+        "meaning": "Year lost/dead animal production"
+    },
+    "se02fb_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02fb_2": {
+        "meaning": "Year lost/dead animal production"
+    },
+    "se02fc_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        }
+    },
+    "se02fc_2": {
+        "meaning": "Year lost/dead animal production"
+    },
+    "se03aa_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03ab_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03ac_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03ba_1": {
+        "meaning": "Whose diseased?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03bb_1": {
+        "meaning": "Who diseased/accidented?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03bc_1": {
+        "meaning": "Who diseased/accidented?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03ca_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03cb_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se03cc_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        }
+    },
+    "se05_1a": {
+        "meaning": "Borrowed helped HH events",
+        "values_label": {
+            "Borrowed": "1"
+        }
+    },
+    "se05_1b": {
+        "meaning": "Sold good HH events",
+        "values_label": {
+            "Sold any asset": "2"
+        }
+    },
+    "se05_1c": {
+        "meaning": "Worked extra HH events",
+        "values_label": {
+            "Worked more hours": "3"
+        }
+    },
+    "se05_1d": {
+        "meaning": "Work/activity not done help HH events",
+        "values_label": {
+            "Worked or developed any activity that you did not do before, to help household expenditure": "4"
+        }
+    },
+    "se05_1e": {
+        "meaning": "Additional job help HH events",
+        "values_label": {
+            "Obtained an additional job": "5"
+        }
+    },
+    "se05_1f": {
+        "meaning": "Left school help HH events",
+        "values_label": {
+            "Stopped attending school": "6"
+        }
+    },
+    "se05_1g": {
+        "meaning": "Began/sold business help HH events",
+        "values_label": {
+            "Started/Sold a business": "7"
+        }
+    },
+    "se05_1h": {
+        "meaning": "Did not take part HH events",
+        "values_label": {
+            "You did not take any measure": "9"
+        }
+    },
+    "se05_1i": {
+        "meaning": "Saved",
+        "values_label": {
+            "Savings": "10"
+        }
+    },
+    "se05_1j": {
+        "meaning": "Received help family",
+        "values_label": {
+            "Received aid from any relative/friend": "11"
+        }
+    },
+    "se05_1k": {
+        "meaning": "Do not know help HH events",
+        "values_label": {
+            "DK": "98"
+        }
+    },
+    "se05_1l": {
+        "meaning": "Other help HH events",
+        "values_label": {
+            "Other (specify)": "8"
+        }
+    }
+}

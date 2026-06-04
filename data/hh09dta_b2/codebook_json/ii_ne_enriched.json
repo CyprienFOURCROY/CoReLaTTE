@@ -1,0 +1,61 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "ne01a": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Nobody": "A"
+        }
+    },
+    "ne01b": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Child <5 present": "B"
+        }
+    },
+    "ne01c": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Child >5 present": "C"
+        }
+    },
+    "ne01d": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Spouse present": "D"
+        }
+    },
+    "ne01e": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Adult HHM present": "E"
+        }
+    },
+    "ne01f": {
+        "meaning": "Who else was present during the interview?",
+        "values_label": {
+            "Adult non-HHM present": "F"
+        }
+    },
+    "ne02": {
+        "meaning": "Answers preciseness",
+        "values_label": {
+            "Excellent": "1",
+            "Good": "2",
+            "Fair": "3",
+            "Not so Good": "4",
+            "Very Bad": "5"
+        }
+    },
+    "ne03": {
+        "meaning": "Attention of respondent",
+        "values_label": {
+            "Excellent": "1",
+            "Good": "2",
+            "Fair": "3",
+            "Not so Good": "4",
+            "Very Bad": "5"
+        }
+    }
+}

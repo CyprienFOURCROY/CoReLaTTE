@@ -1,0 +1,1 @@
+The gold answer has no rows (indicating no qualifying states), while the predicted answer lists 10 states with missing averages. It adds rows not present in the gold and omits the required average values, so it does not match.

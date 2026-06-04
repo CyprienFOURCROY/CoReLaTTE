@@ -1,0 +1,129 @@
+Column "folio" means: Household ID.
+
+Column "crh01_1a" means: Which type of institution HHM have savings.
+Possible values:
+  - 1: Do not have savings
+
+Column "crh01_1b" means: Which type of institution HHM have savings.
+Possible values:
+  - 2: Bank
+
+Column "crh01_1c" means: Which type of institution HHM have savings.
+Possible values:
+  - 3: Cooperative
+
+Column "crh01_1d" means: Which type of institution HHM have savings.
+Possible values:
+  - 4: Savings, fund/cash
+
+Column "crh01_1e" means: Which type of institution HHM have savings.
+Possible values:
+  - 5: Batch
+
+Column "crh01_1f" means: Which type of institution HHM have savings.
+Possible values:
+  - 6: Withdrawn
+
+Column "crh01_1g" means: Which type of institution HHM have savings.
+Possible values:
+  - 7: Friend/Relative out of the household
+
+Column "crh01_1h" means: Which type of institution HHM have savings.
+Possible values:
+  - 8: Voluntary accounts in the Afores
+
+Column "crh01_1i" means: Which type of institution HHM have savings.
+Possible values:
+  - 9: Solidarity / Jointly cash
+
+Column "crh01_1j" means: Which type of institution HHM have savings.
+Possible values:
+  - 10: At your household
+
+Column "crh01_1k" means: Which type of institution HHM have savings.
+Possible values:
+  - 11: Other (specify)
+
+Column "crh02_1" means: Last 12 months money owed credit/loans.
+Possible values:
+  - 1: Value
+  - 2: Did not incur debts in the last 12 months
+  - 8: DK
+
+Column "crh02_2" means: Last 12 months money value in pesos owed credit/loans.
+
+Column "crh02a" means: More $500 / less $500?.
+Possible values:
+  - 1: Less than $500
+  - 2: More than $500
+
+Column "crh02b" means: More $1000 / less $1000?.
+Possible values:
+  - 1: Less than $1,000
+  - 2: More than $1,000
+
+Column "crh02c" means: More $5000 / less $5000?.
+Possible values:
+  - 1: Less than $5,000
+  - 2: More than $5,000
+
+Column "crh02d" means: More $10000 / less $10000?.
+Possible values:
+  - 1: Less than $10,000
+  - 2: More than $10,000
+
+Column "crh03_1" means: How much money has the household paid in the last 12 months.
+Possible values:
+  - 1: Value
+  - 2: Did not pay anything in the last 12 months
+  - 3: Do not have debts
+  - 8: DK
+
+Column "crh03_2" means: Value money paid in pesos last 12 months.
+
+Column "crh03a" means: More $500 / less $500?.
+Possible values:
+  - 1: Less than $500
+  - 2: More than $500
+
+Column "crh03b" means: More $1000 / less $1000?.
+Possible values:
+  - 1: Less than $1,000
+  - 2: More than $1,000
+
+Column "crh03c" means: More $5000 / less $5000?.
+Possible values:
+  - 1: Less than $5,000
+  - 2: More than $5,000
+
+Column "crh03d" means: More $10000 / less $10000?.
+Possible values:
+  - 1: Less than $10,000
+  - 2: More than $10,000
+
+Column "crh04_1" means: Total debts + interests.
+Possible values:
+  - 1: Value
+  - 8: DK
+
+Column "crh04_2" means: Value pesos total debts + interests.
+
+Column "crh04a" means: More $500 / less $500?.
+Possible values:
+  - 1: Less than $500
+  - 2: More than $500
+
+Column "crh04b" means: More $1000 / less $1000?.
+Possible values:
+  - 1: Less than $1,000
+  - 2: More than $1,000
+
+Column "crh04c" means: More $5000 / less $5000?.
+Possible values:
+  - 1: Less than $5,000
+  - 2: More than $5,000
+
+Column "crh04d" means: More $10000 / less $10000?.
+Possible values:
+  - 1: Less than $10,000
+  - 2: More than $10,000

@@ -1,0 +1,297 @@
+Column "folio" means: Household ID.
+
+Column "secuencia" means: Sequence.
+
+Column "su06_1a" means: Which household members owns plot?.
+Possible values:
+  - 1: The respondent
+
+Column "su06_1b" means: Which household members owns plot?.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "su06_1c" means: Which household members owns plot?.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "su06_1d" means: Which household members owns plot?.
+Possible values:
+  - 4: The respondent's parents
+
+Column "su06_1e" means: Which household members owns plot?.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "su06_1f" means: Which household members owns plot?.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "su06_1g" means: Which household members owns plot?.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "su06_1h" means: Which household members owns plot?.
+Possible values:
+  - 8: All the household members
+
+Column "su06_1i" means: Which household members owns plot?.
+Possible values:
+  - 9: Others (specify)
+
+Column "su06_1j" means: Which household members owns plot?.
+Possible values:
+  - 10: Someone else / Not owned / Rented
+
+Column "su06_1k" means: Which household members owns plot?.
+Possible values:
+  - 98: DK
+
+Column "su07_1" means: Whatever measures plot?.
+Possible values:
+  - 1: Hectares
+  - 2: Square meters
+  - 8: DK
+
+Column "su07_11" means: Surface in hectares.
+
+Column "su07_12" means: Surface in meters.
+
+Column "su08_1" means: What is the state of ownership of the plot/land.
+Possible values:
+  - 1: Private property
+  - 2: Communal parcel
+  - 3: Rented
+  - 4: Taken in sharecropping
+  - 5: Borrowed
+  - 6: In society
+  - 7: Other (specify)
+
+Column "su09_1" means: Documents guarantee plot ownership.
+Possible values:
+  - 1: Script or private property certificate
+  - 2: Parcel certificate or certificate of agricultural Rights
+  - 3: Other (specify)
+  - 4: None
+
+Column "su10" means: Last 12 months production of plot.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "su12" means: Last 12 months total plot/land area used.
+Possible values:
+  - 1: 100%
+  - 2: More than a half (75%)
+  - 3: A half (50%)
+  - 4: Some (aprox 25%)
+  - 5: A little (less than 10%)
+
+Column "su141_1" means: Last 12 months units amount first plot/land.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other (specify)
+  - 7: Nothing
+  - 8: Nothing has been farmed from any crop
+
+Column "su141_21" means: Last 12 months amount first plot/land.
+
+Column "su142_1" means: Last 12 months units amount second plot/land.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Others
+  - 7: Nothing
+  - 8: You have not harvested anything
+
+Column "su142_21" means: Last 12 months amount second plot/land.
+
+Column "su143_1" means: Last 12 months units amount third plot/land.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other (specify)
+  - 7: Nothing
+  - 8: Nothing has been farmed from any crop
+
+Column "su143_21" means: Last 12 months amount third plot/land.
+
+Column "su151_1" means: Units sell first plot/land during the last 12 months.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other (specify)
+  - 7: Nothing
+
+Column "su151_21" means: Amount sell first plot/land during the last 12 months.
+
+Column "su152_1" means: Units sell second plot/land during the last 12 months.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other (specify)
+  - 7: Nothing
+
+Column "su152_21" means: Amount sell second plot/land during the last 12 months.
+
+Column "su153_1" means: Units sell third plot/land during the last 12 months.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other (specify)
+  - 7: Nothing
+
+Column "su153_21" means: Amount sell third plot/land during the last 12 months.
+
+Column "su161_1" means: Money obtained from the first product cultivated.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "su161_2" means: Amount obtained from the first product cultivated.
+
+Column "su162_1" means: Money obtained from the second product cultivated.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "su162_2" means: Amount obtained from the second product cultivated.
+
+Column "su163_1" means: Money obtained from the third product cultivated.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "su163_2" means: Amount obtained from the third product cultivated.
+
+Column "su16a_a" means: Amount estimate from the first product cultivated.
+Possible values:
+  - 1: Less 50,000
+  - 2: More $50,000 and less $150,000
+  - 3: More $150,000 and less $400,000
+  - 4: More $400,000 and less $800,000
+  - 5: More $800,000 and less $2,000,000
+  - 6: More $2,000,000
+
+Column "su16a_b" means: Amount estimate from the second product cultivated.
+Possible values:
+  - 1: Less 50,000
+  - 2: More $50,000 and less $150,000
+  - 3: More $150,000 and less $400,000
+  - 4: More $400,000 and less $800,000
+  - 5: More $800,000 and less $2,000,000
+  - 6: More $2,000,000
+
+Column "su16a_c" means: Amount estimate from the third product cultivated.
+Possible values:
+  - 1: Less 50,000
+  - 2: More $50,000 and less $150,000
+  - 3: More $150,000 and less $400,000
+  - 4: More $400,000 and less $800,000
+  - 5: More $800,000 and less $2,000,000
+  - 6: More $2,000,000
+
+Column "su171_1" means: Measurement 1st plot used feed HHM/animals.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other
+  - 7: Nothing
+
+Column "su171_21" means: Amount 1st plot used feed HHM/animals.
+
+Column "su172_1" means: Measurement 2nd plot used feed HHM/animals.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other
+  - 7: Nothing
+
+Column "su172_21" means: Amount 2nd plot used feed HHM/animals.
+
+Column "su173_1" means: Measurement 3rd plot used feed HHM/animals.
+Possible values:
+  - 1: Kilograms
+  - 2: Tons
+  - 3: Roll
+  - 4: Gross
+  - 5: Sacks
+  - 6: Other
+  - 7: Nothing
+
+Column "su173_21" means: Amount use to feed third plot/land.
+
+Column "su18_1a" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 1: The respondent
+
+Column "su18_1b" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "su18_1c" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "su18_1d" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 4: The respondent's parents
+
+Column "su18_1e" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "su18_1f" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "su18_1g" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "su18_1h" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 8: All the household members
+
+Column "su18_1i" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 9: Others (specify)
+
+Column "su18_1j" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 10: Someone else / not owned/rented
+
+Column "su18_1k" means: Which household members helped in preparing and harvesting plot/land.
+Possible values:
+  - 98: DK
+
+Column "su19_1" means: Last 12 months #people worked on plot besides HHM.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "su19_2" means: Last 12 months #people worked on plot besides HHM.

@@ -1,0 +1,192 @@
+Column "folio" means: Household ID.
+
+Column "secuencia" means: Sequence.
+
+Column "vlh21" means: Place 1 incident.
+Possible values:
+  - 1: HHold's dwelling
+  - 2: HHold's business
+  - 3: HHold's parcel/land
+
+Column "vlh22_1" means: Knows year 1 incident.
+Possible values:
+  - 1: Year
+  - 8: DK
+
+Column "vlh22_2" means: Year 1 incident.
+
+Column "vlh23_1" means: Knows age 1 incident.
+Possible values:
+  - 1: Year
+  - 8: DK
+
+Column "vlh23_2" means: Age 1 incident.
+
+Column "vlh24a" means: Robbed money/jewelry.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24b" means: Robbed electronic appliances.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24c" means: Robbed domestic appliance/furniture.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24d" means: Robbed animals.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24e" means: Robbed harvest.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24f" means: Robbed tools.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24g" means: Robbed vehicle.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh24h" means: Robbed other.
+Possible values:
+  - h: Other (specify)
+
+Column "vlh24i" means: Nothing robbed.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh25_1" means: Money robbed.
+Possible values:
+  - 1: Stolen amount of money
+  - 2: Money was not stolen
+  - 8: DK
+
+Column "vlh25_2" means: Quantity money robbed.
+
+Column "vlh26_1" means: Knows value robbed objects.
+Possible values:
+  - 1: Value
+  - 2: Objects were not stolen
+  - 8: DK
+
+Column "vlh26_2" means: Value robbed objects.
+
+Column "vlh27" means: Incident hurted HHM without robbery.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh28" means: Denounced incident.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh29" means: Any HHM present in incident.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh30_1a" means: Who interviewed present.
+Possible values:
+  - 1: The respondent
+
+Column "vlh30_1b" means: Spouse present.
+Possible values:
+  - 2: The respondent's spouse
+
+Column "vlh30_1c" means: Sons present.
+Possible values:
+  - 3: Respondent's son(s)/daughter(s)
+
+Column "vlh30_1d" means: Parents present.
+Possible values:
+  - 4: The respondent's parents
+
+Column "vlh30_1e" means: Parents in-law present.
+Possible values:
+  - 5: The respondent's parents in law
+
+Column "vlh30_1f" means: Sibling present.
+Possible values:
+  - 6: Respondent's brother(s)/sister(s)
+
+Column "vlh30_1g" means: Sibling in-law present.
+Possible values:
+  - 7: Respondent's brother(s)/sister(s) in law
+
+Column "vlh30_1h" means: Other HHM present.
+Possible values:
+  - 8: Other household members (specify)
+
+Column "vlh30_1i" means: No one present.
+Possible values:
+  - 9: Nobody
+
+Column "vlh31_1" means: How many delinquents incident?.
+Possible values:
+  - 1: Persons who participated
+  - 8: DK
+
+Column "vlh31_2" means: Number delinquents incidents.
+
+Column "vlh32" means: Knew HHM delinquent?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh33" means: Delinquent carried weapon?.
+Possible values:
+  - 1: Yes
+  - 3: No
+  - 8: DK
+
+Column "vlh34_1a" means: Gun incident.
+Possible values:
+  - 1: Gun, or any other fire weapon
+
+Column "vlh34_1b" means: Knife/jackknife inc_bident.
+Possible values:
+  - 2: Knife, jackknife, or machete
+
+Column "vlh34_1c" means: Other weapon delinquent.
+Possible values:
+  - 3: Other (specify)
+
+Column "vlh34_1d" means: Do not know weapon delinquent.
+Possible values:
+  - 8: DK
+
+Column "vlh35" means: Migration due incident.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh36" means: Medical attention incident.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "vlh37" means: HHM died in incident.
+Possible values:
+  - 1: Yes
+  - 3: No

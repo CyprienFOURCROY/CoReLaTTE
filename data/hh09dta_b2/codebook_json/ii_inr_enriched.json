@@ -1,0 +1,305 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "inr02a": {
+        "meaning": "Last 12 months HHM produce/sell dairy food",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02b": {
+        "meaning": "Last 12 months HHM produce/sell canned goods",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02c": {
+        "meaning": "Last 12 months HHM produce/sell meat",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02d": {
+        "meaning": "Last 12 months HHM produce/sell egg",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02e": {
+        "meaning": "Last 12 months HHM produce/sell clothes",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02f": {
+        "meaning": "Last 12 months HHM produce/sell crafts",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02g": {
+        "meaning": "Last 12 months HHM produce/sell furniture",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02h": {
+        "meaning": "Last 12 months HHM produce/sell flowers/med plants",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02i": {
+        "meaning": "Last 12 months HHM produce/sell honey",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02j": {
+        "meaning": "Last 12 months HHM produce/sell fattening animals",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr02k": {
+        "meaning": "Last 12 months HHM produce/sell other",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        }
+    },
+    "inr03a": {
+        "meaning": "Last 12 months quantity sold: dairy products"
+    },
+    "inr03b": {
+        "meaning": "Last 12 months quantity sold: canned goods"
+    },
+    "inr03c": {
+        "meaning": "Last 12 months quantity sold: meat"
+    },
+    "inr03d": {
+        "meaning": "Last 12 months quantity sold: eggs"
+    },
+    "inr03e": {
+        "meaning": "Last 12 months quantity sold: clothes"
+    },
+    "inr03f": {
+        "meaning": "Last 12 months quantity sold: crafts"
+    },
+    "inr03g": {
+        "meaning": "Last 12 months quantity sold: furniture"
+    },
+    "inr03h": {
+        "meaning": "Last 12 months quantity sold: med plants"
+    },
+    "inr03i": {
+        "meaning": "Last 12 months quantity sold: honey"
+    },
+    "inr03j": {
+        "meaning": "Last 12 months quantity sold: fattening animals"
+    },
+    "inr03k": {
+        "meaning": "Last 12 months quantity sold: other"
+    },
+    "inr04a": {
+        "meaning": "Last month quantity sold: dairy products"
+    },
+    "inr04b": {
+        "meaning": "Last month quantity sold: canned goods"
+    },
+    "inr04c": {
+        "meaning": "Last month quantity sold: meat"
+    },
+    "inr04d": {
+        "meaning": "Last month quantity sold: eggs"
+    },
+    "inr04e": {
+        "meaning": "Last month quantity sold: clothes"
+    },
+    "inr04f": {
+        "meaning": "Last month quantity sold: crafts"
+    },
+    "inr04g": {
+        "meaning": "Last month quantity sold: furniture"
+    },
+    "inr04h": {
+        "meaning": "Last month quantity sold: med plants"
+    },
+    "inr04i": {
+        "meaning": "Last month quantity sold: honey"
+    },
+    "inr04j": {
+        "meaning": "Last month quantity sold: fattening animals"
+    },
+    "inr04k": {
+        "meaning": "Last month quantity sold: other"
+    },
+    "inr05a_1": {
+        "meaning": "HHM decide money selling: dairy food",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05b_1": {
+        "meaning": "HHM decide money selling: canned goods",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05c_1": {
+        "meaning": "HHM decide money selling: meat",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05d_1": {
+        "meaning": "HHM decide money selling: eggs",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05e_1": {
+        "meaning": "HHM decide money selling: clothes",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05f_1": {
+        "meaning": "HHM decide money selling: crafts",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05g_1": {
+        "meaning": "HHM decide money selling: furniture",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05h_1": {
+        "meaning": "HHM decide money selling: flower/med plants",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05i_1": {
+        "meaning": "HHM decide money selling: honey",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05j_1": {
+        "meaning": "HHM decide money selling: fattening animals",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "inr05k_1": {
+        "meaning": "HHM decide money selling: other",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        }
+    },
+    "ls": {
+        "meaning": "Individual ID Third Round"
+    }
+}

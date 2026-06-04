@@ -1,0 +1,15 @@
+{
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "nna01": {
+        "meaning": "HHM owns/shares non-ag business",
+        "values_label": {
+            "Yes": "1",
+            "No": "2"
+        }
+    },
+    "nna02": {
+        "meaning": "Last 12 months number non-ag business owned/shared"
+    }
+}

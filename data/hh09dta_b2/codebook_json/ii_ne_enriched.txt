@@ -1,0 +1,41 @@
+Column "folio" means: Household ID.
+
+Column "ne01a" means: Who else was present during the interview?.
+Possible values:
+  - A: Nobody
+
+Column "ne01b" means: Who else was present during the interview?.
+Possible values:
+  - B: Child <5 present
+
+Column "ne01c" means: Who else was present during the interview?.
+Possible values:
+  - C: Child >5 present
+
+Column "ne01d" means: Who else was present during the interview?.
+Possible values:
+  - D: Spouse present
+
+Column "ne01e" means: Who else was present during the interview?.
+Possible values:
+  - E: Adult HHM present
+
+Column "ne01f" means: Who else was present during the interview?.
+Possible values:
+  - F: Adult non-HHM present
+
+Column "ne02" means: Answers preciseness.
+Possible values:
+  - 1: Excellent
+  - 2: Good
+  - 3: Fair
+  - 4: Not so Good
+  - 5: Very Bad
+
+Column "ne03" means: Attention of respondent.
+Possible values:
+  - 1: Excellent
+  - 2: Good
+  - 3: Fair
+  - 4: Not so Good
+  - 5: Very Bad

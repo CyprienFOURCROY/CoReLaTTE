@@ -1,0 +1,44 @@
+{
+    "anio": {
+        "meaning": "Year of visit"
+    },
+    "anioprox": {
+        "meaning": "Year of next visit"
+    },
+    "folio": {
+        "meaning": "Household ID"
+    },
+    "hrs": {
+        "meaning": "Time Interview started: hrs"
+    },
+    "hrsfin": {
+        "meaning": "Time Interview ended: hrs"
+    },
+    "hrsprox": {
+        "meaning": "Time next visit: hrs"
+    },
+    "mes": {
+        "meaning": "Month visit"
+    },
+    "mesprox": {
+        "meaning": "Month next visit"
+    },
+    "min": {
+        "meaning": "Time Interview: min"
+    },
+    "minfin": {
+        "meaning": "Time Interview ended: min"
+    },
+    "minprox": {
+        "meaning": "Time next visit: min"
+    },
+    "rev": {
+        "meaning": "Result of visit"
+    },
+    "secuencia": {
+        "meaning": "Sequence Day"
+    },
+    "visita": {
+        "meaning": "Number of visits"
+    }
+}

@@ -1,0 +1,304 @@
+Column "folio" means: Household ID.
+
+Column "se01a" means: Last 5 years HH: dead HHM.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se01b" means: Last 5 years HH: disease/accident/hospital HHM?.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se01c" means: Last 5 years HH: unemployment/failure com HHM.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se01d" means: Last 5 years HH: lost viv/neg natural disaster.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se01e" means: Last 5 years HH: lost total crop.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se01f" means: Last 5 years HH: lost/robbery/dead animal production.
+Possible values:
+  - 1: Yes
+  - 3: No
+
+Column "se02aa_1" means: Knows when HHM died?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02aa_2" means: Year HHM died.
+
+Column "se02ab_1" means: Knows when HHM died?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ab_2" means: Year HHM died.
+
+Column "se02ac_1" means: Knows when HHM died?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ac_2" means: Year HHM died.
+
+Column "se02ba_1" means: Knows when illness/accident/hospital HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ba_2" means: Year illness/accident/hospital HHM?.
+
+Column "se02bb_1" means: Knows when illness/accident/hospital HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02bb_2" means: Year illness/accident/hospital HHM?.
+
+Column "se02bc_1" means: Knows when illness/accident/hospital HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02bc_2" means: Year illness/accident/hospital HHM?.
+
+Column "se02ca_1" means: Knows when unemployment/failure HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ca_2" means: Year unemployment/failure com HHM?.
+
+Column "se02cb_1" means: Knows when unemployment/failure HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02cb_2" means: Year unemployment/failure com HHM?.
+
+Column "se02cc_1" means: Knows when unemployment/failure HHM?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02cc_2" means: Year unemployment/failure com HHM?.
+
+Column "se02da_1" means: Knows when lost viv/neg natural disaster?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02da_2" means: Year lost viv/neg natural disaster.
+
+Column "se02db_1" means: Knows when lost viv/neg natural disaster.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02db_2" means: Year lost viv/neg natural disaster.
+
+Column "se02dc_1" means: Knows when lost viv/neg natural disaster.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02dc_2" means: Year lost viv/neg natural disaster.
+
+Column "se02ea_1" means: Knows when lost total harvest?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ea_2" means: Year lost total crop.
+
+Column "se02eb_1" means: Knows when lost total crop.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02eb_2" means: Year lost total crop.
+
+Column "se02ec_1" means: Knows when lost total crop?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02ec_2" means: Year lost total crop.
+
+Column "se02fa_1" means: Knows when lost/dead animal production?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02fa_2" means: Year lost/dead animal production.
+
+Column "se02fb_1" means: Knows when lost/dead animal production?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02fb_2" means: Year lost/dead animal production.
+
+Column "se02fc_1" means: Knows when lost/dead animal production?.
+Possible values:
+  - 1: Yes
+  - 8: DK
+
+Column "se02fc_2" means: Year lost/dead animal production.
+
+Column "se03aa_1" means: Who died?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03ab_1" means: Who died?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03ac_1" means: Who died?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03ba_1" means: Whose diseased?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03bb_1" means: Who diseased/accidented?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03bc_1" means: Who diseased/accidented?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03ca_1" means: Who lost job?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03cb_1" means: Who lost job?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se03cc_1" means: Who lost job?.
+Possible values:
+  - 1: The respondent
+  - 2: The respondent's spouse
+  - 3: Respondent's son(s)/daughter(s)
+  - 4: The respondent's parents
+  - 5: The respondent's parents in law
+  - 6: The respondent's brother(s)/sister(s)
+  - 7: Respondent's brother(s)/sister(s) in law
+  - 8: Other
+
+Column "se05_1a" means: Borrowed helped HH events.
+Possible values:
+  - 1: Borrowed
+
+Column "se05_1b" means: Sold good HH events.
+Possible values:
+  - 2: Sold any asset
+
+Column "se05_1c" means: Worked extra HH events.
+Possible values:
+  - 3: Worked more hours
+
+Column "se05_1d" means: Work/activity not done help HH events.
+Possible values:
+  - 4: Worked or developed any activity that you did not do before, to help household expenditure
+
+Column "se05_1e" means: Additional job help HH events.
+Possible values:
+  - 5: Obtained an additional job
+
+Column "se05_1f" means: Left school help HH events.
+Possible values:
+  - 6: Stopped attending school
+
+Column "se05_1g" means: Began/sold business help HH events.
+Possible values:
+  - 7: Started/Sold a business
+
+Column "se05_1h" means: Did not take part HH events.
+Possible values:
+  - 9: You did not take any measure
+
+Column "se05_1i" means: Saved.
+Possible values:
+  - 10: Savings
+
+Column "se05_1j" means: Received help family.
+Possible values:
+  - 11: Received aid from any relative/friend
+
+Column "se05_1k" means: Do not know help HH events.
+Possible values:
+  - 98: DK
+
+Column "se05_1l" means: Other help HH events.
+Possible values:
+  - 8: Other (specify)
