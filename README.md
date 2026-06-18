@@ -194,7 +194,7 @@ data/hh09dta_b2/
 
 
 
-# Running the SQL-Type Pipeline
+# Example for running a pipeline : the SQL-Type Pipeline
 
 ```bash
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py
@@ -212,21 +212,6 @@ Generate gold answers:
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py
 ```
 
----
-
-# Running the ML-Type Pipeline
-
-```bash
-python3 src/pipeline/ML_ALONE/ML_Generation.py
-```
-
-Validate generated code:
-
-```bash
-python3 src/pipeline/ML_ALONE/ML_Check_Code.py
-```
-
----
 
 # Evaluation
 
