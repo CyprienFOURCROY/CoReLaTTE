@@ -192,36 +192,7 @@ Repository location:
 data/hh09dta_b2/
 ```
 
----
 
-# Repository Structure
-
-```text
-CoReLaTTe/
-├── data/
-│   ├── hh09dta_b2/
-│   ├── dataset_query.csv
-│   ├── dataset_query_ML.csv
-│   ├── gold_answer/
-│   └── python_script_for_queries/
-│
-├── evaluation/
-│   ├── compute_metrics.py
-│   ├── compare_answers.py
-│   ├── generate_and_execute_semeval.py
-│   ├── predicted_answers/
-│   ├── saved_python_script/
-│   └── results/
-│
-├── src/
-│   ├── model/
-│   └── pipeline/
-│
-├── main.ipynb
-└── DistributionNumberColumns.png
-```
-
----
 
 # Running the SQL-Type Pipeline
 
