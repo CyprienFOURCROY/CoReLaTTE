@@ -1,6 +1,6 @@
 # CoReLaTTe
 
-**CoReLaTTe (Complex Reasoning over Large Tabular and Textual Data)** is a benchmark generation framework designed to evaluate the analytical reasoning capabilities of Large Language Model (LLM) agents on real-world tabular datasets.
+**CoReLaTTe (Complex Requests over Large Tabular and Textual Data)** is a benchmark generation framework designed to evaluate the analytical reasoning capabilities of Large Language Model (LLM) agents on real-world tabular datasets.
 
 Developed as part of a Master's thesis, CoReLaTTe addresses a limitation of existing tabular benchmarks: most evaluate SQL generation or table question answering, while many real-world analytical tasks require statistical reasoning, machine learning methods, and multi-step analytical workflows.
 
