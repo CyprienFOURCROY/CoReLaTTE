@@ -1,76 +1,68 @@
 # CoReLaTTe
 
-**CoReLaTTe (Complex Requests over Large Tabular and Textual Data)** is a benchmark generation framework designed to evaluate the analytical reasoning capabilities of Large Language Model (LLM) agents on real-world tabular datasets.
+**CoReLaTTe (Complex Reasoning over Large Tabular and Textual Data)** is a benchmark generation framework for evaluating Large Language Model (LLM) agents on tabular data reasoning tasks.
 
-Developed as part of a Master's thesis, CoReLaTTe addresses a limitation of existing tabular benchmarks: most evaluate SQL generation or table question answering, while many real-world analytical tasks require statistical reasoning, machine learning methods, and multi-step analytical workflows.
+Developed as part of a Master's thesis, CoReLaTTe automatically generates benchmark questions, executable solutions, and ground-truth answers from real-world datasets. The framework aims to provide a systematic way of evaluating how effectively LLM agents can reason over structured data using relational operations, statistical methods, and multi-step analytical workflows.
 
-The framework automatically generates:
-
-* Natural language questions
-* Structured query plans
-* Executable Python/Pandas solutions
-* Ground-truth answers
-* Evaluation artifacts
-
-allowing researchers to systematically assess the ability of LLM agents to perform end-to-end analytical reasoning over structured data.
+Unlike traditional benchmark construction approaches that rely heavily on manual annotation, CoReLaTTe generates benchmark instances automatically through structured query plans that can be validated, executed, and reproduced.
 
 ---
 
-# Motivation
+# Overview
 
-Most existing benchmarks focus on questions answerable through SQL-style operations such as filtering, joining, aggregation, and sorting.
+Tabular reasoning encompasses a broad range of analytical tasks. Some questions require classical database operations such as filtering, joining, grouping, and aggregation. Others require statistical analysis, machine learning techniques, or a combination of both.
 
-However, real-world data analysis frequently requires additional reasoning capabilities:
+To capture this diversity, CoReLaTTe organizes benchmark questions into three categories:
 
-* Discovering relationships between variables
-* Identifying clusters
-* Detecting anomalies
-* Evaluating statistical hypotheses
-* Combining data preparation and analytical modeling
+* **SQL-Type Queries**
+* **ML-Type Queries**
+* **SQL+ML Queries**
 
-CoReLaTTe was designed to generate benchmark questions that explicitly target these capabilities.
+Each category evaluates a different aspect of an LLM agent's reasoning capabilities while maintaining a common generation and evaluation framework.
 
 ---
 
 # Query Categories
 
-The framework distinguishes three categories of analytical questions.
-
 ## SQL-Type Queries
 
-Questions answerable using relational operations only.
+SQL-Type Queries evaluate an agent's ability to perform reasoning based on relational operations.
 
-Examples of supported operations:
+Supported operations include:
 
 * Filtering
-* Selection
 * Projection
 * Aggregation
 * Sorting
-* Group By
-* Joins
+* Grouping
+* Inner Joins
+* Left Joins
+* Right Joins
+* Outer Joins
 * Semi-Joins
 * Anti-Joins
 
 Example:
 
-> Which states have the highest number of households reporting robberies since 2005?
+> Which states contain the largest number of households reporting robberies since 2005?
+
+These questions assess whether an agent can correctly interpret and execute structured data manipulation tasks.
 
 ---
 
 ## ML-Type Queries
 
-Questions requiring statistical or machine learning methods.
+ML-Type Queries evaluate an agent's ability to perform statistical and machine learning analysis directly on tabular data.
 
 Supported analytical families include:
 
-* Correlation analysis
-* Regression-based explanatory analysis
+* Correlation Analysis
+* Regression-Based Analysis
 * Clustering
-* Feature importance estimation
-* Dimensionality reduction
-* Statistical hypothesis testing
-* Anomaly detection
+* Feature Importance Estimation
+* Statistical Hypothesis Testing
+* Dimensionality Reduction
+* Anomaly Detection
 
 Current implementation focuses on:
 
@@ -81,21 +73,69 @@ Example:
 
 > Is there a relationship between household income and household assets?
 
+These questions assess whether an agent can identify patterns, relationships, and structures within data.
+
 ---
 
 ## SQL+ML Queries
 
-Questions requiring both relational preprocessing and analytical modeling.
+SQL+ML Queries combine relational reasoning and analytical modeling.
+
+They require:
+
+1. Data preparation through SQL-style operations.
+2. Statistical or machine learning analysis on the resulting dataset.
 
 Example:
 
 > Among households located in Oaxaca, what relationship exists between agricultural income and land ownership?
 
+These questions evaluate an agent's ability to perform complete analytical workflows.
+
+---
+
+# Benchmark Generation Framework
+
+The benchmark generation process is based on executable query plans.
+
+Each generated benchmark instance follows the same workflow:
+
+```text
+Dataset
+   │
+   ▼
+Query Plan Generation
+   │
+   ▼
+Schema Validation
+   │
+   ▼
+Query Repair
+   │
+   ▼
+Python/Pandas Generation
+   │
+   ▼
+Execution
+   │
+   ▼
+Ground Truth Generation
+   │
+   ▼
+Benchmark Instance
+```
+
+This approach ensures that every generated question is accompanied by:
+
+* A structured analytical specification.
+* Executable Python code.
+* A reproducible ground-truth answer.
+
 ---
 
 # Architecture
 
-The repository is organized around a modular query-generation framework.
+The repository is organized around independent query-generation modules.
 
 ```text
 src/
@@ -113,61 +153,19 @@ src/
 └── evaluation/
 ```
 
-Each query type contains its own generation pipeline:
+Each query-generation module contains:
 
 ```text
-QueryGeneration/
-├── prompt.py
-├── query_plan_schema.py
-├── extract_llm_output.py
-├── repair_query_json.py
-├── json_to_pandas.py
-├── execute_code.py
-└── query_plan_to_question.py
+prompt.py
+query_plan_schema.py
+extract_llm_output.py
+repair_query_json.py
+json_to_pandas.py
+execute_code.py
+query_plan_to_question.py
 ```
 
-This modular design makes it possible to independently extend:
-
-* the prompt generation process,
-* the analytical operators,
-* the validation schemas,
-* the code generation backend.
-
----
-
-# Benchmark Generation Pipeline
-
-The benchmark generation process follows the workflow below:
-
-```text
-Dataset
-   │
-   ▼
-LLM Query Plan Generation
-   │
-   ▼
-JSON Validation
-   │
-   ▼
-Query Plan Repair
-   │
-   ▼
-Pandas Code Generation
-   │
-   ▼
-Code Execution
-   │
-   ▼
-Gold Answer Generation
-   │
-   ▼
-Benchmark Dataset
-   │
-   ▼
-LLM Agent Evaluation
-```
-
-The generated Python code serves as an executable specification of the reasoning process and produces verifiable ground-truth answers.
+This modular architecture makes it straightforward to extend the framework with new analytical operations or benchmark categories.
 
 ---
 
@@ -175,19 +173,16 @@ The generated Python code serves as an executable specification of the reasoning
 
 The current benchmark uses the **Mexican Family Life Survey (MxFLS)**.
 
-More specifically, experiments were conducted on:
+Experiments are conducted on the household survey component of the 2009–2012 wave.
 
-* Book II (Household Survey)
-* Wave 2009–2012
+The dataset contains information related to:
 
-The dataset contains information regarding:
-
-* Household demographics
-* Income
+* Demographics
+* Household income
 * Assets
 * Agricultural activities
-* Credit
 * Land ownership
+* Credit
 * Economic shocks
 
 Repository location:
@@ -229,13 +224,11 @@ CoReLaTTe/
 
 # Running the SQL-Type Pipeline
 
-Generate SQL-style benchmark questions:
-
 ```bash
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py
 ```
 
-Validate and repair generated code:
+Validate generated code:
 
 ```bash
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Check_Code.py
@@ -251,8 +244,6 @@ python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py
 
 # Running the ML-Type Pipeline
 
-Generate ML-style benchmark questions:
-
 ```bash
 python3 src/pipeline/ML_ALONE/ML_Generation.py
 ```
@@ -267,7 +258,7 @@ python3 src/pipeline/ML_ALONE/ML_Check_Code.py
 
 # Evaluation
 
-CoReLaTTe includes an evaluation framework for comparing model predictions against generated ground-truth answers.
+The repository includes an evaluation framework for comparing model predictions against generated ground-truth answers.
 
 Example:
 
@@ -278,7 +269,7 @@ python3 evaluation/compute_metrics.py \
     --dataset hh09dta_b2
 ```
 
-Evaluation artifacts are stored under:
+Evaluation outputs are stored under:
 
 ```text
 evaluation/results/
@@ -290,27 +281,12 @@ evaluation/saved_python_script/
 
 # Research Objective
 
-The goal of CoReLaTTe is to study whether LLM agents can reliably perform analytical reasoning over tabular data beyond traditional SQL generation.
+The objective of CoReLaTTe is to provide a reproducible framework for generating and evaluating tabular reasoning benchmarks for LLM agents.
 
-The framework enables controlled evaluation of:
-
-* data preparation capabilities,
-* analytical planning,
-* statistical reasoning,
-* machine learning reasoning,
-* end-to-end workflow execution.
+By supporting SQL reasoning, machine learning reasoning, and hybrid analytical workflows within the same framework, CoReLaTTe enables a more comprehensive evaluation of agent capabilities on structured data.
 
 ---
 
 # Citation
 
 If you use this repository in academic work, please cite the associated Master's thesis.
-
-```bibtex
-@mastersthesis{fourcroy2026corelatte,
-  author = {Cyprien Fourcroy},
-  title  = {CoReLaTTe: Benchmark Generation for LLM Agents Specialized in Tabular Data Reasoning},
-  school = {Politechnika Warszawska},
-  year   = {2026}
-}
-```
