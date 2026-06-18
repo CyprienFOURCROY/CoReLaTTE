@@ -135,4 +135,4 @@ This repository accompanies a Master's thesis investigating how benchmark genera
 The long-term objective is to move beyond SQL-only evaluation and assess whether agents can correctly perform end-to-end analytical workflows involving both data manipulation and machine learning.
 
 ```
-```
+
