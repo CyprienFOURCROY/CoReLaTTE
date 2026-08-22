@@ -5,7 +5,7 @@ from typing import Any
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[2]
 RAW_DATA_ROOT = ROOT / "raw_data"
 PROCESSED_ROOT = ROOT / "processed"
 CSV_PATH = PROCESSED_ROOT / "dataset_query.csv"

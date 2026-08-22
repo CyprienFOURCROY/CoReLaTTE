@@ -12,10 +12,11 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[1]
 
-DATA_ROOT = ROOT / "data"
+RAW_DATA_ROOT = ROOT / "raw_data"
+PROCESSED_ROOT = ROOT / "processed"
 EVAL_ROOT = ROOT / "evaluation"
 
-CSV_PATH = DATA_ROOT / "dataset_query.csv"
+CSV_PATH = PROCESSED_ROOT / "dataset_query.csv"
 
 SOURCE_DATASET = "hh09dta_b2"
 
@@ -79,7 +80,7 @@ def load_tables(
     source_dataset: str,
     table_names: list[str],
 ) -> dict[str, pd.DataFrame]:
-    dataset_dir = DATA_ROOT / source_dataset
+    dataset_dir = RAW_DATA_ROOT / source_dataset
 
     tables = {}
 
@@ -98,7 +99,7 @@ def load_metadata_text(
     source_dataset: str,
     text_files: list[str],
 ) -> str:
-    json_dir = DATA_ROOT / source_dataset / "codebook_json"
+    json_dir = RAW_DATA_ROOT / source_dataset / "codebook_json"
 
     parts = []
 
@@ -121,7 +122,7 @@ def build_schema_text(
     table_names: list[str],
     text_files: list[str],
 ) -> str:
-    dataset_dir = DATA_ROOT / source_dataset
+    dataset_dir = RAW_DATA_ROOT / source_dataset
 
     sections = []
 

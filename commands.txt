@@ -1,6 +1,6 @@
 python3 evaluation/compare_answers.py \
   --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/SEMEVAL8_ITUNLP/hh09dta_b2 \
-  --gold-folder data/gold_answer/SQL_TYPE_ALONE/hh09dta_b2 \
+  --gold-folder processed/gold_answer/SQL_TYPE_ALONE/hh09dta_b2 \
   --question-type SQL_TYPE_ALONE \
   --model-name SEMEVAL8_ITUNLP \
   --dataset hh09dta_b2

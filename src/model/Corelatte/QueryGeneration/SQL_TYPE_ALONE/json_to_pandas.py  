@@ -1,0 +1,9 @@
+
+
+
+
+
+def execute_function_calling_sql_query_on_python(json_query: str):
+    python_code = "a"
+    return python_code
+

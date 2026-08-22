@@ -189,7 +189,7 @@ The dataset contains information related to:
 Repository location:
 
 ```text
-data/hh09dta_b2/
+raw_data/hh09dta_b2/
 ```
 
 

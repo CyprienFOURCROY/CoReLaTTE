@@ -25,20 +25,20 @@ from src.model.Corelatte.QueryGeneration.ML_ALONE import (
 
 SOURCE_DATASET = "hh09dta_b2"
 
-DATA_ROOT = ROOT / "data"
-DATA_DIR = DATA_ROOT / SOURCE_DATASET
+RAW_DATA_ROOT = ROOT / "raw_data"
+DATA_DIR = RAW_DATA_ROOT / SOURCE_DATASET
 JSON_DIR = DATA_DIR / "codebook_json"
 
-CSV_PATH = DATA_ROOT / "dataset_query.csv"
+PROCESSED_ROOT = ROOT / "processed"
 
 QUESTION_TYPE = "ML_ALONE"
 
 SOURCE_DATASET = "hh09dta_b2"
 
-CSV_PATH = DATA_ROOT / "dataset_query_ML.csv"
+CSV_PATH = PROCESSED_ROOT / "dataset_query_ML.csv"
 
 GENERATED_SCRIPT_DIR = (
-    DATA_ROOT
+    PROCESSED_ROOT
     / "python_script_for_queries"
     / QUESTION_TYPE
     / SOURCE_DATASET
@@ -68,8 +68,11 @@ NATURAL_SAMPLING_DICT = {
 
 
 def check_environment() -> None:
-    if not DATA_ROOT.exists():
-        raise FileNotFoundError(f"Data root not found: {DATA_ROOT}")
+    if not RAW_DATA_ROOT.exists():
+        raise FileNotFoundError(f"Raw data root not found: {RAW_DATA_ROOT}")
+
+    if not PROCESSED_ROOT.exists():
+        raise FileNotFoundError(f"Processed data root not found: {PROCESSED_ROOT}")
 
     if not DATA_DIR.exists():
         raise FileNotFoundError(f"Dataset folder not found: {DATA_DIR}")
@@ -270,7 +273,7 @@ def generate_one_query(
         query_index=query_index,
     )
 
-    relative_script_path = script_path.relative_to(DATA_ROOT)
+    relative_script_path = script_path.relative_to(PROCESSED_ROOT)
 
     natural_question_arisen_from_code = ml_plan_to_question(
         ml_plan=validated_plan.model_dump(),

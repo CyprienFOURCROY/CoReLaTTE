@@ -42,7 +42,7 @@ from sklearn.metrics import r2_score, silhouette_score
 from sklearn.preprocessing import StandardScaler
 
 ROOT = Path(__file__).resolve().parents[3]
-DATA_ROOT = ROOT / "data"
+RAW_DATA_ROOT = ROOT / "raw_data"
 
 QUERY_PLAN = {plan_json}
 
@@ -51,7 +51,7 @@ def load_dataframe() -> pd.DataFrame:
     source_dataset = QUERY_PLAN.get("source_dataset", "hh09dta_b2")
     table_name = QUERY_PLAN["table_name"]
 
-    path = DATA_ROOT / source_dataset / f"{{table_name}}.dta"
+    path = RAW_DATA_ROOT / source_dataset / f"{{table_name}}.dta"
 
     if not path.exists():
         raise FileNotFoundError(f"Missing data file: {{path}}")

@@ -11,15 +11,15 @@ import pandas as pd
 
 SOURCE_DATASET = "hh09dta_b2"
 
-DATA_ROOT = ROOT / "data"
+PROCESSED_ROOT = ROOT / "processed"
 QUESTION_TYPE = "ML_ALONE"
 
 SOURCE_DATASET = "hh09dta_b2"
 
-CSV_PATH = DATA_ROOT / "dataset_query_ML.csv"
+CSV_PATH = PROCESSED_ROOT / "dataset_query_ML.csv"
 
 SCRIPT_ROOT = (
-    DATA_ROOT
+    PROCESSED_ROOT
     / "python_script_for_queries"
     / QUESTION_TYPE
     / SOURCE_DATASET
@@ -54,7 +54,7 @@ def check_environment() -> None:
 
 
 def resolve_script_path(relative_path: str) -> Path:
-    path = DATA_ROOT / relative_path
+    path = PROCESSED_ROOT / relative_path
 
     if not path.exists():
         raise FileNotFoundError(f"Script not found: {path}")

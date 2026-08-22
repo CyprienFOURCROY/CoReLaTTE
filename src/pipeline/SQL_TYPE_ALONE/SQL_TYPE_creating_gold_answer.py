@@ -16,8 +16,8 @@ from src.pipeline.code_checking_utils import (
 )
 
 
-DATA_ROOT = ROOT / "data"
-GOLD_ROOT = DATA_ROOT / "gold_answer" / "SQL_TYPE_ALONE" / "hh09dta_b2"
+PROCESSED_ROOT = ROOT / "processed"
+GOLD_ROOT = PROCESSED_ROOT / "gold_answer" / "SQL_TYPE_ALONE" / "hh09dta_b2"
 
 
 def extract_query_name(python_script_path: str) -> str:
@@ -31,7 +31,7 @@ def extract_query_name(python_script_path: str) -> str:
 
 def gold_answer_path(query_name: str) -> Path:
     """
-    query_000001 -> data/gold_answer/hh09dta_b2/df_query_000001.csv
+    query_000001 -> processed/gold_answer/hh09dta_b2/df_query_000001.csv
     """
     return GOLD_ROOT / f"df_{query_name}.csv"
 
