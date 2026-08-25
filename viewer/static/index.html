@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CoReLaTTe Query Explorer</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-main">CoReLaTTe</span>
+    <span class="brand-sub">Query Explorer</span>
+  </div>
+
+  <div class="controls">
+    <label class="control">
+      <span>Query set</span>
+      <select id="questionType"></select>
+    </label>
+    <label class="control">
+      <span>Dataset</span>
+      <select id="dataset"></select>
+    </label>
+    <label class="control">
+      <span>Model</span>
+      <select id="model"></select>
+    </label>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <input id="search" type="search" placeholder="Filter questions…" autocomplete="off" />
+    <div id="queryCount" class="query-count"></div>
+    <ul id="queryList" class="query-list"></ul>
+  </aside>
+
+  <main id="detail" class="detail">
+    <div class="empty-state">Select a query on the left to inspect it.</div>
+  </main>
+</div>
+
+<div id="tableModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Table</h2>
+      <button id="modalClose" class="icon-btn" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-table-wrap" id="modalTableWrap">
+        <table id="modalTable">
+          <thead><tr></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div id="modalStatus" class="modal-status"></div>
+        <div id="modalSentinel"></div>
+      </div>
+      <aside id="modalCodebook" class="modal-codebook"></aside>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

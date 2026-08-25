@@ -7,6 +7,7 @@ sys.path.insert(0, str(ROOT))
 import os
 import json
 import re
+import argparse
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -129,6 +130,7 @@ def repaired_script_path(original_script_path: str) -> Path:
 
 def main(
     model: str = "gpt-5",
+    version: int = 1,
 ) -> None:
     load_dotenv()
 
@@ -139,7 +141,7 @@ def main(
 
     client = OpenAI(api_key=api_key)
 
-    df = load_dataset_csv()
+    df = load_dataset_csv(version=version)
 
     mask = df["check_if_code_works"].fillna("").eq("runtime_error")
 
@@ -170,7 +172,7 @@ def main(
             df.loc[idx, "check_if_code_works"] = "no"
             df.loc[idx, "error_message"] = ""
 
-            save_dataset_csv(df)
+            save_dataset_csv(df, version=version)
 
             print("Saved repaired script:")
             print(relative_path)
@@ -179,10 +181,14 @@ def main(
             df.loc[idx, "check_if_code_works"] = "repair_failed"
             df.loc[idx, "error_message"] = str(e)
 
-            save_dataset_csv(df)
+            save_dataset_csv(df, version=version)
 
             print("Repair failed:", type(e).__name__, e)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    args = parser.parse_args()
+
+    main(version=args.version)

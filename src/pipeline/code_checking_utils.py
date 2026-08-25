@@ -8,7 +8,6 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 RAW_DATA_ROOT = ROOT / "raw_data"
 PROCESSED_ROOT = ROOT / "processed"
-CSV_PATH = PROCESSED_ROOT / "dataset_query.csv"
 
 CSV_COLUMNS = [
     "question_from_llm",
@@ -18,14 +17,21 @@ CSV_COLUMNS = [
     "text",
     "source_dataset",
     "check_if_code_works",
+    "bias",
 ]
 
 
-def load_dataset_csv() -> pd.DataFrame:
-    if not CSV_PATH.exists():
-        raise FileNotFoundError(f"CSV not found: {CSV_PATH}")
+def get_csv_path(version: int) -> Path:
+    return PROCESSED_ROOT / f"dataset_query_v{version}.csv"
 
-    df = pd.read_csv(CSV_PATH)
+
+def load_dataset_csv(version: int) -> pd.DataFrame:
+    csv_path = get_csv_path(version)
+
+    if not csv_path.exists():
+        raise FileNotFoundError(f"CSV not found: {csv_path}")
+
+    df = pd.read_csv(csv_path)
 
     missing = [col for col in CSV_COLUMNS if col not in df.columns]
 
@@ -35,9 +41,9 @@ def load_dataset_csv() -> pd.DataFrame:
     return df
 
 
-def save_dataset_csv(df: pd.DataFrame) -> None:
+def save_dataset_csv(df: pd.DataFrame, version: int) -> None:
     df = df[CSV_COLUMNS]
-    df.to_csv(CSV_PATH, index=False)
+    df.to_csv(get_csv_path(version), index=False)
 
 
 def parse_json_list(value: Any) -> list[str]:

@@ -200,7 +200,7 @@ def main() -> None:
 
     parser.add_argument("--pred-folder", required=True, type=Path)
     parser.add_argument("--gold-folder", required=True, type=Path)
-    parser.add_argument("--dataset-csv", default=Path("processed/dataset_query.csv"), type=Path)
+    parser.add_argument("--dataset-csv", default=Path("processed/dataset_query_v1.csv"), type=Path)
     parser.add_argument("--results-dir", default=Path("evaluation/results"), type=Path)
     parser.add_argument("--question-type", required=True, type=str)
     parser.add_argument("--model-name", required=True, type=str)

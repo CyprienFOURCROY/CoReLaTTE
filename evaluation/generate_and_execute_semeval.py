@@ -16,7 +16,7 @@ RAW_DATA_ROOT = ROOT / "raw_data"
 PROCESSED_ROOT = ROOT / "processed"
 EVAL_ROOT = ROOT / "evaluation"
 
-CSV_PATH = PROCESSED_ROOT / "dataset_query.csv"
+CSV_PATH = PROCESSED_ROOT / "dataset_query_v1.csv"
 
 SOURCE_DATASET = "hh09dta_b2"
 

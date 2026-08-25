@@ -335,6 +335,93 @@ The scalar_input must be a previous node that returns one row and contains scala
 """
 
 
+HAVING_BIAS_BLOCK = """
+REQUIRED PATTERN: HAVING-STYLE POST-AGGREGATION FILTER
+========================================================
+
+This query plan MUST include a "having" pattern, equivalent to SQL HAVING:
+first aggregate with a groupby node, then filter on the AGGREGATED output.
+
+Concretely, the plan must contain:
+1. A "groupby" node (e.g. "n5") that produces aggregation aliases
+   (e.g. "avg_age", "n_individuals").
+2. A later "filter" node whose "input" is that groupby node's id
+   (not the pre-aggregation input), with a condition on one of the
+   aggregation aliases or one of the "by" columns.
+
+Example:
+
+{
+  "id": "n5",
+  "operation": "groupby",
+  "input": "n4",
+  "by": ["ent"],
+  "aggregations": [
+    {"column": "edad", "function": "mean", "alias": "avg_age"},
+    {"column": "edad", "function": "count", "alias": "n_individuals"}
+  ]
+}
+
+{
+  "id": "n6",
+  "operation": "filter",
+  "input": "n5",
+  "conditions": [
+    {"column": "n_individuals", "operator": ">=", "value": 5}
+  ]
+}
+
+Incorrect: filtering "n4" (the pre-aggregation input) on a raw column
+instead of filtering "n5" (the groupby output) on an aggregation alias.
+That is an ordinary WHERE filter, not HAVING, and does not satisfy this
+requirement.
+
+The final question must reflect this HAVING condition (e.g. "... among
+states with at least 5 individuals, ...").
+"""
+
+
+SCALAR_FILTER_BIAS_BLOCK = """
+REQUIRED PATTERN: SCALAR_FILTER NODE
+=====================================
+
+This query plan MUST include at least one "scalar_filter" node (see the
+SCALAR_FILTER NODE section below for its exact format). It is not optional
+here: the plan is invalid without it.
+
+The scalar_filter node compares a row-level column against a scalar value
+computed by a separate branch of the plan (e.g. an overall average, or the
+average within some other filtered subset), similar to:
+
+WHERE age > (SELECT AVG(age) FROM table)
+
+Build a small separate branch of the plan (scan -> optional filter ->
+groupby) that produces that scalar, then reference it from a scalar_filter
+node applied to the main branch.
+
+To aggregate an entire branch down to ONE scalar row (no grouping column,
+equivalent to SQL's plain "SELECT AVG(x) FROM table" with no GROUP BY), use
+a groupby node with "by": [] (an empty list):
+
+{
+  "id": "n3",
+  "operation": "groupby",
+  "input": "n1",
+  "by": [],
+  "aggregations": [
+    {"column": "edad", "function": "mean", "alias": "avg_age"}
+  ]
+}
+
+This produces a single-row result containing "avg_age", which a
+scalar_filter node can then reference as its scalar_column. Do not try to
+compute a whole-table scalar any other way.
+
+The final question must reflect this comparison against the computed
+scalar (e.g. "... above the overall average ...").
+"""
+
+
 def summarize_dataframe(
     name: str,
     df: pd.DataFrame,
@@ -364,11 +451,18 @@ def summarize_dataframes(
     return "\n\n".join(parts)
 
 
+BIAS_BLOCKS: dict[str, str] = {
+    "having": HAVING_BIAS_BLOCK,
+    "scalar_filter": SCALAR_FILTER_BIAS_BLOCK,
+}
+
+
 def build_query_plan_prompt(
     dataframes: dict[str, pd.DataFrame],
     dataframe_description: str,
     number_of_nested_queries: int = 1,
     n_sample_rows: int = 3,
+    bias: str | None = None,
 ) -> str:
     dataframe_summary = summarize_dataframes(
         dataframes=dataframes,
@@ -464,5 +558,18 @@ FINAL INSTRUCTION
 
 Return only the JSON object.
 """.strip()
+
+    if bias is not None:
+        if bias not in BIAS_BLOCKS:
+            raise ValueError(
+                f"Unsupported bias: {bias!r}. Expected one of {sorted(BIAS_BLOCKS)}."
+            )
+
+        bias_block = BIAS_BLOCKS[bias].strip()
+
+        prompt = prompt.replace(
+            "Before returning the JSON, internally check that:",
+            f"{bias_block}\n\nBefore returning the JSON, internally check that:",
+        )
 
     return prompt

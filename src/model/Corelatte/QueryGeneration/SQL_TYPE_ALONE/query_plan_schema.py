@@ -90,6 +90,16 @@ class AntiJoinNode(BaseModel):
     left_on: str
     right_on: str
 
+
+class ScalarFilterNode(BaseModel):
+    id: str
+    operation: Literal["scalar_filter"]
+    input: str
+    column: str
+    operator: Operator
+    scalar_input: str
+    scalar_column: str
+
 QueryNode = Union[
     ScanNode,
     FilterNode,
@@ -100,6 +110,7 @@ QueryNode = Union[
     LimitNode,
     SemiJoinNode,
     AntiJoinNode,
+    ScalarFilterNode,
 ]
 
 
@@ -127,6 +138,9 @@ class QueryPlan(BaseModel):
 
             if hasattr(node, "right_input") and node.right_input not in id_set:
                 raise ValueError(f"Unknown right_input node: {node.right_input}")
+
+            if hasattr(node, "scalar_input") and node.scalar_input not in id_set:
+                raise ValueError(f"Unknown scalar_input node: {node.scalar_input}")
 
         if self.output not in id_set:
             raise ValueError(f"Unknown output node: {self.output}")

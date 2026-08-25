@@ -1,5 +1,6 @@
 import sys
 import re
+import argparse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -17,7 +18,10 @@ from src.pipeline.code_checking_utils import (
 
 
 PROCESSED_ROOT = ROOT / "processed"
-GOLD_ROOT = PROCESSED_ROOT / "gold_answer" / "SQL_TYPE_ALONE" / "hh09dta_b2"
+
+
+def get_gold_root(version: int) -> Path:
+    return PROCESSED_ROOT / "gold_answer" / "SQL_TYPE_ALONE" / f"v{version}" / "hh09dta_b2"
 
 
 def extract_query_name(python_script_path: str) -> str:
@@ -29,16 +33,16 @@ def extract_query_name(python_script_path: str) -> str:
     return Path(python_script_path).stem
 
 
-def gold_answer_path(query_name: str) -> Path:
+def gold_answer_path(query_name: str, version: int) -> Path:
     """
-    query_000001 -> processed/gold_answer/hh09dta_b2/df_query_000001.csv
+    query_000001 -> processed/gold_answer/SQL_TYPE_ALONE/v{version}/hh09dta_b2/df_query_000001.csv
     """
-    return GOLD_ROOT / f"df_{query_name}.csv"
+    return get_gold_root(version) / f"df_{query_name}.csv"
 
 
-def create_gold_answer_for_row(row: pd.Series) -> Path:
+def create_gold_answer_for_row(row: pd.Series, version: int) -> Path:
     query_name = extract_query_name(row["python_script_path"])
-    output_path = gold_answer_path(query_name)
+    output_path = gold_answer_path(query_name, version=version)
 
     if output_path.exists():
         return output_path
@@ -61,13 +65,15 @@ def create_gold_answer_for_row(row: pd.Series) -> Path:
     return output_path
 
 
-def main() -> None:
-    if not GOLD_ROOT.exists():
+def main(version: int = 1) -> None:
+    gold_root = get_gold_root(version)
+
+    if not gold_root.exists():
         raise FileNotFoundError(
-            f"Gold answer folder not found: {GOLD_ROOT}"
+            f"Gold answer folder not found: {gold_root}"
         )
 
-    df = load_dataset_csv()
+    df = load_dataset_csv(version=version)
 
     mask = df["check_if_code_works"].fillna("no").eq("yes")
     indices = df[mask].index.tolist()
@@ -78,7 +84,7 @@ def main() -> None:
         row = df.loc[idx]
 
         query_name = extract_query_name(row["python_script_path"])
-        output_path = gold_answer_path(query_name)
+        output_path = gold_answer_path(query_name, version=version)
 
         print("=" * 80)
         print(f"Row {idx} ({i}/{len(indices)})")
@@ -90,7 +96,7 @@ def main() -> None:
             continue
 
         try:
-            created_path = create_gold_answer_for_row(row)
+            created_path = create_gold_answer_for_row(row, version=version)
             print(f"Created: {created_path}")
 
         except Exception as e:
@@ -99,4 +105,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    args = parser.parse_args()
+
+    main(version=args.version)

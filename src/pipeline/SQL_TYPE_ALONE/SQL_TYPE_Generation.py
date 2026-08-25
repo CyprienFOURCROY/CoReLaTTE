@@ -8,6 +8,7 @@ import os
 import re
 import json
 import random
+import argparse
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -36,16 +37,6 @@ PROCESSED_ROOT = ROOT / "processed"
 DATA_DIR = RAW_DATA_ROOT / SOURCE_DATASET
 JSON_DIR = DATA_DIR / "codebook_json"
 
-CSV_PATH = PROCESSED_ROOT / "dataset_query.csv"
-
-GENERATED_SCRIPT_DIR = (
-    PROCESSED_ROOT
-    / "python_script_for_queries"
-
-    / "SQL_TYPE_ALONE"
-    / SOURCE_DATASET
-)
-
 CSV_COLUMNS = [
     "question_from_llm",
     "natural_question_arisen_from_code",
@@ -54,7 +45,36 @@ CSV_COLUMNS = [
     "text",
     "source_dataset",
     "check_if_code_works",
+    "bias",
 ]
+
+# v1 has no structural bias. v2 rotates deterministically between forcing a
+# HAVING-style post-aggregation filter and forcing a scalar_filter node.
+BIAS_ROTATION = ["having", "scalar_filter"]
+
+
+def get_csv_path(version: int) -> Path:
+    return PROCESSED_ROOT / f"dataset_query_v{version}.csv"
+
+
+def get_generated_script_dir(version: int) -> Path:
+    return (
+        PROCESSED_ROOT
+        / "python_script_for_queries"
+        / "SQL_TYPE_ALONE"
+        / f"v{version}"
+        / SOURCE_DATASET
+    )
+
+
+def get_bias_for_query_index(version: int, query_index: int) -> str | None:
+    if version == 1:
+        return None
+
+    # Rotates on the persistent script index (not the in-run offset), so the
+    # having/scalar_filter alternation holds across separate CLI invocations
+    # too -- the normal usage pattern is one query per run (n_queries=1).
+    return BIAS_ROTATION[(query_index - 1) % len(BIAS_ROTATION)]
 NATURAL_SAMPLING_DICT = {
     1: "ii_portad",
     2: {"non_detailed": "ii_su"},
@@ -72,7 +92,10 @@ NATURAL_SAMPLING_DICT = {
 # ENVIRONMENT CHECKS
 # =====================
 
-def check_environment() -> None:
+def check_environment(version: int) -> None:
+    csv_path = get_csv_path(version)
+    generated_script_dir = get_generated_script_dir(version)
+
     if not RAW_DATA_ROOT.exists():
         raise FileNotFoundError(f"Raw data root not found: {RAW_DATA_ROOT}")
 
@@ -85,13 +108,13 @@ def check_environment() -> None:
     if not JSON_DIR.exists():
         raise FileNotFoundError(f"Metadata folder not found: {JSON_DIR}")
 
-    if not CSV_PATH.exists():
+    if not csv_path.exists():
         raise FileNotFoundError(
-            f"CSV file not found: {CSV_PATH}\n"
+            f"CSV file not found: {csv_path}\n"
             f"Expected header:\n{','.join(CSV_COLUMNS)}"
         )
 
-    existing_columns = list(pd.read_csv(CSV_PATH, nrows=0).columns)
+    existing_columns = list(pd.read_csv(csv_path, nrows=0).columns)
 
     if existing_columns != CSV_COLUMNS:
         raise ValueError(
@@ -100,9 +123,9 @@ def check_environment() -> None:
             f"Found:    {existing_columns}"
         )
 
-    if not GENERATED_SCRIPT_DIR.exists():
+    if not generated_script_dir.exists():
         raise FileNotFoundError(
-            f"Generated script folder not found: {GENERATED_SCRIPT_DIR}"
+            f"Generated script folder not found: {generated_script_dir}"
         )
 
 
@@ -193,12 +216,12 @@ def build_description(table_names: list[str]) -> str:
 # SCRIPT NAMING / SAVING
 # =====================
 
-def get_next_query_index() -> int:
+def get_next_query_index(version: int) -> int:
     pattern = re.compile(r"query_(\d{6})\.py$")
 
     max_index = 0
 
-    for path in GENERATED_SCRIPT_DIR.glob("query_*.py"):
+    for path in get_generated_script_dir(version).glob("query_*.py"):
         match = pattern.match(path.name)
 
         if match:
@@ -208,12 +231,12 @@ def get_next_query_index() -> int:
     return max_index + 1
 
 
-def script_path_from_index(index: int) -> Path:
-    return GENERATED_SCRIPT_DIR / f"query_{index:06d}.py"
+def script_path_from_index(index: int, version: int) -> Path:
+    return get_generated_script_dir(version) / f"query_{index:06d}.py"
 
 
-def save_python_code(code: str, query_index: int) -> Path:
-    script_path = script_path_from_index(query_index)
+def save_python_code(code: str, query_index: int, version: int) -> Path:
+    script_path = script_path_from_index(query_index, version=version)
 
     if script_path.exists():
         raise FileExistsError(
@@ -229,8 +252,10 @@ def save_python_code(code: str, query_index: int) -> Path:
 # CSV APPEND
 # =====================
 
-def append_row(row: dict) -> None:
-    df = pd.read_csv(CSV_PATH)
+def append_row(row: dict, version: int) -> None:
+    csv_path = get_csv_path(version)
+
+    df = pd.read_csv(csv_path)
 
     row_df = pd.DataFrame([row], columns=CSV_COLUMNS)
 
@@ -239,7 +264,7 @@ def append_row(row: dict) -> None:
         ignore_index=True,
     )
 
-    df.to_csv(CSV_PATH, index=False)
+    df.to_csv(csv_path, index=False)
 
 
 # =====================
@@ -250,8 +275,10 @@ def generate_one_query(
     table_names: list[str],
     client: OpenAI,
     query_index: int,
+    version: int,
     model: str = "gpt-5",
     number_of_nested_queries: int = 2,
+    bias: str | None = None,
 ) -> dict:
     tables = load_tables(table_names)
     dataframe_description = build_description(table_names)
@@ -261,6 +288,7 @@ def generate_one_query(
         dataframe_description=dataframe_description,
         number_of_nested_queries=number_of_nested_queries,
         n_sample_rows=3,
+        bias=bias,
     )
 
     response = client.chat.completions.create(
@@ -300,6 +328,7 @@ def generate_one_query(
     script_path = save_python_code(
         code=python_code,
         query_index=query_index,
+        version=version,
     )
 
     relative_script_path = script_path.relative_to(PROCESSED_ROOT)
@@ -322,11 +351,10 @@ def generate_one_query(
         ),
         "source_dataset": SOURCE_DATASET,
         "check_if_code_works": "no",
-        
-        
+        "bias": bias or "",
     }
 
-    append_row(row)
+    append_row(row, version=version)
 
     return row
 
@@ -339,8 +367,9 @@ def main(
     n_queries: int = 10,
     n_extra_tables: int = 2,
     model: str = "gpt-5",
+    version: int = 1,
 ) -> None:
-    check_environment()
+    check_environment(version=version)
 
     load_dotenv()
 
@@ -356,25 +385,30 @@ def main(
         n_extra_tables=n_extra_tables,
     )
 
-    next_index = get_next_query_index()
+    next_index = get_next_query_index(version=version)
 
+    print(f"Version: {version}")
     print(f"Starting script index: {next_index}")
 
     for offset, table_names in enumerate(subsets):
         query_index = next_index + offset
+        bias = get_bias_for_query_index(version=version, query_index=query_index)
 
         print("=" * 80)
         print(f"Generating query {offset + 1}/{n_queries}")
         print(f"Script index: {query_index:06d}")
         print(f"Tables: {table_names}")
+        print(f"Bias: {bias}")
 
         try:
             row = generate_one_query(
                 table_names=table_names,
                 client=client,
                 query_index=query_index,
+                version=version,
                 model=model,
                 number_of_nested_queries=n_extra_tables,
+                bias=bias,
             )
 
             print("Saved query:")
@@ -388,8 +422,13 @@ def main(
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    args = parser.parse_args()
+
     main(
         n_queries=1,
         n_extra_tables=2,
         model="gpt-5",
+        version=args.version,
     )

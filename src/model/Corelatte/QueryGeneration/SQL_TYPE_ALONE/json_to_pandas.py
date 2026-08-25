@@ -78,16 +78,28 @@ def compile_query_plan(plan_json: dict) -> str:
             )
 
         elif node.operation == "groupby":
-            agg_parts = [
-                f"{agg.alias}=({agg.column!r}, {agg.function!r})"
-                for agg in node.aggregations
-            ]
-            agg_code = ", ".join(agg_parts)
-            lines.append(
-                f"    {out} = {node.input}.groupby("
-                f"{node.by!r}, as_index=False"
-                f").agg({agg_code})"
-            )
+            if node.by:
+                agg_parts = [
+                    f"{agg.alias}=({agg.column!r}, {agg.function!r})"
+                    for agg in node.aggregations
+                ]
+                agg_code = ", ".join(agg_parts)
+                lines.append(
+                    f"    {out} = {node.input}.groupby("
+                    f"{node.by!r}, as_index=False"
+                    f").agg({agg_code})"
+                )
+            else:
+                # by=[] aggregates the whole input to a single-row DataFrame
+                # (pandas raises on groupby([]), so this is compiled directly).
+                scalar_parts = [
+                    f"{agg.alias!r}: [{node.input}[{agg.column!r}].{agg.function}()]"
+                    for agg in node.aggregations
+                ]
+                scalar_code = ", ".join(scalar_parts)
+                lines.append(
+                    f"    {out} = pd.DataFrame({{{scalar_code}}})"
+                )
 
         elif node.operation == "sort":
             lines.append(
