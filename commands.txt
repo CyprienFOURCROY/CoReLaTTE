@@ -1,16 +1,39 @@
+# v1 (already evaluated once -- re-running is a no-op, it skips
+# query_names already marked "success" in the existing results CSV)
+
+python3 evaluation/generate_and_execute_semeval.py --version 1
+
 python3 evaluation/compare_answers.py \
-  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/SEMEVAL8_ITUNLP/hh09dta_b2 \
+  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/v1/SEMEVAL8_ITUNLP/hh09dta_b2 \
   --gold-folder processed/gold_answer/SQL_TYPE_ALONE/v1/hh09dta_b2 \
+  --dataset-csv processed/dataset_query_v1.csv \
   --question-type SQL_TYPE_ALONE \
   --model-name SEMEVAL8_ITUNLP \
   --dataset hh09dta_b2
-
-
-
-
 
 python3 evaluation/compute_metrics.py \
-  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/SEMEVAL8_ITUNLP/hh09dta_b2 \
+  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/v1/SEMEVAL8_ITUNLP/hh09dta_b2 \
   --question-type SQL_TYPE_ALONE \
   --model-name SEMEVAL8_ITUNLP \
   --dataset hh09dta_b2
+
+
+# v2 (--dataset uses a distinct "_v2" label on purpose -- see review notes:
+# it keeps the results CSV and the already-evaluated skip-list separate
+# from v1's, since query_names like "query_000001" exist in both versions)
+
+python3 evaluation/generate_and_execute_semeval.py --version 2
+
+python3 evaluation/compare_answers.py \
+  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/v2/SEMEVAL8_ITUNLP/hh09dta_b2 \
+  --gold-folder processed/gold_answer/SQL_TYPE_ALONE/v2/hh09dta_b2 \
+  --dataset-csv processed/dataset_query_v2.csv \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_ITUNLP \
+  --dataset hh09dta_b2_v2
+
+python3 evaluation/compute_metrics.py \
+  --pred-folder evaluation/predicted_answers/SQL_TYPE_ALONE/v2/SEMEVAL8_ITUNLP/hh09dta_b2 \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_ITUNLP \
+  --dataset hh09dta_b2_v2

@@ -9,6 +9,9 @@ import re
 import json
 import random
 import argparse
+import logging
+import time
+from datetime import datetime
 
 import pandas as pd
 from dotenv import load_dotenv
@@ -48,9 +51,10 @@ CSV_COLUMNS = [
     "bias",
 ]
 
-# v1 has no structural bias. v2 rotates deterministically between forcing a
-# HAVING-style post-aggregation filter and forcing a scalar_filter node.
-BIAS_ROTATION = ["having", "scalar_filter"]
+# v1 has no structural bias. v2 rotates deterministically through forcing a
+# HAVING-style post-aggregation filter, a scalar_filter node, and a chained
+# multi-join across 3 tables.
+BIAS_ROTATION = ["having", "scalar_filter", "multi_join"]
 
 
 def get_csv_path(version: int) -> Path:
@@ -72,9 +76,48 @@ def get_bias_for_query_index(version: int, query_index: int) -> str | None:
         return None
 
     # Rotates on the persistent script index (not the in-run offset), so the
-    # having/scalar_filter alternation holds across separate CLI invocations
-    # too -- the normal usage pattern is one query per run (n_queries=1).
+    # bias rotation holds across separate CLI invocations too -- the normal
+    # usage pattern is one query per run (n_queries=1).
     return BIAS_ROTATION[(query_index - 1) % len(BIAS_ROTATION)]
+
+
+LOGS_ROOT = PROCESSED_ROOT / "logs" / "SQL_TYPE_ALONE"
+
+
+def get_log_dir(version: int) -> Path:
+    return LOGS_ROOT / f"v{version}"
+
+
+def setup_logging(version: int) -> logging.Logger:
+    log_dir = get_log_dir(version)
+    log_dir.mkdir(parents=True, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_path = log_dir / f"generation_{timestamp}.log"
+
+    logger = logging.getLogger(f"sql_type_generation_v{version}")
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    logger.propagate = False
+
+    formatter = logging.Formatter(
+        fmt="%(asctime)s [%(levelname)s] %(message)s",
+        datefmt="%H:%M:%S",
+    )
+
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+
+    file_handler = logging.FileHandler(log_path, encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    logger.info(f"Logging to: {log_path}")
+
+    return logger
+
+
 NATURAL_SAMPLING_DICT = {
     1: "ii_portad",
     2: {"non_detailed": "ii_su"},
@@ -380,6 +423,8 @@ def main(
 
     client = OpenAI(api_key=api_key)
 
+    logger = setup_logging(version=version)
+
     subsets = make_table_subsets(
         n_queries=n_queries,
         n_extra_tables=n_extra_tables,
@@ -387,18 +432,23 @@ def main(
 
     next_index = get_next_query_index(version=version)
 
-    print(f"Version: {version}")
-    print(f"Starting script index: {next_index}")
+    logger.info(f"Version: {version}  |  Model: {model}")
+    logger.info(f"Queries requested: {n_queries}  |  Extra tables per query: {n_extra_tables}")
+    logger.info(f"Starting script index: {next_index:06d}")
+
+    n_succeeded = 0
+    n_failed = 0
+    run_start = time.perf_counter()
 
     for offset, table_names in enumerate(subsets):
         query_index = next_index + offset
         bias = get_bias_for_query_index(version=version, query_index=query_index)
 
-        print("=" * 80)
-        print(f"Generating query {offset + 1}/{n_queries}")
-        print(f"Script index: {query_index:06d}")
-        print(f"Tables: {table_names}")
-        print(f"Bias: {bias}")
+        logger.info("=" * 80)
+        logger.info(f"Query {offset + 1}/{n_queries}  |  script index {query_index:06d}  |  bias={bias}")
+        logger.info(f"Tables: {table_names}")
+
+        query_start = time.perf_counter()
 
         try:
             row = generate_one_query(
@@ -411,24 +461,50 @@ def main(
                 bias=bias,
             )
 
-            print("Saved query:")
-            print(row["question_from_llm"])
-            print("Script:")
-            print(row["python_script_path"])
+            elapsed = time.perf_counter() - query_start
+            n_succeeded += 1
+
+            logger.info(f"OK ({elapsed:.1f}s) -> {row['python_script_path']}")
+            logger.info(f"Question: {row['question_from_llm']}")
 
         except Exception as e:
-            print(f"FAILED for tables {table_names}")
-            print(type(e).__name__, ":", e)
+            elapsed = time.perf_counter() - query_start
+            n_failed += 1
+
+            logger.error(
+                f"FAILED ({elapsed:.1f}s) for tables {table_names}: "
+                f"{type(e).__name__}: {e}"
+            )
+
+        logger.info(
+            f"Progress: {offset + 1}/{n_queries} done "
+            f"({n_succeeded} succeeded, {n_failed} failed)"
+        )
+
+    total_elapsed = time.perf_counter() - run_start
+
+    logger.info("=" * 80)
+    logger.info(
+        f"Run complete: {n_succeeded} succeeded, {n_failed} failed, "
+        f"{total_elapsed:.1f}s total"
+    )
+    logger.info(
+        f"Next script index for a future run: "
+        f"{get_next_query_index(version=version):06d}"
+    )
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    parser.add_argument("--n-queries", type=int, default=1)
+    parser.add_argument("--n-extra-tables", type=int, default=2)
+    parser.add_argument("--model", type=str, default="gpt-5")
     args = parser.parse_args()
 
     main(
-        n_queries=1,
-        n_extra_tables=2,
-        model="gpt-5",
+        n_queries=args.n_queries,
+        n_extra_tables=args.n_extra_tables,
+        model=args.model,
         version=args.version,
     )

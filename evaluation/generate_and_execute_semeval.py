@@ -1,5 +1,6 @@
 import sys
 import json
+import argparse
 from pathlib import Path
 
 import pandas as pd
@@ -16,25 +17,33 @@ RAW_DATA_ROOT = ROOT / "raw_data"
 PROCESSED_ROOT = ROOT / "processed"
 EVAL_ROOT = ROOT / "evaluation"
 
-CSV_PATH = PROCESSED_ROOT / "dataset_query_v1.csv"
-
 SOURCE_DATASET = "hh09dta_b2"
 
-SEMEVAL_SCRIPT_ROOT = (
-    EVAL_ROOT
-    / "saved_python_script"
-    / "SQL_TYPE_ALONE"
-    / "SEMEVAL8_ITUNLP"
-    / SOURCE_DATASET
-)
 
-SEMEVAL_PRED_ROOT = (
-    EVAL_ROOT
-    / "predicted_answers"
-    / "SQL_TYPE_ALONE"
-    / "SEMEVAL8_ITUNLP"
-    / SOURCE_DATASET
-)
+def get_csv_path(version: int) -> Path:
+    return PROCESSED_ROOT / f"dataset_query_v{version}.csv"
+
+
+def get_semeval_script_root(version: int) -> Path:
+    return (
+        EVAL_ROOT
+        / "saved_python_script"
+        / "SQL_TYPE_ALONE"
+        / f"v{version}"
+        / "SEMEVAL8_ITUNLP"
+        / SOURCE_DATASET
+    )
+
+
+def get_semeval_pred_root(version: int) -> Path:
+    return (
+        EVAL_ROOT
+        / "predicted_answers"
+        / "SQL_TYPE_ALONE"
+        / f"v{version}"
+        / "SEMEVAL8_ITUNLP"
+        / SOURCE_DATASET
+    )
 
 
 # ==================================================
@@ -68,12 +77,12 @@ def query_name_from_script(script_path: str) -> str:
     return Path(script_path).stem
 
 
-def semeval_script_path(query_name: str) -> Path:
-    return SEMEVAL_SCRIPT_ROOT / f"{query_name}.py"
+def semeval_script_path(query_name: str, version: int) -> Path:
+    return get_semeval_script_root(version) / f"{query_name}.py"
 
 
-def prediction_path(query_name: str) -> Path:
-    return SEMEVAL_PRED_ROOT / f"df_{query_name}.csv"
+def prediction_path(query_name: str, version: int) -> Path:
+    return get_semeval_pred_root(version) / f"df_{query_name}.csv"
 
 
 def load_tables(
@@ -186,27 +195,32 @@ def execute_generated_code(
 # MAIN
 # ==================================================
 
-def main(model: str = "gpt-5") -> None:
+def main(model: str = "gpt-5", version: int = 1) -> None:
     load_dotenv()
 
-    SEMEVAL_SCRIPT_ROOT.mkdir(
+    csv_path = get_csv_path(version)
+    script_root = get_semeval_script_root(version)
+    pred_root = get_semeval_pred_root(version)
+
+    script_root.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    SEMEVAL_PRED_ROOT.mkdir(
+    pred_root.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    if not CSV_PATH.exists():
-        raise FileNotFoundError(f"Missing CSV file: {CSV_PATH}")
+    if not csv_path.exists():
+        raise FileNotFoundError(f"Missing CSV file: {csv_path}")
 
-    df = pd.read_csv(CSV_PATH)
+    df = pd.read_csv(csv_path)
 
+    print(f"Version: {version}")
     print(f"Rows to process: {len(df)}")
-    print(f"Saving scripts to: {SEMEVAL_SCRIPT_ROOT}")
-    print(f"Saving predictions to: {SEMEVAL_PRED_ROOT}")
+    print(f"Saving scripts to: {script_root}")
+    print(f"Saving predictions to: {pred_root}")
 
     for idx, row in df.iterrows():
         print("=" * 80)
@@ -222,8 +236,8 @@ def main(model: str = "gpt-5") -> None:
                 row["python_script_path"]
             )
 
-            script_path = semeval_script_path(query_name)
-            pred_path = prediction_path(query_name)
+            script_path = semeval_script_path(query_name, version=version)
+            pred_path = prediction_path(query_name, version=version)
 
             print(f"Query: {query_name}")
             print(f"Tables: {table_names}")
@@ -271,4 +285,9 @@ def main(model: str = "gpt-5") -> None:
 
 
 if __name__ == "__main__":
-    main(model="gpt-5")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    parser.add_argument("--model", type=str, default="gpt-5")
+    args = parser.parse_args()
+
+    main(model=args.model, version=args.version)

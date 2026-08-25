@@ -422,6 +422,61 @@ scalar (e.g. "... above the overall average ...").
 """
 
 
+MULTI_JOIN_BIAS_BLOCK = """
+REQUIRED PATTERN: CHAINED JOINS ACROSS 3 TABLES
+==================================================
+
+This query plan MUST include at least TWO "join" nodes (see the JOIN NODE
+section below), chaining together THREE different scanned tables into one
+wide table. It is not optional here: the plan is invalid without it.
+
+Do not substitute semi_join or anti_join for this requirement -- those only
+filter rows by key existence and do not count. A real "join" node keeps
+columns from both sides.
+
+Build the chain like this:
+1. scan table A -> n1
+2. scan table B -> n2
+3. join n1 and n2 on their shared key -> n3
+4. scan table C -> n4
+5. join n3 and n4 on their shared key -> n5 (n3's "left_input"/"right_input"
+   is the PREVIOUS join's output, not a fresh scan)
+
+Example:
+
+{
+  "id": "n3",
+  "operation": "join",
+  "left_input": "n1",
+  "right_input": "n2",
+  "left_on": "folio",
+  "right_on": "folio",
+  "join_type": "inner"
+}
+
+{
+  "id": "n5",
+  "operation": "join",
+  "left_input": "n3",
+  "right_input": "n4",
+  "left_on": "folio",
+  "right_on": "folio",
+  "join_type": "inner"
+}
+
+Warning about column name collisions: if two joined tables share a
+non-key column name (e.g. both have "ent"), pandas will suffix them
+("ent_x", "ent_y") in the merged output. After a join, either reference
+the suffixed names correctly in later nodes, or add a "select" node right
+after the join to keep only the specific columns you actually need
+(unambiguous names, no suffixes to worry about).
+
+The final question must genuinely require information from all three
+tables (e.g. a condition from table A, a condition from table B, and a
+value to aggregate from table C), not just from one of them.
+"""
+
+
 def summarize_dataframe(
     name: str,
     df: pd.DataFrame,
@@ -454,6 +509,7 @@ def summarize_dataframes(
 BIAS_BLOCKS: dict[str, str] = {
     "having": HAVING_BIAS_BLOCK,
     "scalar_filter": SCALAR_FILTER_BIAS_BLOCK,
+    "multi_join": MULTI_JOIN_BIAS_BLOCK,
 }
 
 

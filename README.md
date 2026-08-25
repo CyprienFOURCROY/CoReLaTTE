@@ -196,20 +196,44 @@ raw_data/hh09dta_b2/
 
 # Example for running a pipeline : the SQL-Type Pipeline
 
+Every SQL-Type pipeline script accepts a `--version {1,2}` flag (default `1`). Each version reads and writes its own CSV (`processed/dataset_query_v{version}.csv`) and its own output directories, so v1 and v2 queries never mix.
+
+* `--version 1` — the original, unbiased query-plan generation.
+* `--version 2` — rotates the query-plan prompt between three structural biases, one per generated query in turn: a HAVING-style post-aggregation filter (filter on a groupby's aggregated output), a `scalar_filter` comparison (row value vs. a scalar computed by a separate branch, e.g. an overall average), and a chained multi-join (2+ real `join` nodes across 3 tables, instead of the semi/anti-join shortcut).
+
+`SQL_TYPE_Generation.py` also accepts `--n-queries` (default `1`, generates that many queries in one run), `--n-extra-tables` (default `2`, tables beyond the always-included base table `ii_portad`), and `--model` (default `gpt-5`):
+
 ```bash
-python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 1
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 2
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 2 --n-queries 20
 ```
+
+Progress (per-query status, timing, running success/fail tally, and a final summary) is logged to both the console and a timestamped file under `processed/logs/SQL_TYPE_ALONE/v{version}/generation_<timestamp>.log`, so a long batch run's history isn't lost if the terminal scrolls or the run is backgrounded.
+
+Each query takes roughly 30–70s (one `gpt-5` call to plan the query, up to 2 repair-retry calls if the plan fails schema validation, and one call to phrase the natural-language question), so budget run time accordingly for large `--n-queries` batches.
+
+There is no hard cap on `--n-queries` itself, but table-subset diversity is bounded: the base table is always `ii_portad`, and the extra tables are sampled from the remaining 8 tables, giving C(8, `n_extra_tables`) distinct table-subset combinations (28 for the default `n_extra_tables=2`). Beyond that many queries, table subsets start repeating within a run — the model still generates a different question/plan each time, so this isn't a hard limit, just a point where topical variety plateaus.
 
 Validate generated code:
 
 ```bash
-python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Check_Code.py
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Check_Code.py --version 1
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Check_Code.py --version 2
 ```
 
 Generate gold answers:
 
 ```bash
-python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py --version 1
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py --version 2
+```
+
+Repair scripts that failed validation:
+
+```bash
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Repair_Code.py --version 1
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Repair_Code.py --version 2
 ```
 
 
