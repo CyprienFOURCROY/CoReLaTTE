@@ -61,12 +61,12 @@ def load_question_map(dataset_csv: Path) -> dict[str, str]:
     return question_map
 
 
-def build_output_path(results_dir: Path, question_type: str, model_name: str, dataset: str) -> Path:
-    return results_dir / f"{question_type}_{model_name}_{dataset}_eval.csv"
+def build_output_path(results_dir: Path, question_type: str, model_name: str, dataset: str, version: int) -> Path:
+    return results_dir / f"{question_type}_{model_name}_{dataset}_v{version}_eval.csv"
 
 
-def build_explanation_dir(results_dir: Path, question_type: str, model_name: str, dataset: str) -> Path:
-    return results_dir / "explanation" / question_type / model_name / dataset
+def build_explanation_dir(results_dir: Path, question_type: str, model_name: str, dataset: str, version: int) -> Path:
+    return results_dir / "explanation" / question_type / model_name / f"v{version}" / dataset
 
 
 def load_existing_results(output_path: Path) -> pd.DataFrame:
@@ -198,9 +198,25 @@ def write_text(path: Path, text: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--pred-folder", required=True, type=Path)
-    parser.add_argument("--gold-folder", required=True, type=Path)
-    parser.add_argument("--dataset-csv", default=Path("processed/dataset_query_v1.csv"), type=Path)
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
+    parser.add_argument(
+        "--pred-folder",
+        type=Path,
+        default=None,
+        help="Defaults to evaluation/predicted_answers/SQL_TYPE_ALONE/v{version}/{model-name}/{dataset}",
+    )
+    parser.add_argument(
+        "--gold-folder",
+        type=Path,
+        default=None,
+        help="Defaults to processed/gold_answer/SQL_TYPE_ALONE/v{version}/{dataset}",
+    )
+    parser.add_argument(
+        "--dataset-csv",
+        type=Path,
+        default=None,
+        help="Defaults to processed/dataset_query_v{version}.csv",
+    )
     parser.add_argument("--results-dir", default=Path("evaluation/results"), type=Path)
     parser.add_argument("--question-type", required=True, type=str)
     parser.add_argument("--model-name", required=True, type=str)
@@ -208,6 +224,25 @@ def main() -> None:
     parser.add_argument("--judge-model", default="gpt-5", type=str)
 
     args = parser.parse_args()
+
+    if args.dataset_csv is None:
+        args.dataset_csv = Path(f"processed/dataset_query_v{args.version}.csv")
+
+    if args.gold_folder is None:
+        args.gold_folder = Path(
+            f"processed/gold_answer/SQL_TYPE_ALONE/v{args.version}/{args.dataset}"
+        )
+
+    if args.pred_folder is None:
+        args.pred_folder = Path(
+            f"evaluation/predicted_answers/SQL_TYPE_ALONE/v{args.version}/"
+            f"{args.model_name}/{args.dataset}"
+        )
+
+    print(f"Version: {args.version}")
+    print(f"Dataset CSV: {args.dataset_csv}")
+    print(f"Gold folder: {args.gold_folder}")
+    print(f"Pred folder: {args.pred_folder}")
 
     load_dotenv()
     client = OpenAI(api_key=os.getenv("API_KEY"))
@@ -219,6 +254,7 @@ def main() -> None:
         args.question_type,
         args.model_name,
         args.dataset,
+        args.version,
     )
 
     explanation_dir = build_explanation_dir(
@@ -226,6 +262,7 @@ def main() -> None:
         args.question_type,
         args.model_name,
         args.dataset,
+        args.version,
     )
 
     question_map = load_question_map(args.dataset_csv)

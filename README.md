@@ -241,21 +241,56 @@ python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Repair_Code.py --version 2
 
 The repository includes an evaluation framework for comparing model predictions against generated ground-truth answers.
 
-Example:
+Every evaluation script also accepts `--version {1,2}` (default `1`), keeping v1 and v2 predictions, gold answers, and results completely separate — v1 and v2 both restart query numbering at `query_000001`, so without a version tag "the same" query name would silently mean two different queries.
+
+1. Run the baseline model (SEMEVAL8-ITUNLP) and save its predictions:
 
 ```bash
-python3 evaluation/compute_metrics.py \
+python3 evaluation/generate_and_execute_semeval.py --version 1
+python3 evaluation/generate_and_execute_semeval.py --version 2
+```
+
+2. Judge each prediction against its gold answer with an LLM judge:
+
+```bash
+python3 evaluation/compare_answers.py \
+    --version 1 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_ITUNLP \
+    --dataset hh09dta_b2
+
+python3 evaluation/compare_answers.py \
+    --version 2 \
     --question-type SQL_TYPE_ALONE \
     --model-name SEMEVAL8_ITUNLP \
     --dataset hh09dta_b2
 ```
 
+3. Summarize accuracy:
+
+```bash
+python3 evaluation/compute_metrics.py \
+    --version 1 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_ITUNLP \
+    --dataset hh09dta_b2
+
+python3 evaluation/compute_metrics.py \
+    --version 2 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_ITUNLP \
+    --dataset hh09dta_b2
+```
+
+`--pred-folder`, `--gold-folder`, and `--dataset-csv` all default to the right `v{version}` path and can still be overridden explicitly if needed.
+
 Evaluation outputs are stored under:
 
 ```text
-evaluation/results/
-evaluation/predicted_answers/
-evaluation/saved_python_script/
+evaluation/results/{question_type}_{model_name}_{dataset}_v{version}_eval.csv
+evaluation/results/explanation/{question_type}/{model_name}/v{version}/{dataset}/
+evaluation/predicted_answers/{question_type}/v{version}/{model_name}/{dataset}/
+evaluation/saved_python_script/{question_type}/v{version}/{model_name}/{dataset}/
 ```
 
 ---

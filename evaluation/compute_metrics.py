@@ -9,8 +9,9 @@ def build_eval_path(
     question_type: str,
     model_name: str,
     dataset: str,
+    version: int,
 ) -> Path:
-    return results_dir / f"{question_type}_{model_name}_{dataset}_eval.csv"
+    return results_dir / f"{question_type}_{model_name}_{dataset}_v{version}_eval.csv"
 
 
 def print_section(title: str) -> None:
@@ -42,11 +43,15 @@ def print_query_list(df: pd.DataFrame, title: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
 
+    parser.add_argument("--version", type=int, choices=[1, 2], default=1)
     parser.add_argument(
         "--pred-folder",
-        required=True,
         type=Path,
-        help="Folder containing predicted answer CSV files.",
+        default=None,
+        help=(
+            "Folder containing predicted answer CSV files. Defaults to "
+            "evaluation/predicted_answers/SQL_TYPE_ALONE/v{version}/{model-name}/{dataset}"
+        ),
     )
     parser.add_argument(
         "--results-dir",
@@ -59,11 +64,18 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    if args.pred_folder is None:
+        args.pred_folder = Path(
+            f"evaluation/predicted_answers/SQL_TYPE_ALONE/v{args.version}/"
+            f"{args.model_name}/{args.dataset}"
+        )
+
     eval_path = build_eval_path(
         results_dir=args.results_dir,
         question_type=args.question_type,
         model_name=args.model_name,
         dataset=args.dataset,
+        version=args.version,
     )
 
     if not eval_path.exists():
@@ -139,6 +151,7 @@ def main() -> None:
     print_section("METRICS")
     print("Evaluation file:", eval_path)
     print("Prediction folder:", args.pred_folder)
+    print("Version:", args.version)
     print("Question type:", args.question_type)
     print("Model:", args.model_name)
     print("Dataset:", args.dataset)
