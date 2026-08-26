@@ -241,6 +241,8 @@ python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Repair_Code.py --version 2
 
 The repository includes an evaluation framework for comparing model predictions against generated ground-truth answers.
 
+**Prerequisite:** every query you want to evaluate must already have passed `SQL_TYPE_Check_Code.py` and have a gold answer from `SQL_TYPE_creating_gold_answer.py` for that same `--version` (see the SQL-Type Pipeline section above). A query without a gold answer isn't a hard failure — `compare_answers.py` just marks it `failed: Missing gold answer` and moves on — but its result won't count toward accuracy.
+
 Every evaluation script also accepts `--version {1,2}` (default `1`), keeping v1 and v2 predictions, gold answers, and results completely separate — v1 and v2 both restart query numbering at `query_000001`, so without a version tag "the same" query name would silently mean two different queries.
 
 1. Run the baseline model (SEMEVAL8-ITUNLP) and save its predictions:
