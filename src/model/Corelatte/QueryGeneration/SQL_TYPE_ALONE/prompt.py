@@ -216,10 +216,7 @@ Required format:
   "right_on": "folio"
 }
 
-Use semi_join for questions like:
-- households that appear in another table
-- individuals that have at least one matching record
-- rows where a key is present in a filtered subquery
+
 
 
 ANTI_JOIN NODE
@@ -336,49 +333,79 @@ The scalar_input must be a previous node that returns one row and contains scala
 
 
 HAVING_BIAS_BLOCK = """
-REQUIRED PATTERN: HAVING-STYLE POST-AGGREGATION FILTER
-========================================================
+REQUIRED PATTERN: POST-AGGREGATION FILTER (SQL HAVING-STYLE)
+============================================================
 
-This query plan MUST include a "having" pattern, equivalent to SQL HAVING:
-first aggregate with a groupby node, then filter on the AGGREGATED output.
+The query plan MUST include a HAVING-style pattern: first aggregate rows
+with a "groupby" node, then apply a "filter" to the aggregated result.
 
-Concretely, the plan must contain:
-1. A "groupby" node (e.g. "n5") that produces aggregation aliases
-   (e.g. "avg_age", "n_individuals").
-2. A later "filter" node whose "input" is that groupby node's id
-   (not the pre-aggregation input), with a condition on one of the
-   aggregation aliases or one of the "by" columns.
+The required structure is:
 
-Example:
+1. A "groupby" node that groups by one or more columns and produces one
+   or more aggregation outputs with aliases.
+
+2. A later "filter" node whose "input" is the id of that groupby node,
+   rather than the pre-aggregation input.
+
+3. The filter condition must reference a column available in the
+   groupby output, such as:
+
+   * an aggregation alias produced by the groupby, or
+   * one of the grouping ("by") columns.
+
+Generic example:
 
 {
-  "id": "n5",
-  "operation": "groupby",
-  "input": "n4",
-  "by": ["ent"],
-  "aggregations": [
-    {"column": "edad", "function": "mean", "alias": "avg_age"},
-    {"column": "edad", "function": "count", "alias": "n_individuals"}
-  ]
+"id": "n_group",
+"operation": "groupby",
+"input": "n_prev",
+"by": ["group_column"],
+"aggregations": [
+{
+"column": "value_column",
+"function": "mean",
+"alias": "aggregated_value"
+},
+{
+"column": "value_column",
+"function": "count",
+"alias": "group_count"
+}
+]
 }
 
 {
-  "id": "n6",
-  "operation": "filter",
-  "input": "n5",
-  "conditions": [
-    {"column": "n_individuals", "operator": ">=", "value": 5}
-  ]
+"id": "n_having",
+"operation": "filter",
+"input": "n_group",
+"conditions": [
+{
+"column": "group_count",
+"operator": ">=",
+"value": "<threshold>"
+}
+]
 }
 
-Incorrect: filtering "n4" (the pre-aggregation input) on a raw column
-instead of filtering "n5" (the groupby output) on an aggregation alias.
-That is an ordinary WHERE filter, not HAVING, and does not satisfy this
-requirement.
+The essential requirement is that the filter is evaluated AFTER
+aggregation and operates on the groupby output.
 
-The final question must reflect this HAVING condition (e.g. "... among
-states with at least 5 individuals, ...").
+Incorrect pattern:
+
+* filtering the pre-aggregation input on a raw row-level column;
+* applying a condition before the groupby when that condition is meant
+  to constrain groups based on an aggregate statistic.
+
+Such a filter is equivalent to SQL WHERE, not SQL HAVING, and does not
+satisfy this requirement.
+
+The natural-language question MUST explicitly reflect the
+post-aggregation restriction. For example, it may ask for results
+"among groups with at least <threshold> observations",
+"for categories whose average exceeds <threshold>",
+or any equivalent condition defined on aggregated groups.
 """
+
 
 
 SCALAR_FILTER_BIAS_BLOCK = """

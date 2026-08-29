@@ -1,0 +1,480 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "se01a": {
+        "meaning": "Last 5 years HH: dead HHM",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se01b": {
+        "meaning": "Last 5 years HH: disease/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se01c": {
+        "meaning": "Last 5 years HH: unemployment/failure com HHM",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se01d": {
+        "meaning": "Last 5 years HH: lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se01e": {
+        "meaning": "Last 5 years HH: lost total crop",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se01f": {
+        "meaning": "Last 5 years HH: lost/robbery/dead animal production",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "se02aa_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8015"
+    },
+    "se02aa_2": {
+        "meaning": "Year HHM died",
+        "missing_values": "8015"
+    },
+    "se02ab_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9012"
+    },
+    "se02ab_2": {
+        "meaning": "Year HHM died",
+        "missing_values": "9012"
+    },
+    "se02ac_1": {
+        "meaning": "Knows when HHM died?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9084"
+    },
+    "se02ac_2": {
+        "meaning": "Year HHM died",
+        "missing_values": "9084"
+    },
+    "se02ba_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "7864"
+    },
+    "se02ba_2": {
+        "meaning": "Year illness/accident/hospital HHM?",
+        "missing_values": "7864"
+    },
+    "se02bb_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9000"
+    },
+    "se02bb_2": {
+        "meaning": "Year illness/accident/hospital HHM?",
+        "missing_values": "9000"
+    },
+    "se02bc_1": {
+        "meaning": "Knows when illness/accident/hospital HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9074"
+    },
+    "se02bc_2": {
+        "meaning": "Year illness/accident/hospital HHM?",
+        "missing_values": "9074"
+    },
+    "se02ca_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8167"
+    },
+    "se02ca_2": {
+        "meaning": "Year unemployment/failure com HHM?",
+        "missing_values": "8167"
+    },
+    "se02cb_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9019"
+    },
+    "se02cb_2": {
+        "meaning": "Year unemployment/failure com HHM?",
+        "missing_values": "9019"
+    },
+    "se02cc_1": {
+        "meaning": "Knows when unemployment/failure HHM?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9071"
+    },
+    "se02cc_2": {
+        "meaning": "Year unemployment/failure com HHM?",
+        "missing_values": "9071"
+    },
+    "se02da_1": {
+        "meaning": "Knows when lost viv/neg natural disaster?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8999"
+    },
+    "se02da_2": {
+        "meaning": "Year lost viv/neg natural disaster",
+        "missing_values": "8999"
+    },
+    "se02db_1": {
+        "meaning": "Knows when lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9090"
+    },
+    "se02db_2": {
+        "meaning": "Year lost viv/neg natural disaster",
+        "missing_values": "9090"
+    },
+    "se02dc_1": {
+        "meaning": "Knows when lost viv/neg natural disaster",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9091"
+    },
+    "se02dc_2": {
+        "meaning": "Year lost viv/neg natural disaster",
+        "missing_values": "9091"
+    },
+    "se02ea_1": {
+        "meaning": "Knows when lost total harvest?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8787"
+    },
+    "se02ea_2": {
+        "meaning": "Year lost total crop",
+        "missing_values": "8787"
+    },
+    "se02eb_1": {
+        "meaning": "Knows when lost total crop",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9050"
+    },
+    "se02eb_2": {
+        "meaning": "Year lost total crop",
+        "missing_values": "9050"
+    },
+    "se02ec_1": {
+        "meaning": "Knows when lost total crop?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9084"
+    },
+    "se02ec_2": {
+        "meaning": "Year lost total crop",
+        "missing_values": "9084"
+    },
+    "se02fa_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9003"
+    },
+    "se02fa_2": {
+        "meaning": "Year lost/dead animal production",
+        "missing_values": "9003"
+    },
+    "se02fb_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9078"
+    },
+    "se02fb_2": {
+        "meaning": "Year lost/dead animal production",
+        "missing_values": "9078"
+    },
+    "se02fc_1": {
+        "meaning": "Knows when lost/dead animal production?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9088"
+    },
+    "se02fc_2": {
+        "meaning": "Year lost/dead animal production",
+        "missing_values": "9088"
+    },
+    "se03aa_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "8006"
+    },
+    "se03ab_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "9002"
+    },
+    "se03ac_1": {
+        "meaning": "Who died?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "9073"
+    },
+    "se03ba_1": {
+        "meaning": "Whose diseased?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "7843"
+    },
+    "se03bb_1": {
+        "meaning": "Who diseased/accidented?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "8971"
+    },
+    "se03bc_1": {
+        "meaning": "Who diseased/accidented?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "9041"
+    },
+    "se03ca_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "8146"
+    },
+    "se03cb_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "8991"
+    },
+    "se03cc_1": {
+        "meaning": "Who lost job?",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "The respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "Other": "8"
+        },
+        "missing_values": "9044"
+    },
+    "se05_1a": {
+        "meaning": "Borrowed helped HH events",
+        "values_label": {
+            "Borrowed": "1"
+        },
+        "missing_values": "8290"
+    },
+    "se05_1b": {
+        "meaning": "Sold good HH events",
+        "values_label": {
+            "Sold any asset": "2"
+        },
+        "missing_values": "8932"
+    },
+    "se05_1c": {
+        "meaning": "Worked extra HH events",
+        "values_label": {
+            "Worked more hours": "3"
+        },
+        "missing_values": "8853"
+    },
+    "se05_1d": {
+        "meaning": "Work/activity not done help HH events",
+        "values_label": {
+            "Worked or developed any activity that you did not do before, to help household expenditure": "4"
+        },
+        "missing_values": "8914"
+    },
+    "se05_1e": {
+        "meaning": "Additional job help HH events",
+        "values_label": {
+            "Obtained an additional job": "5"
+        },
+        "missing_values": "9014"
+    },
+    "se05_1f": {
+        "meaning": "Left school help HH events",
+        "values_label": {
+            "Stopped attending school": "6"
+        },
+        "missing_values": "9082"
+    },
+    "se05_1g": {
+        "meaning": "Began/sold business help HH events",
+        "values_label": {
+            "Started/Sold a business": "7"
+        },
+        "missing_values": "9070"
+    },
+    "se05_1h": {
+        "meaning": "Did not take part HH events",
+        "values_label": {
+            "You did not take any measure": "9"
+        },
+        "missing_values": "8999"
+    },
+    "se05_1i": {
+        "meaning": "Saved",
+        "values_label": {
+            "Savings": "10"
+        },
+        "missing_values": "8351"
+    },
+    "se05_1j": {
+        "meaning": "Received help family",
+        "values_label": {
+            "Received aid from any relative/friend": "11"
+        },
+        "missing_values": "8936"
+    },
+    "se05_1k": {
+        "meaning": "Do not know help HH events",
+        "values_label": {
+            "DK": "98"
+        },
+        "missing_values": "8356"
+    },
+    "se05_1l": {
+        "meaning": "Other help HH events",
+        "values_label": {
+            "Other (specify)": "8"
+        },
+        "missing_values": "9012"
+    }
+}

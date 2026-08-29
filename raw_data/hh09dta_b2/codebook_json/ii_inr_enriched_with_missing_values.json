@@ -1,0 +1,351 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "inr02a": {
+        "meaning": "Last 12 months HHM produce/sell dairy food",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02b": {
+        "meaning": "Last 12 months HHM produce/sell canned goods",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02c": {
+        "meaning": "Last 12 months HHM produce/sell meat",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02d": {
+        "meaning": "Last 12 months HHM produce/sell egg",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02e": {
+        "meaning": "Last 12 months HHM produce/sell clothes",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02f": {
+        "meaning": "Last 12 months HHM produce/sell crafts",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02g": {
+        "meaning": "Last 12 months HHM produce/sell furniture",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02h": {
+        "meaning": "Last 12 months HHM produce/sell flowers/med plants",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02i": {
+        "meaning": "Last 12 months HHM produce/sell honey",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02j": {
+        "meaning": "Last 12 months HHM produce/sell fattening animals",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "45"
+    },
+    "inr02k": {
+        "meaning": "Last 12 months HHM produce/sell other",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "69"
+    },
+    "inr03a": {
+        "meaning": "Last 12 months quantity sold: dairy products",
+        "missing_values": "8971"
+    },
+    "inr03b": {
+        "meaning": "Last 12 months quantity sold: canned goods",
+        "missing_values": "9081"
+    },
+    "inr03c": {
+        "meaning": "Last 12 months quantity sold: meat",
+        "missing_values": "9046"
+    },
+    "inr03d": {
+        "meaning": "Last 12 months quantity sold: eggs",
+        "missing_values": "9035"
+    },
+    "inr03e": {
+        "meaning": "Last 12 months quantity sold: clothes",
+        "missing_values": "9006"
+    },
+    "inr03f": {
+        "meaning": "Last 12 months quantity sold: crafts",
+        "missing_values": "8989"
+    },
+    "inr03g": {
+        "meaning": "Last 12 months quantity sold: furniture",
+        "missing_values": "9084"
+    },
+    "inr03h": {
+        "meaning": "Last 12 months quantity sold: med plants",
+        "missing_values": "9079"
+    },
+    "inr03i": {
+        "meaning": "Last 12 months quantity sold: honey",
+        "missing_values": "9086"
+    },
+    "inr03j": {
+        "meaning": "Last 12 months quantity sold: fattening animals",
+        "missing_values": "8984"
+    },
+    "inr03k": {
+        "meaning": "Last 12 months quantity sold: other",
+        "missing_values": "8903"
+    },
+    "inr04a": {
+        "meaning": "Last month quantity sold: dairy products",
+        "missing_values": "8973"
+    },
+    "inr04b": {
+        "meaning": "Last month quantity sold: canned goods",
+        "missing_values": "9081"
+    },
+    "inr04c": {
+        "meaning": "Last month quantity sold: meat",
+        "missing_values": "9045"
+    },
+    "inr04d": {
+        "meaning": "Last month quantity sold: eggs",
+        "missing_values": "9036"
+    },
+    "inr04e": {
+        "meaning": "Last month quantity sold: clothes",
+        "missing_values": "9005"
+    },
+    "inr04f": {
+        "meaning": "Last month quantity sold: crafts",
+        "missing_values": "8988"
+    },
+    "inr04g": {
+        "meaning": "Last month quantity sold: furniture",
+        "missing_values": "9084"
+    },
+    "inr04h": {
+        "meaning": "Last month quantity sold: med plants",
+        "missing_values": "9079"
+    },
+    "inr04i": {
+        "meaning": "Last month quantity sold: honey",
+        "missing_values": "9086"
+    },
+    "inr04j": {
+        "meaning": "Last month quantity sold: fattening animals",
+        "missing_values": "8988"
+    },
+    "inr04k": {
+        "meaning": "Last month quantity sold: other",
+        "missing_values": "8901"
+    },
+    "inr05a_1": {
+        "meaning": "HHM decide money selling: dairy food",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "8969"
+    },
+    "inr05b_1": {
+        "meaning": "HHM decide money selling: canned goods",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9081"
+    },
+    "inr05c_1": {
+        "meaning": "HHM decide money selling: meat",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9044"
+    },
+    "inr05d_1": {
+        "meaning": "HHM decide money selling: eggs",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9035"
+    },
+    "inr05e_1": {
+        "meaning": "HHM decide money selling: clothes",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9003"
+    },
+    "inr05f_1": {
+        "meaning": "HHM decide money selling: crafts",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "8988"
+    },
+    "inr05g_1": {
+        "meaning": "HHM decide money selling: furniture",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9084"
+    },
+    "inr05h_1": {
+        "meaning": "HHM decide money selling: flower/med plants",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9079"
+    },
+    "inr05i_1": {
+        "meaning": "HHM decide money selling: honey",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "9086"
+    },
+    "inr05j_1": {
+        "meaning": "HHM decide money selling: fattening animals",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "8984"
+    },
+    "inr05k_1": {
+        "meaning": "HHM decide money selling: other",
+        "values_label": {
+            "The respondent": "1",
+            "The respondent's spouse": "2",
+            "Respondent's son(s)/daughter(s)": "3",
+            "The respondent's parents": "4",
+            "The respondent's parents in law": "5",
+            "Respondent's brother(s)/sister(s)": "6",
+            "Respondent's brother(s)/sister(s) in law": "7",
+            "All the household members": "8",
+            "Others (specify)": "9"
+        },
+        "missing_values": "8899"
+    },
+    "ls": {
+        "meaning": "Individual ID Third Round",
+        "missing_values": "0"
+    }
+}

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Values and aggregations do not match the gold answer. Average safety scores and leave-lights averages differ for the same states (e.g., ent 5), household counts are far smaller than in the gold, and ordering by safety is not consistent."
+}

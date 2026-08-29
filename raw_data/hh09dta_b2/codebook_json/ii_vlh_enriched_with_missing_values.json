@@ -1,0 +1,503 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "vlh01a": {
+        "meaning": "District buildings abandoned?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "120"
+    },
+    "vlh01b": {
+        "meaning": "District gather gangs/factions?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "127"
+    },
+    "vlh01c": {
+        "meaning": "District persons using drugs in streets?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "118"
+    },
+    "vlh01d": {
+        "meaning": "District prostitutes streets?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "183"
+    },
+    "vlh01e": {
+        "meaning": "District conflicts neighbors?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "110"
+    },
+    "vlh01f": {
+        "meaning": "District groups neighbors protection?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "148"
+    },
+    "vlh01g": {
+        "meaning": "District guards whites/paramilitaries?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "119"
+    },
+    "vlh01h": {
+        "meaning": "District military reserves/soldiers?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "102"
+    },
+    "vlh01i": {
+        "meaning": "District neighbor armed streets?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "261"
+    },
+    "vlh01j_1": {
+        "meaning": "Locality situations make feel unsafe?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "107"
+    },
+    "vlh01k": {
+        "meaning": "Locality close?",
+        "values_label": {
+            "Completely agree": "1",
+            "Agree": "2",
+            "Disagree": "3",
+            "Completely disagree": "4",
+            "DK": "8"
+        },
+        "missing_values": "258"
+    },
+    "vlh01l": {
+        "meaning": "People willing to help their neighbors?",
+        "values_label": {
+            "Completely agree": "1",
+            "Agree": "2",
+            "Disagree": "3",
+            "Completely disagree": "4",
+            "DK": "8"
+        },
+        "missing_values": "272"
+    },
+    "vlh01m": {
+        "meaning": "People locality same values?",
+        "values_label": {
+            "Completely agree": "1",
+            "Agree": "2",
+            "Disagree": "3",
+            "Completely disagree": "4",
+            "DK": "8"
+        },
+        "missing_values": "478"
+    },
+    "vlh01n": {
+        "meaning": "People locality trustworthy?",
+        "values_label": {
+            "Completely agree": "1",
+            "Agree": "2",
+            "Disagree": "3",
+            "Completely disagree": "4",
+            "DK": "8"
+        },
+        "missing_values": "292"
+    },
+    "vlh01o": {
+        "meaning": "Youths locality skipped class neighbors did something?",
+        "values_label": {
+            "Very probable": "1",
+            "Probable": "2",
+            "Less probable": "3",
+            "Least probable": "4",
+            "DK": "8"
+        },
+        "missing_values": "438"
+    },
+    "vlh01p": {
+        "meaning": "Youths locality graffiti neighbors did something?",
+        "values_label": {
+            "Very probable": "1",
+            "Probable": "2",
+            "Less probable": "3",
+            "Least probable": "4",
+            "DK": "8"
+        },
+        "missing_values": "394"
+    },
+    "vlh01q": {
+        "meaning": "Youths locality disrespectful adult neighborhood said something?",
+        "values_label": {
+            "Very probable": "1",
+            "Probable": "2",
+            "Less probable": "3",
+            "Least probable": "4",
+            "DK": "8"
+        },
+        "missing_values": "358"
+    },
+    "vlh01r": {
+        "meaning": "Threaten/beaten neighbor stop the fight?",
+        "values_label": {
+            "Very probable": "1",
+            "Probable": "2",
+            "Less probable": "3",
+            "Least probable": "4",
+            "DK": "8"
+        },
+        "missing_values": "395"
+    },
+    "vlh01s": {
+        "meaning": "Closest police station neighbor stop this?",
+        "values_label": {
+            "Very probable": "1",
+            "Probable": "2",
+            "Less probable": "3",
+            "Least probable": "4",
+            "DK": "8"
+        },
+        "missing_values": "680"
+    },
+    "vlh01t": {
+        "meaning": "Often people locality do favors each other",
+        "values_label": {
+            "Never": "1",
+            "Rarely": "2",
+            "Frequently": "3",
+            "Always": "4",
+            "DK": "8"
+        },
+        "missing_values": "226"
+    },
+    "vlh01u": {
+        "meaning": "Neighbor away other neighbors watch his house?",
+        "values_label": {
+            "Never": "1",
+            "Rarely": "2",
+            "Frequently": "3",
+            "Always": "4",
+            "DK": "8"
+        },
+        "missing_values": "221"
+    },
+    "vlh01v": {
+        "meaning": "Often people locality ask advice",
+        "values_label": {
+            "Never": "1",
+            "Rarely": "2",
+            "Frequently": "3",
+            "Always": "4",
+            "DK": "8"
+        },
+        "missing_values": "240"
+    },
+    "vlh01w": {
+        "meaning": "Often people locality make parties",
+        "values_label": {
+            "Never": "1",
+            "Rarely": "2",
+            "Frequently": "3",
+            "Always": "4",
+            "DK": "8"
+        },
+        "missing_values": "211"
+    },
+    "vlh01x": {
+        "meaning": "Often people locality visit house?",
+        "values_label": {
+            "Never": "1",
+            "Rarely": "2",
+            "Frequently": "3",
+            "Always": "4",
+            "DK": "8"
+        },
+        "missing_values": "206"
+    },
+    "vlh02_1": {
+        "meaning": "Since what year lives in house?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "1444"
+    },
+    "vlh02_2": {
+        "meaning": "Since what year lives in house",
+        "missing_values": "1444"
+    },
+    "vlh03": {
+        "meaning": "Age in which he arrived in house?",
+        "missing_values": "7740"
+    },
+    "vlh04": {
+        "meaning": "Feel safe at home?",
+        "values_label": {
+            "Very safe": "1",
+            "Safe": "2",
+            "Unsafe": "3",
+            "Very unsafe": "4"
+        },
+        "missing_values": "48"
+    },
+    "vlh05": {
+        "meaning": "Ask neighbor to look after house?",
+        "values_label": {
+            "Yes": "1",
+            "No": "2",
+            "NA": "9"
+        },
+        "missing_values": "75"
+    },
+    "vlh06": {
+        "meaning": "Leave lights on as a security method?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "NA": "9"
+        },
+        "missing_values": "88"
+    },
+    "vlh07a": {
+        "meaning": "House wire/sting/grating/colter?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "58"
+    },
+    "vlh07b": {
+        "meaning": "House window bars street?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "55"
+    },
+    "vlh07c": {
+        "meaning": "House security system",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "64"
+    },
+    "vlh08a": {
+        "meaning": "Do you know family/friend who has been robbed house/business in the last 5 years?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "48"
+    },
+    "vlh08b": {
+        "meaning": "Do you know family/friend who has been assaulted house/business in the last 5 years?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "48"
+    },
+    "vlh08c": {
+        "meaning": "Do you know family/friend who has been kidnapped house/business in the last 5 years?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "48"
+    },
+    "vlh09a": {
+        "meaning": "Number family/friend robbed house/business",
+        "missing_values": "7879"
+    },
+    "vlh09b": {
+        "meaning": "Number family/friend assaulted",
+        "missing_values": "8340"
+    },
+    "vlh09c": {
+        "meaning": "Number family/friend kidnapped",
+        "missing_values": "8856"
+    },
+    "vlh10a": {
+        "meaning": "Do you know family/friend who has been robbed house/business in the last 12 months?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "7877"
+    },
+    "vlh10b": {
+        "meaning": "Do you know family/friend who has been assaulted house/business in the last 12 months?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "8333"
+    },
+    "vlh10c": {
+        "meaning": "Do you know family/friend who has been kidnapped house/business in the last 12 months?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "8843"
+    },
+    "vlh11a": {
+        "meaning": "Number family/friend robbed house/business",
+        "missing_values": "8745"
+    },
+    "vlh11b": {
+        "meaning": "Number family/friend assaulted",
+        "missing_values": "8869"
+    },
+    "vlh11c": {
+        "meaning": "Number family/friend kidnapped",
+        "missing_values": "8998"
+    },
+    "vlh12a": {
+        "meaning": "Entered force rob in HH",
+        "values_label": {
+            "Yes, into the dwelling you currently live in": "1"
+        },
+        "missing_values": "9034"
+    },
+    "vlh12b": {
+        "meaning": "Entered force rob in HH",
+        "values_label": {
+            "Yes, into another dwelling where you used to live": "2"
+        },
+        "missing_values": "9084"
+    },
+    "vlh12c": {
+        "meaning": "Entered force rob in HH",
+        "values_label": {
+            "No": "3"
+        },
+        "missing_values": "7828"
+    },
+    "vlh12a_a": {
+        "meaning": "Entered force rob in HH after 2005?",
+        "values_label": {
+            "Yes, into the dwelling you currently live in": "1"
+        },
+        "missing_values": "8805"
+    },
+    "vlh12a_b": {
+        "meaning": "Entered force rob in HH after 2005?",
+        "values_label": {
+            "Yes, into another dwelling where you used to live": "2"
+        },
+        "missing_values": "9079"
+    },
+    "vlh12a_c": {
+        "meaning": "No had entered force rob in HH since 2005?",
+        "values_label": {
+            "No": "3"
+        },
+        "missing_values": "1678"
+    },
+    "vlh13": {
+        "meaning": "Number of times robbed in HH",
+        "missing_values": "9027"
+    },
+    "vlh13a": {
+        "meaning": "Number of times robbed in HH since 2005",
+        "missing_values": "8793"
+    },
+    "vlh14": {
+        "meaning": "Entered force rob in business",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "NA": "9"
+        },
+        "missing_values": "8473"
+    },
+    "vlh14a": {
+        "meaning": "Entered force rob in business since 2005",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "NA": "9"
+        },
+        "missing_values": "5768"
+    },
+    "vlh15": {
+        "meaning": "Number times rob/force business",
+        "missing_values": "9077"
+    },
+    "vlh15a": {
+        "meaning": "Number times rob/force business since 2005",
+        "missing_values": "9031"
+    },
+    "vlh16": {
+        "meaning": "Entered force rob parcel",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "NA": "9"
+        },
+        "missing_values": "8490"
+    },
+    "vlh16a": {
+        "meaning": "Entered force rob parcel since 2005",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "NA": "9"
+        },
+        "missing_values": "5691"
+    },
+    "vlh17": {
+        "meaning": "Number of times entered/rob parcel",
+        "missing_values": "9085"
+    },
+    "vlh17a": {
+        "meaning": "Number of times entered/rob parcel since 2005",
+        "missing_values": "9063"
+    },
+    "vlh18": {
+        "meaning": "Total times entered rob house/business/parcel",
+        "missing_values": "7763"
+    },
+    "vlh18a": {
+        "meaning": "Total times entered rob house/business/parcel since 2005",
+        "missing_values": "1379"
+    }
+}

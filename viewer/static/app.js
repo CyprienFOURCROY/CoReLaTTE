@@ -2,10 +2,12 @@
 
 const state = {
   questionType: null,
+  version: null,
   dataset: null,
   model: "",
   queries: [],
   activeQueryName: null,
+  questionTypesByName: {},
 };
 
 const modalState = {
@@ -18,6 +20,8 @@ const modalState = {
 
 const el = {
   questionType: document.getElementById("questionType"),
+  version: document.getElementById("version"),
+  versionControl: document.getElementById("versionControl"),
   dataset: document.getElementById("dataset"),
   model: document.getElementById("model"),
   search: document.getElementById("search"),
@@ -71,6 +75,28 @@ function populateSelect(selectEl, items, { keepSelection = true } = {}) {
 // bootstrap
 // ==================================================
 
+function versionQueryParam() {
+  return state.version != null ? `&version=${encodeURIComponent(state.version)}` : "";
+}
+
+function syncVersionControl() {
+  const qt = state.questionTypesByName[el.questionType.value];
+
+  if (!qt || !qt.versioned) {
+    el.versionControl.classList.add("hidden");
+    el.version.innerHTML = "";
+    state.version = null;
+    return;
+  }
+
+  el.versionControl.classList.remove("hidden");
+  populateSelect(
+    el.version,
+    qt.versions.map((v) => ({ value: String(v), label: `v${v}` })),
+  );
+  state.version = Number(el.version.value);
+}
+
 async function init() {
   const config = await fetchJSON("/api/config");
 
@@ -79,9 +105,11 @@ async function init() {
     return;
   }
 
+  state.questionTypesByName = Object.fromEntries(config.question_types.map((qt) => [qt.name, qt]));
+
   populateSelect(
     el.questionType,
-    config.question_types.map((qt) => ({ value: qt, label: qt })),
+    config.question_types.map((qt) => ({ value: qt.name, label: qt.name })),
   );
   populateSelect(
     el.dataset,
@@ -90,9 +118,11 @@ async function init() {
 
   state.questionType = el.questionType.value;
   state.dataset = el.dataset.value;
+  syncVersionControl();
 
   el.questionType.addEventListener("change", onSelectionChanged);
   el.dataset.addEventListener("change", onSelectionChanged);
+  el.version.addEventListener("change", onVersionChanged);
   el.model.addEventListener("change", onModelChanged);
   el.modalClose.addEventListener("click", closeModal);
   el.modal.addEventListener("click", (e) => {
@@ -112,6 +142,13 @@ async function init() {
 async function onSelectionChanged() {
   state.questionType = el.questionType.value;
   state.dataset = el.dataset.value;
+  syncVersionControl();
+  await refreshModels();
+  await refreshQueries();
+}
+
+async function onVersionChanged() {
+  state.version = Number(el.version.value);
   await refreshModels();
   await refreshQueries();
 }
@@ -123,7 +160,7 @@ async function onModelChanged() {
 
 async function refreshModels() {
   const models = await fetchJSON(
-    `/api/models?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}`,
+    `/api/models?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}${versionQueryParam()}`,
   );
 
   const options = [{ value: "", label: "— benchmark only —" }].concat(
@@ -134,7 +171,7 @@ async function refreshModels() {
 }
 
 async function refreshQueries() {
-  const url = `/api/queries?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}${state.model ? `&model=${encodeURIComponent(state.model)}` : ""}`;
+  const url = `/api/queries?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}${versionQueryParam()}${state.model ? `&model=${encodeURIComponent(state.model)}` : ""}`;
   state.queries = await fetchJSON(url);
 
   const stillPresent = state.queries.some((q) => q.query_name === state.activeQueryName);
@@ -191,6 +228,7 @@ function renderSidebar() {
           <div class="query-item-top">
             <span class="dot ${dotCls}" title="check_if_code_works: ${escapeHtml(q.check_if_code_works || "unknown")}"></span>
             <span class="query-name">${escapeHtml(q.query_name)}</span>
+            ${q.bias ? `<span class="bias-tag">${escapeHtml(q.bias)}</span>` : ""}
             ${badge ? `<span class="badge ${badge.cls}">${badge.label}</span>` : ""}
           </div>
           <div class="query-question">${escapeHtml(q.question || "(no question text)")}</div>
@@ -212,7 +250,7 @@ function renderSidebar() {
 // ==================================================
 
 async function selectQuery(queryName) {
-  const url = `/api/query_detail?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}&query_name=${encodeURIComponent(queryName)}${state.model ? `&model=${encodeURIComponent(state.model)}` : ""}`;
+  const url = `/api/query_detail?question_type=${encodeURIComponent(state.questionType)}&dataset=${encodeURIComponent(state.dataset)}&query_name=${encodeURIComponent(queryName)}${versionQueryParam()}${state.model ? `&model=${encodeURIComponent(state.model)}` : ""}`;
 
   el.detail.innerHTML = `<div class="empty-state">Loading…</div>`;
   const data = await fetchJSON(url);
@@ -248,6 +286,7 @@ function renderBenchmarkCard(benchmark) {
     <div class="card">
       <div class="card-header">
         <span class="card-title">Benchmark (ground truth)</span>
+        ${benchmark.bias ? `<span class="bias-tag" style="margin-left:auto">${escapeHtml(benchmark.bias)}</span>` : ""}
       </div>
       <div class="card-body">
         <div class="section-label">Tables engaged</div>
@@ -314,7 +353,7 @@ function renderDetail(queryName, data) {
 
   el.detail.innerHTML = `
     <div class="detail-header">
-      <div class="query-name">${escapeHtml(queryName)}</div>
+      <div class="query-name">${escapeHtml(queryName)}${state.version != null ? ` · v${state.version}` : ""}</div>
       <div class="detail-question">${escapeHtml(b.natural_question || "(no question)")}</div>
       ${b.question_from_llm ? `<div class="detail-question-draft">Draft question: ${escapeHtml(b.question_from_llm)}</div>` : ""}
     </div>

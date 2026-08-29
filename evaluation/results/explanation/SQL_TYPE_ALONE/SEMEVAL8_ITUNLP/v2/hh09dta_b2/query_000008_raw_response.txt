@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer has different states, missing state 25 and adding others (e.g., 15, 19, 10, 3, 30), and the average debt values differ substantially from the gold. The ranking/top-k and filters are not aligned with the gold result."
+}

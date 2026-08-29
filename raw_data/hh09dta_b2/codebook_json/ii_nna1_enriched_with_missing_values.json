@@ -1,0 +1,542 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "nna05_1": {
+        "meaning": "Date HH started op/acquired business?",
+        "values_label": {
+            "Month and year": "1",
+            "DK": "8"
+        },
+        "missing_values": "85"
+    },
+    "nna05_21": {
+        "meaning": "Month HH started op/acquired business",
+        "missing_values": "422"
+    },
+    "nna05_22": {
+        "meaning": "Year HH started op/acquired business",
+        "missing_values": "87"
+    },
+    "nna07_1a": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Banking Institution": "1"
+        },
+        "missing_values": "1070"
+    },
+    "nna07_1b": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Savings fund, credit fund Union": "2"
+        },
+        "missing_values": "1033"
+    },
+    "nna07_1c": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Private money lenders or batch": "3"
+        },
+        "missing_values": "1031"
+    },
+    "nna07_1d": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Home members savings": "4"
+        },
+        "missing_values": "354"
+    },
+    "nna07_1e": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Liquidation of previous job any HHM": "5"
+        },
+        "missing_values": "1036"
+    },
+    "nna07_1f": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Clients credits": "6"
+        },
+        "missing_values": "1082"
+    },
+    "nna07_1g": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Providers credit": "7"
+        },
+        "missing_values": "1063"
+    },
+    "nna07_1h": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Support from relatives who are not household members": "8"
+        },
+        "missing_values": "988"
+    },
+    "nna07_1i": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Sale of non financial assets": "9"
+        },
+        "missing_values": "1061"
+    },
+    "nna07_1j": {
+        "meaning": "Money begin business",
+        "values_label": {
+            "Contribution from partner who is not a household member": "10"
+        },
+        "missing_values": "1076"
+    },
+    "nna07_1k": {
+        "meaning": "Money begin business: other",
+        "values_label": {
+            "Other (specify)": "11"
+        },
+        "missing_values": "1067"
+    },
+    "nna08": {
+        "meaning": "Business fully belong HHM began",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "13"
+    },
+    "nna09": {
+        "meaning": "% business owned by HHM began",
+        "values_label": {
+            "More than a half (75%)": "1",
+            "A half (50%)": "2",
+            "Some (aprox 25%)": "3",
+            "A little (less than 10%)": "4"
+        },
+        "missing_values": "1020"
+    },
+    "nna10_1a": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "The respondent": "1"
+        },
+        "missing_values": "249"
+    },
+    "nna10_1b": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "The respondent's spouse": "2"
+        },
+        "missing_values": "671"
+    },
+    "nna10_1c": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        },
+        "missing_values": "847"
+    },
+    "nna10_1d": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "The respondent's parents": "4"
+        },
+        "missing_values": "1016"
+    },
+    "nna10_1e": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        },
+        "missing_values": "1076"
+    },
+    "nna10_1f": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        },
+        "missing_values": "1049"
+    },
+    "nna10_1g": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        },
+        "missing_values": "1077"
+    },
+    "nna10_1h": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "All the household members": "8"
+        },
+        "missing_values": "1078"
+    },
+    "nna10_1i": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "Others (specify)": "9"
+        },
+        "missing_values": "1057"
+    },
+    "nna10_1j": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "Nobody": "10"
+        },
+        "missing_values": "1084"
+    },
+    "nna10_1k": {
+        "meaning": "Which household member worked in the business began",
+        "values_label": {
+            "DK": "98"
+        },
+        "missing_values": "1090"
+    },
+    "nna11_1": {
+        "meaning": "How many people not HHM worked business began",
+        "values_label": {
+            "Workers": "1",
+            "DK": "8"
+        },
+        "missing_values": "28"
+    },
+    "nna11_2": {
+        "meaning": "# persons worked business began beside him",
+        "missing_values": "28"
+    },
+    "nna12": {
+        "meaning": "Business run outside house",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "0"
+    },
+    "nna13a": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Written contract to its workers": "1"
+        },
+        "missing_values": "1068"
+    },
+    "nna13b": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Oral or word contract (does not have a contract)": "2"
+        },
+        "missing_values": "1025"
+    },
+    "nna13c": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Social Security (IMSS)": "3"
+        },
+        "missing_values": "1045"
+    },
+    "nna13d": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Private medical insurance by the business (different than IMSS)": "4"
+        },
+        "missing_values": "1081"
+    },
+    "nna13e": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "AFORE or SAR (retirement savings system)": "5"
+        },
+        "missing_values": "1066"
+    },
+    "nna13f": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Does not have social benefits": "9"
+        },
+        "missing_values": "130"
+    },
+    "nna13g": {
+        "meaning": "Benefits business began",
+        "values_label": {
+            "Incapacity/Illness": "10"
+        },
+        "missing_values": "1067"
+    },
+    "nna14_1a": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "The respondent": "1"
+        },
+        "missing_values": "266"
+    },
+    "nna14_1b": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "The respondent's spouse": "2"
+        },
+        "missing_values": "711"
+    },
+    "nna14_1c": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        },
+        "missing_values": "1005"
+    },
+    "nna14_1d": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "The respondent's parents": "4"
+        },
+        "missing_values": "1014"
+    },
+    "nna14_1e": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        },
+        "missing_values": "1077"
+    },
+    "nna14_1f": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        },
+        "missing_values": "1062"
+    },
+    "nna14_1g": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        },
+        "missing_values": "1087"
+    },
+    "nna14_1h": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "All the household members": "8"
+        },
+        "missing_values": "1090"
+    },
+    "nna14_1i": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "Others (specify)": "9"
+        },
+        "missing_values": "1065"
+    },
+    "nna14_1j": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "Nobody": "10"
+        },
+        "missing_values": "1090"
+    },
+    "nna14_1k": {
+        "meaning": "Which household members took decisions of business",
+        "values_label": {
+            "DK": "98"
+        },
+        "missing_values": "1090"
+    },
+    "nna15": {
+        "meaning": "Currently HH runs the business",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "0"
+    },
+    "nna16_1": {
+        "meaning": "When close business?",
+        "values_label": {
+            "Sold": "1",
+            "Closed": "2",
+            "DK": "8"
+        },
+        "missing_values": "1075"
+    },
+    "nna16_11": {
+        "meaning": "Date sold business?",
+        "missing_values": "1087"
+    },
+    "nna16_12": {
+        "meaning": "Date close business?",
+        "missing_values": "1078"
+    },
+    "nna17_1": {
+        "meaning": "Same activity than business started",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "0"
+    },
+    "nna18_1a": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "The respondent": "1"
+        },
+        "missing_values": "252"
+    },
+    "nna18_1b": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "The respondent's spouse": "2"
+        },
+        "missing_values": "694"
+    },
+    "nna18_1c": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "Respondent's son(s)/daughter(s)": "3"
+        },
+        "missing_values": "853"
+    },
+    "nna18_1d": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "The respondent's parents": "4"
+        },
+        "missing_values": "1025"
+    },
+    "nna18_1e": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "The respondent's parents in law": "5"
+        },
+        "missing_values": "1078"
+    },
+    "nna18_1f": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "Respondent's brother(s)/sister(s)": "6"
+        },
+        "missing_values": "1055"
+    },
+    "nna18_1g": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "Respondent's brother(s)/sister(s) in law": "7"
+        },
+        "missing_values": "1079"
+    },
+    "nna18_1h": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "All the household members": "8"
+        },
+        "missing_values": "1078"
+    },
+    "nna18_1i": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "Others (specify)": "9"
+        },
+        "missing_values": "1058"
+    },
+    "nna18_1j": {
+        "meaning": "Last 4 weeks which household members worked business before closed",
+        "values_label": {
+            "Nobody": "10"
+        },
+        "missing_values": "1075"
+    },
+    "nna19_1": {
+        "meaning": "# persons beside HHM work business last month",
+        "values_label": {
+            "Workers": "1",
+            "DK": "8"
+        },
+        "missing_values": "22"
+    },
+    "nna19_2": {
+        "meaning": "# people work business last month",
+        "missing_values": "22"
+    },
+    "nna20a": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Written contract to its workers": "1"
+        },
+        "missing_values": "1067"
+    },
+    "nna20b": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Oral or contract": "2"
+        },
+        "missing_values": "1035"
+    },
+    "nna20c": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Social Security (IMSS)": "3"
+        },
+        "missing_values": "1046"
+    },
+    "nna20d": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Private medical insurance by the business (different than IMSS)": "4"
+        },
+        "missing_values": "1086"
+    },
+    "nna20e": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "AFORE or SAR (retirement savings system)": "5"
+        },
+        "missing_values": "1069"
+    },
+    "nna20f": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Does not have social benefits": "9"
+        },
+        "missing_values": "116"
+    },
+    "nna20g": {
+        "meaning": "Benefits workers",
+        "values_label": {
+            "Incapacity/Illness": "10"
+        },
+        "missing_values": "1067"
+    },
+    "nna21_1": {
+        "meaning": "Last 12 months money business produce?",
+        "values_label": {
+            "Value": "1",
+            "DK": "8"
+        },
+        "missing_values": "392"
+    },
+    "nna21_2": {
+        "meaning": "Quantity business produce last month before closed",
+        "missing_values": "392"
+    },
+    "nna22_1": {
+        "meaning": "Last 12 month profit/losses business",
+        "values_label": {
+            "Value in pesos of gross profits": "1",
+            "Value in pesos of net profits (costs discounted)": "2",
+            "Value in pesos of losses": "3",
+            "DK": "8"
+        },
+        "missing_values": "474"
+    },
+    "nna22_11": {
+        "meaning": "Value in pesos gross profits",
+        "missing_values": "852"
+    },
+    "nna22_12": {
+        "meaning": "Value in pesos net profits",
+        "missing_values": "774"
+    },
+    "nna22_13": {
+        "meaning": "Value in pesos losses",
+        "missing_values": "1036"
+    },
+    "secuencia": {
+        "meaning": "Sequence",
+        "missing_values": "0"
+    }
+}

@@ -147,6 +147,8 @@ def build_schema_text(
             f"""
 TABLE: {table}
 
+N_ROWS: {len(df)}
+
 COLUMNS:
 {list(df.columns)}
 

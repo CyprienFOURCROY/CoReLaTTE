@@ -1,0 +1,144 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "su01": {
+        "meaning": "HHM use a plot/land for showing/farming/vegetable",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "43"
+    },
+    "su03": {
+        "meaning": "# Total plots/pieces of land",
+        "missing_values": "7684"
+    },
+    "su021": {
+        "meaning": "Parcels/Owned Land",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "7684"
+    },
+    "su022": {
+        "meaning": "# Parcels/someone else's land",
+        "missing_values": "7815"
+    },
+    "su22a_1": {
+        "meaning": "Weight/measure unit a roll",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        },
+        "missing_values": "9082"
+    },
+    "su22a_2": {
+        "meaning": "Weight/measure a Roll",
+        "missing_values": "9082"
+    },
+    "su22b_1": {
+        "meaning": "Weight/measure unit gross",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        },
+        "missing_values": "9088"
+    },
+    "su22b_2": {
+        "meaning": "Weight/measure gross",
+        "missing_values": "9088"
+    },
+    "su22c_1": {
+        "meaning": "Unit sack",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        },
+        "missing_values": "9035"
+    },
+    "su22c_2": {
+        "meaning": "Other weight/measure sack",
+        "missing_values": "9035"
+    },
+    "su22d_1": {
+        "meaning": "Other Weight/measure unit",
+        "values_label": {
+            "Kg.": "1",
+            "Ton.": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        },
+        "missing_values": "9052"
+    },
+    "su22d_21": {
+        "meaning": "Other weight/measure",
+        "missing_values": "9052"
+    },
+    "su22e_1": {
+        "meaning": "Weight/measure other unit",
+        "values_label": {
+            "Kg": "1",
+            "Ton": "2",
+            "Cubic meters": "3",
+            "DK": "8"
+        },
+        "missing_values": "9084"
+    },
+    "su22e_21": {
+        "meaning": "Other weight/measure",
+        "missing_values": "9084"
+    },
+    "su231": {
+        "meaning": "Expense in chemical fertilizer",
+        "missing_values": "8608"
+    },
+    "su232": {
+        "meaning": "Expense in manure",
+        "missing_values": "8927"
+    },
+    "su233": {
+        "meaning": "Expense in pesticides",
+        "missing_values": "8804"
+    },
+    "su234": {
+        "meaning": "Expense in seeds",
+        "missing_values": "8863"
+    },
+    "su235": {
+        "meaning": "Expense in tractor rental",
+        "missing_values": "8772"
+    },
+    "su236": {
+        "meaning": "Expense in yoke",
+        "missing_values": "8963"
+    },
+    "su237": {
+        "meaning": "Expense in workers",
+        "missing_values": "8848"
+    },
+    "su238": {
+        "meaning": "Expense in water",
+        "missing_values": "8922"
+    },
+    "su239": {
+        "meaning": "Expense in fuel",
+        "missing_values": "8973"
+    },
+    "su2310": {
+        "meaning": "Doesn't apply/specify/remember",
+        "missing_values": "9079"
+    },
+    "su2311_1": {
+        "meaning": "Other expense specify",
+        "missing_values": "9045"
+    }
+}

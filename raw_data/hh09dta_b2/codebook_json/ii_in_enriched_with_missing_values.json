@@ -1,0 +1,392 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "in01a2_1": {
+        "meaning": "Last 12 months amount received PROCAMPO",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "84"
+    },
+    "in01a2_2": {
+        "meaning": "Last 12 months amount received PROCAMPO",
+        "missing_values": "8560"
+    },
+    "in01a3_1": {
+        "meaning": "Last 12 months amount received TU CASA Y VIVIENDA RURAL",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "74"
+    },
+    "in01a3_2": {
+        "meaning": "Last 12 months amount received TU CASA Y VIVIENDA SOCIAL",
+        "missing_values": "9080"
+    },
+    "in01a5_1": {
+        "meaning": "Last 12 months amount received COINVERSION SOCIAL",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "71"
+    },
+    "in01a5_2": {
+        "meaning": "Last 12 months amount received COINVERSION SOCIAL",
+        "missing_values": "9092"
+    },
+    "in01a6_1": {
+        "meaning": "Last 12 months amount received PET",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "71"
+    },
+    "in01a6_2": {
+        "meaning": "Last 12 months amount received PET",
+        "missing_values": "9085"
+    },
+    "in01a7_1": {
+        "meaning": "Last 12 months amount received ALIANZA PARA EL CAMPO",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "71"
+    },
+    "in01a7_2": {
+        "meaning": "Last 12 months amount received ALIANZA PARA EL CAMPO",
+        "missing_values": "9078"
+    },
+    "in01a9_1": {
+        "meaning": "Last 12 months amount received FONAES",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "73"
+    },
+    "in01a9_2": {
+        "meaning": "Last 12 months amount received FONAES",
+        "missing_values": "9089"
+    },
+    "in01a10_1": {
+        "meaning": "Last 12 months amount received Other Government Program",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "116"
+    },
+    "in01a10_2": {
+        "meaning": "Last 12 months amount received Other Government Program",
+        "missing_values": "8870"
+    },
+    "in01a11_1": {
+        "meaning": "Last 12 months amount received 70 y más",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "75"
+    },
+    "in01a11_2": {
+        "meaning": "Last 12 months amount received 70 y más",
+        "missing_values": "8508"
+    },
+    "in01a12_1": {
+        "meaning": "Last 12 months amount received apoyo alimentario",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "74"
+    },
+    "in01a12_21": {
+        "meaning": "Last 12 months amount received apoyo alimentario",
+        "missing_values": "8958"
+    },
+    "in01a13_1": {
+        "meaning": "Last 12 months amount received opciones productivas",
+        "values_label": {
+            "Participates in the program and have received income": "1",
+            "Participate in the program but have not received income": "2",
+            "None of the household members participate in the program": "3",
+            "DK": "8"
+        },
+        "missing_values": "72"
+    },
+    "in01a13_21": {
+        "meaning": "Last 12 months amount received opciones productivas",
+        "missing_values": "9084"
+    },
+    "in01b_1": {
+        "meaning": "Last 12 months amount received scholarship not progresa?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "69"
+    },
+    "in01b_2": {
+        "meaning": "Last 12 months amount received scholarship not progresa",
+        "missing_values": "8928"
+    },
+    "in01c_1": {
+        "meaning": "Last 12 months amount received firing liquidation?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "68"
+    },
+    "in01c_2": {
+        "meaning": "Last 12 months amount received firing liquidation",
+        "missing_values": "9075"
+    },
+    "in01d_1": {
+        "meaning": "Last 12 months amount received gift family?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "70"
+    },
+    "in01d_2": {
+        "meaning": "Last 12 months amount received gift family",
+        "missing_values": "8900"
+    },
+    "in01e_1": {
+        "meaning": "Last 12 months amount received pension?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "63"
+    },
+    "in01e_2": {
+        "meaning": "Last 12 months amount received pension",
+        "missing_values": "8682"
+    },
+    "in01f_1": {
+        "meaning": "Last 12 months amount received life insurance?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "61"
+    },
+    "in01f_2": {
+        "meaning": "Last 12 months amount received life insurance",
+        "missing_values": "9088"
+    },
+    "in01g_1": {
+        "meaning": "Total income received inheritance?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "60"
+    },
+    "in01g_2": {
+        "meaning": "Amount income received inheritance",
+        "missing_values": "9073"
+    },
+    "in01h_1": {
+        "meaning": "Total income received sale land?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "56"
+    },
+    "in01h_2": {
+        "meaning": "Amount income received sale land",
+        "missing_values": "9052"
+    },
+    "in01i_1": {
+        "meaning": "Total income received sale machinary?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "55"
+    },
+    "in01i_2": {
+        "meaning": "Amount income received sale machinary",
+        "missing_values": "9069"
+    },
+    "in01j_1": {
+        "meaning": "Total income received sale values?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "56"
+    },
+    "in01j_2": {
+        "meaning": "Amount income received sale values",
+        "missing_values": "9091"
+    },
+    "in01k_1": {
+        "meaning": "Total income received other nonlabor income?",
+        "values_label": {
+            "Value in pesos": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "82"
+    },
+    "in01k_21": {
+        "meaning": "Amount income received other nonlabor income",
+        "missing_values": "9074"
+    },
+    "in02a2": {
+        "meaning": "Amount received directly PROCAMPO",
+        "missing_values": "8564"
+    },
+    "in02a3": {
+        "meaning": "Amount received directly Tu Casa y Vivienda Rural",
+        "missing_values": "9080"
+    },
+    "in02a5": {
+        "meaning": "Amount received directly Coinversión Social",
+        "missing_values": "9092"
+    },
+    "in02a6": {
+        "meaning": "Amount received directly PET Programa de Empleo Temporal",
+        "missing_values": "9085"
+    },
+    "in02a7": {
+        "meaning": "Amount received directly Alianza para el Campo",
+        "missing_values": "9078"
+    },
+    "in02a9": {
+        "meaning": "Amount received directly Fonaes",
+        "missing_values": "9089"
+    },
+    "in02a10": {
+        "meaning": "Amount received directly Other Government Program",
+        "missing_values": "8872"
+    },
+    "in02a11": {
+        "meaning": "Amount received directly 70 y más",
+        "missing_values": "8510"
+    },
+    "in02a12": {
+        "meaning": "Amount received directly Apoyo Alimentario",
+        "missing_values": "8958"
+    },
+    "in02a13": {
+        "meaning": "Amount received directly Opciones Productivas",
+        "missing_values": "9084"
+    },
+    "in02b": {
+        "meaning": "Amount received directly Scholarship Not Oportunidades",
+        "missing_values": "8929"
+    },
+    "in02c": {
+        "meaning": "Amount received directly Compensation illness/dismissal",
+        "missing_values": "9075"
+    },
+    "in02d": {
+        "meaning": "Amount received directly Gift Family",
+        "missing_values": "8903"
+    },
+    "in02e": {
+        "meaning": "Amount received directly Retirement/Pension",
+        "missing_values": "8685"
+    },
+    "in02f": {
+        "meaning": "Amount received directly Life Insurance",
+        "missing_values": "9088"
+    },
+    "in02g": {
+        "meaning": "Amount received directly Inheritance/Chance Games",
+        "missing_values": "9074"
+    },
+    "in02h": {
+        "meaning": "Amount received directly Sell houses/vehicles",
+        "missing_values": "9053"
+    },
+    "in02i": {
+        "meaning": "Amount received directly Sell Machinery",
+        "missing_values": "9070"
+    },
+    "in02j": {
+        "meaning": "Amount received directly Sell Stocks/Bonuses",
+        "missing_values": "9091"
+    },
+    "in02k": {
+        "meaning": "Amount received directly Other Non Labor Income",
+        "missing_values": "9074"
+    },
+    "in03a": {
+        "meaning": "Last 12 months received Liconsa Milk?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "53"
+    },
+    "in03b": {
+        "meaning": "Last 12 months received Pronjag?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "52"
+    },
+    "in03c_1": {
+        "meaning": "Last 12 months received Other Government Help?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "52"
+    },
+    "in03d": {
+        "meaning": "Last 12 months received daycare/estancias infantiles",
+        "values_label": {
+            "Yes": "1",
+            "No": "3",
+            "DK": "8"
+        },
+        "missing_values": "57"
+    }
+}

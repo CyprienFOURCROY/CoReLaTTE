@@ -69,6 +69,20 @@ def build_explanation_dir(results_dir: Path, question_type: str, model_name: str
     return results_dir / "explanation" / question_type / model_name / f"v{version}" / dataset
 
 
+def combine_results(existing_df: pd.DataFrame, new_rows: list[dict]) -> pd.DataFrame:
+    combined = pd.concat(
+        [existing_df, pd.DataFrame(new_rows)],
+        ignore_index=True,
+    )
+
+    # already_done only tracks "success" rows, so a query that previously
+    # ended in "failed" gets retried and would otherwise append a second row
+    # for the same query_name. Keep only the most recently written row.
+    combined = combined.drop_duplicates(subset="query_name", keep="last")
+
+    return combined[RESULT_COLUMNS]
+
+
 def load_existing_results(output_path: Path) -> pd.DataFrame:
     if output_path.exists():
         df = pd.read_csv(output_path)
@@ -382,10 +396,7 @@ def main() -> None:
             print("\nInterrupted. Saving progress before exit...")
 
             rows_to_append.append(row)
-            combined = pd.concat(
-                [results_df, pd.DataFrame(rows_to_append)],
-                ignore_index=True,
-            )[RESULT_COLUMNS]
+            combined = combine_results(results_df, rows_to_append)
             combined.to_csv(output_path, index=False)
 
             raise
@@ -412,11 +423,7 @@ def main() -> None:
 
         rows_to_append.append(row)
 
-        combined = pd.concat(
-            [results_df, pd.DataFrame(rows_to_append)],
-            ignore_index=True,
-        )[RESULT_COLUMNS]
-
+        combined = combine_results(results_df, rows_to_append)
         combined.to_csv(output_path, index=False)
 
     print("=" * 80)

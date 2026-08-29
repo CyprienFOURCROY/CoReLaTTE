@@ -1,0 +1,51 @@
+{
+    "edad": {
+        "meaning": "Age Interviewed",
+        "missing_values": "0"
+    },
+    "ent": {
+        "meaning": "State",
+        "values_label": {
+            "Baja California": "2",
+            "Baja California Sur": "3",
+            "Campeche": "4",
+            "Coahuila": "5",
+            "Colima": "6",
+            "Chiapas": "7",
+            "Distrito Federal": "9",
+            "Durango": "10",
+            "Guanajuato": "11",
+            "Guerrero": "12",
+            "Hidalgo": "13",
+            "Jalisco": "14",
+            "Estado de México": "15",
+            "Michoacán": "16",
+            "Morelos": "17",
+            "Nayarit": "18",
+            "Nuevo León": "19",
+            "Oaxaca": "20",
+            "Puebla": "21",
+            "Querétaro": "22",
+            "Sinaloa": "25",
+            "Sonora": "26",
+            "Tamaulipas": "28",
+            "Tlaxcala": "29",
+            "Veracruz": "30",
+            "Yucatán": "31",
+            "Zacatecas": "32"
+        },
+        "missing_values": "0"
+    },
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "ls": {
+        "meaning": "Individual ID",
+        "missing_values": "0"
+    },
+    "rel": {
+        "meaning": "Result Interview",
+        "missing_values": "0"
+    }
+}

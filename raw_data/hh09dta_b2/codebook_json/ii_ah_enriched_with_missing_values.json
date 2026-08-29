@@ -1,0 +1,306 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "ls": {
+        "meaning": "Individual ID",
+        "missing_values": "0"
+    },
+    "ah03a": {
+        "meaning": "HHM owns living house?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03b": {
+        "meaning": "HHM owns other house/building?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03c": {
+        "meaning": "HHM owns bicycles?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03d": {
+        "meaning": "HHM owns motor vehicle?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03d1": {
+        "meaning": "HHM owns motor car?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03e": {
+        "meaning": "HHM owns electronic device?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03f": {
+        "meaning": "HHM owns wash machine/stove?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03g": {
+        "meaning": "HHM owns domestic appliance?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03h": {
+        "meaning": "HHM owns financial assets/afores?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03i": {
+        "meaning": "HHM owns machinary/tractor?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03j": {
+        "meaning": "HHM owns bull/cow?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03k": {
+        "meaning": "HHM owns horses/mules?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03l": {
+        "meaning": "HHM owns pigs/goats?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03m": {
+        "meaning": "HHM owns poultry?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "47"
+    },
+    "ah03n": {
+        "meaning": "HHM owns other assets?",
+        "values_label": {
+            "Yes": "1",
+            "No": "3"
+        },
+        "missing_values": "53"
+    },
+    "ah04a_1": {
+        "meaning": "Value living house?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "3899"
+    },
+    "ah04a_2": {
+        "meaning": "Value living house",
+        "missing_values": "3899"
+    },
+    "ah04b_1": {
+        "meaning": "Value other house?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "7744"
+    },
+    "ah04b_2": {
+        "meaning": "Value other house",
+        "missing_values": "7744"
+    },
+    "ah04c_1": {
+        "meaning": "Value bicycles?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "5848"
+    },
+    "ah04c_2": {
+        "meaning": "Value bicycles",
+        "missing_values": "5848"
+    },
+    "ah04d_1": {
+        "meaning": "Value motor vehicle?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8217"
+    },
+    "ah04d_2": {
+        "meaning": "Value motor vehicle",
+        "missing_values": "8217"
+    },
+    "ah04d1_1": {
+        "meaning": "Value motor car?",
+        "missing_values": "5741"
+    },
+    "ah04d1_2": {
+        "meaning": "Value motor car",
+        "missing_values": "6085"
+    },
+    "ah04e_1": {
+        "meaning": "Value electronic device?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "1553"
+    },
+    "ah04e_2": {
+        "meaning": "Value electronic device",
+        "missing_values": "1553"
+    },
+    "ah04f_1": {
+        "meaning": "Value wash machine/stove?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "1865"
+    },
+    "ah04f_2": {
+        "meaning": "Value wash machine/stove",
+        "missing_values": "1865"
+    },
+    "ah04g_1": {
+        "meaning": "Value domestic appliance?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "2158"
+    },
+    "ah04g_2": {
+        "meaning": "Value domestic appliance",
+        "missing_values": "2158"
+    },
+    "ah04h_1": {
+        "meaning": "Value financial assets/afores?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8450"
+    },
+    "ah04h_2": {
+        "meaning": "Value financial assets/afores",
+        "missing_values": "8450"
+    },
+    "ah04i_1": {
+        "meaning": "Value machinary/tractor?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8949"
+    },
+    "ah04i_2": {
+        "meaning": "Value machinary/tractor",
+        "missing_values": "8949"
+    },
+    "ah04j_1": {
+        "meaning": "Value bull/cow?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8750"
+    },
+    "ah04j_2": {
+        "meaning": "Value bull/cow",
+        "missing_values": "8750"
+    },
+    "ah04k_1": {
+        "meaning": "Value horses/mules?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8693"
+    },
+    "ah04k_2": {
+        "meaning": "Value horses/mules",
+        "missing_values": "8693"
+    },
+    "ah04l_1": {
+        "meaning": "Value pigs/goats?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8663"
+    },
+    "ah04l_2": {
+        "meaning": "Value pigs/goats",
+        "missing_values": "8663"
+    },
+    "ah04m_1": {
+        "meaning": "Value poultry?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "8137"
+    },
+    "ah04m_2": {
+        "meaning": "Value poultry",
+        "missing_values": "8137"
+    },
+    "ah04n_1": {
+        "meaning": "Value other assets?",
+        "values_label": {
+            "Yes": "1",
+            "DK": "8"
+        },
+        "missing_values": "9053"
+    },
+    "ah04n_2": {
+        "meaning": "Value other assets",
+        "missing_values": "9053"
+    }
+}

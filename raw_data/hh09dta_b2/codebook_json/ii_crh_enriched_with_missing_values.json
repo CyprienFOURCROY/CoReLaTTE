@@ -1,0 +1,218 @@
+{
+    "folio": {
+        "meaning": "Household ID",
+        "missing_values": "0"
+    },
+    "crh01_1a": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Do not have savings": "1"
+        },
+        "missing_values": "1160"
+    },
+    "crh01_1b": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Bank": "2"
+        },
+        "missing_values": "8448"
+    },
+    "crh01_1c": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Cooperative": "3"
+        },
+        "missing_values": "9062"
+    },
+    "crh01_1d": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Savings, fund/cash": "4"
+        },
+        "missing_values": "8920"
+    },
+    "crh01_1e": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Batch": "5"
+        },
+        "missing_values": "9080"
+    },
+    "crh01_1f": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Withdrawn": "6"
+        },
+        "missing_values": "9092"
+    },
+    "crh01_1g": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Friend/Relative out of the household": "7"
+        },
+        "missing_values": "9078"
+    },
+    "crh01_1h": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Voluntary accounts in the Afores": "8"
+        },
+        "missing_values": "9079"
+    },
+    "crh01_1i": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Solidarity / Jointly cash": "9"
+        },
+        "missing_values": "9086"
+    },
+    "crh01_1j": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "At your household": "10"
+        },
+        "missing_values": "8883"
+    },
+    "crh01_1k": {
+        "meaning": "Which type of institution HHM have savings",
+        "values_label": {
+            "Other (specify)": "11"
+        },
+        "missing_values": "9062"
+    },
+    "crh02_1": {
+        "meaning": "Last 12 months money owed credit/loans",
+        "values_label": {
+            "Value": "1",
+            "Did not incur debts in the last 12 months": "2",
+            "DK": "8"
+        },
+        "missing_values": "142"
+    },
+    "crh02_2": {
+        "meaning": "Last 12 months money value in pesos owed credit/loans",
+        "missing_values": "6813"
+    },
+    "crh02a": {
+        "meaning": "More $500 / less $500?",
+        "values_label": {
+            "Less than $500": "1",
+            "More than $500": "2"
+        },
+        "missing_values": "9003"
+    },
+    "crh02b": {
+        "meaning": "More $1000 / less $1000?",
+        "values_label": {
+            "Less than $1,000": "1",
+            "More than $1,000": "2"
+        },
+        "missing_values": "9043"
+    },
+    "crh02c": {
+        "meaning": "More $5000 / less $5000?",
+        "values_label": {
+            "Less than $5,000": "1",
+            "More than $5,000": "2"
+        },
+        "missing_values": "9047"
+    },
+    "crh02d": {
+        "meaning": "More $10000 / less $10000?",
+        "values_label": {
+            "Less than $10,000": "1",
+            "More than $10,000": "2"
+        },
+        "missing_values": "9064"
+    },
+    "crh03_1": {
+        "meaning": "How much money has the household paid in the last 12 months",
+        "values_label": {
+            "Value": "1",
+            "Did not pay anything in the last 12 months": "2",
+            "Do not have debts": "3",
+            "DK": "8"
+        },
+        "missing_values": "199"
+    },
+    "crh03_2": {
+        "meaning": "Value money paid in pesos last 12 months",
+        "missing_values": "7129"
+    },
+    "crh03a": {
+        "meaning": "More $500 / less $500?",
+        "values_label": {
+            "Less than $500": "1",
+            "More than $500": "2"
+        },
+        "missing_values": "8949"
+    },
+    "crh03b": {
+        "meaning": "More $1000 / less $1000?",
+        "values_label": {
+            "Less than $1,000": "1",
+            "More than $1,000": "2"
+        },
+        "missing_values": "9008"
+    },
+    "crh03c": {
+        "meaning": "More $5000 / less $5000?",
+        "values_label": {
+            "Less than $5,000": "1",
+            "More than $5,000": "2"
+        },
+        "missing_values": "9018"
+    },
+    "crh03d": {
+        "meaning": "More $10000 / less $10000?",
+        "values_label": {
+            "Less than $10,000": "1",
+            "More than $10,000": "2"
+        },
+        "missing_values": "9051"
+    },
+    "crh04_1": {
+        "meaning": "Total debts + interests",
+        "values_label": {
+            "Value": "1",
+            "DK": "8"
+        },
+        "missing_values": "6573"
+    },
+    "crh04_2": {
+        "meaning": "Value pesos total debts + interests",
+        "missing_values": "6573"
+    },
+    "crh04a": {
+        "meaning": "More $500 / less $500?",
+        "values_label": {
+            "Less than $500": "1",
+            "More than $500": "2"
+        },
+        "missing_values": "8922"
+    },
+    "crh04b": {
+        "meaning": "More $1000 / less $1000?",
+        "values_label": {
+            "Less than $1,000": "1",
+            "More than $1,000": "2"
+        },
+        "missing_values": "8996"
+    },
+    "crh04c": {
+        "meaning": "More $5000 / less $5000?",
+        "values_label": {
+            "Less than $5,000": "1",
+            "More than $5,000": "2"
+        },
+        "missing_values": "9012"
+    },
+    "crh04d": {
+        "meaning": "More $10000 / less $10000?",
+        "values_label": {
+            "Less than $10,000": "1",
+            "More than $10,000": "2"
+        },
+        "missing_values": "9042"
+    }
+}

@@ -225,6 +225,21 @@ select:focus, input:focus {
 .badge.failed { color: var(--warn); background: var(--warn-bg); }
 .badge.pending { color: var(--text-faint); background: transparent; border: 1px solid var(--border); }
 
+.bias-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.hidden {
+  display: none !important;
+}
+
 /* ---------- detail ---------- */
 
 .detail {
