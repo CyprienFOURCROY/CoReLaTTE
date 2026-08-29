@@ -229,6 +229,8 @@ python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py --version 1
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_creating_gold_answer.py --version 2
 ```
 
+This only processes rows where `check_if_code_works` is `yes` in that version's CSV — a query that hasn't been through `SQL_TYPE_Check_Code.py` yet (still `no`) is silently skipped, not an error. If a newly added query isn't getting a gold answer, run `SQL_TYPE_Check_Code.py --version {n}` for it first.
+
 Repair scripts that failed validation:
 
 ```bash
