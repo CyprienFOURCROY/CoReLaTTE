@@ -197,7 +197,12 @@ def execute_generated_code(
 # MAIN
 # ==================================================
 
-def main(model: str = "gpt-5", version: int = 1) -> None:
+def main(
+    model: str = "gpt-5",
+    version: int = 1,
+    queries: list[str] | None = None,
+    force: bool = False,
+) -> None:
     load_dotenv()
 
     csv_path = get_csv_path(version)
@@ -219,12 +224,31 @@ def main(model: str = "gpt-5", version: int = 1) -> None:
 
     df = pd.read_csv(csv_path)
 
+    query_filter = set(queries) if queries else None
+
     print(f"Version: {version}")
-    print(f"Rows to process: {len(df)}")
+    print(f"Rows in CSV: {len(df)}")
+    if query_filter:
+        print(f"Restricted to: {sorted(query_filter)} (always (re)run, ignoring existing predictions)")
+    elif force:
+        print("Force mode: reprocessing every row, ignoring existing predictions")
+    else:
+        print("Default mode: only rows without an existing prediction file are processed")
     print(f"Saving scripts to: {script_root}")
     print(f"Saving predictions to: {pred_root}")
 
+    n_skipped = 0
+
     for idx, row in df.iterrows():
+        query_name = query_name_from_script(row["python_script_path"])
+
+        if query_filter is not None:
+            if query_name not in query_filter:
+                continue
+        elif not force and prediction_path(query_name, version=version).exists():
+            n_skipped += 1
+            continue
+
         print("=" * 80)
         print(f"ROW {idx}")
 
@@ -233,10 +257,6 @@ def main(model: str = "gpt-5", version: int = 1) -> None:
             source_dataset = row["source_dataset"]
             table_names = parse_json_list(row["tables"])
             text_files = parse_json_list(row["text"])
-
-            query_name = query_name_from_script(
-                row["python_script_path"]
-            )
 
             script_path = semeval_script_path(query_name, version=version)
             pred_path = prediction_path(query_name, version=version)
@@ -285,11 +305,35 @@ def main(model: str = "gpt-5", version: int = 1) -> None:
             print("Status: failed")
             print(type(e).__name__, ":", e)
 
+    print("=" * 80)
+    if n_skipped:
+        print(f"Skipped (already had a prediction): {n_skipped}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--version", type=int, choices=[1, 2], default=1)
     parser.add_argument("--model", type=str, default="gpt-5")
+    parser.add_argument(
+        "--queries",
+        type=str,
+        nargs="+",
+        default=None,
+        help=(
+            "Only (re)run these specific query names (e.g. query_000013 query_000014). "
+            "Always processed even if a prediction already exists."
+        ),
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Reprocess every row, ignoring existing predictions (old default behavior).",
+    )
     args = parser.parse_args()
 
-    main(model=args.model, version=args.version)
+    main(
+        model=args.model,
+        version=args.version,
+        queries=args.queries,
+        force=args.force,
+    )

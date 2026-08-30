@@ -259,6 +259,16 @@ python3 evaluation/generate_and_execute_semeval.py --version 1
 python3 evaluation/generate_and_execute_semeval.py --version 2
 ```
 
+By default this only (re)runs queries that don't already have a saved prediction — safe to re-run after adding new queries, it won't re-spend API calls on ones already done. Two options change that:
+
+```bash
+# Force-(re)run only specific queries, even if they already have a prediction
+python3 evaluation/generate_and_execute_semeval.py --version 2 --queries query_000013 query_000014
+
+# Reprocess every row regardless of existing predictions
+python3 evaluation/generate_and_execute_semeval.py --version 2 --force
+```
+
 2. Judge each prediction against its gold answer with an LLM judge:
 
 ```bash

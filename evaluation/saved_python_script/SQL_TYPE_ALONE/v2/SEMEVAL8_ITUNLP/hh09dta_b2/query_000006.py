@@ -5,38 +5,32 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     df_in = tables["ii_in"].copy()
     df_vlh = tables["ii_vlh"].copy()
 
-    # Oaxaca individuals
-    oax_ind = df_portad[df_portad["ent"] == 20]
+    # Oaxaca adult average age (edad >= 18)
+    mask_oax_adult = (df_portad["ent"] == 20) & (df_portad["edad"] >= 18)
+    avg_adult_age = df_portad.loc[mask_oax_adult, "edad"].mean()
 
-    # Compute Oaxaca average adult age (18+)
-    oax_adults = oax_ind[oax_ind["edad"] >= 18]
-    avg_adult_age = oax_adults["edad"].mean()
+    # Households in Oaxaca with at least one adult older than Oaxaca's average adult age
+    mask_oax_older = (df_portad["ent"] == 20) & (df_portad["edad"] >= 18) & (df_portad["edad"] > avg_adult_age)
+    oax_older_folios = set(df_portad.loc[mask_oax_older, "folio"].dropna().unique())
 
-    # Households with at least one adult older than Oaxaca's average adult age
-    older_adult_hh = oax_ind[(oax_ind["edad"] >= 18) & (oax_ind["edad"] > avg_adult_age)]
-    hh_with_older_adult = set(older_adult_hh["folio"].dropna().unique())
+    # Households that received positive amount from Other Government Program (in02a10 > 0)
+    mask_prog_pos = df_in["in02a10"].notna() & (df_in["in02a10"] > 0)
+    df_prog = df_in.loc[mask_prog_pos, ["folio", "in02a10"]]
 
-    # Households in Oaxaca
-    oax_households = set(oax_ind["folio"].dropna().unique())
+    # Filter to Oaxaca households with adult older than average
+    df_target = df_prog[df_prog["folio"].isin(oax_older_folios)]
 
-    # Filter households that received positive amount from Other Government Program
-    df_in_oax = df_in[df_in["folio"].isin(oax_households)]
-    df_in_pos = df_in_oax[df_in_oax["in02a10"] > 0]
+    # Merge with vlh to get 'feel safe at home' score (vlh04)
+    df_target = df_target.merge(df_vlh[["folio", "vlh04"]], on="folio", how="left")
 
-    # Intersect with households having at least one older adult
-    df_target = df_in_pos[df_in_pos["folio"].isin(hh_with_older_adult)]
-
-    # Merge with safety perception
-    df_merged = df_target.merge(df_vlh[["folio", "vlh04"]], on="folio", how="left")
-
-    avg_vlh04 = df_merged["vlh04"].mean()
-    avg_in02a10 = df_merged["in02a10"].mean()
-    num_households = df_merged["folio"].nunique()
+    avg_vlh04 = df_target["vlh04"].mean()
+    avg_in02a10 = df_target["in02a10"].mean()
+    n_households = df_target["folio"].nunique()
 
     return pd.DataFrame(
         {
             "avg_vlh04": [avg_vlh04],
             "avg_in02a10": [avg_in02a10],
-            "num_households": [num_households],
+            "n_households": [n_households],
         }
     )

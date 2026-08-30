@@ -1,81 +1,28 @@
 import pandas as pd
+import numpy as np
 
 def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    df_portad = tables["ii_portad"].copy()
-    df_vlh = tables["ii_vlh"].copy()
+    df_portad = tables["ii_portad"][["folio", "ent"]]
+    df_vlh = tables["ii_vlh"][["folio", "vlh08a", "vlh04", "vlh06"]]
 
-    # Household -> state mapping (use first occurrence per folio)
-    df_ent = (
-        df_portad[["folio", "ent"]]
-        .drop_duplicates(subset=["folio"])
-        .copy()
-    )
+    df = pd.merge(df_vlh, df_portad, on="folio", how="inner")
 
-    # Merge household safety/violence with state
-    df = df_vlh.merge(df_ent, on="folio", how="left")
+    df_yes = df[df["vlh08a"] == 1].copy()
+    if df_yes.empty:
+        return pd.DataFrame(columns=["ent", "avg_feel_safe", "avg_leave_lights", "n_households"])
 
-    # Filter: Yes to knowing family/friend robbed in last 5 years
-    df_yes = df[df["vlh08a"] == 1.0].copy()
+    df_yes["vlh06"] = df_yes["vlh06"].replace(9, np.nan)
 
-    # Clean vlh06 (9 = NA)
-    df_yes["vlh06_clean"] = df_yes["vlh06"].where(df_yes["vlh06"] != 9.0)
-
-    # Prepare state code as integer (nullable)
-    df_yes["ent_code"] = df_yes["ent"].astype("Int64")
-
-    # Aggregate by state
-    agg = (
-        df_yes.groupby("ent_code", dropna=True)
+    result = (
+        df_yes.groupby("ent", as_index=False)
         .agg(
-            avg_feel_safe_at_home=("vlh04", "mean"),
-            avg_leave_lights_as_security=("vlh06_clean", "mean"),
-            households=("folio", "nunique"),
+            avg_feel_safe=("vlh04", "mean"),
+            avg_leave_lights=("vlh06", "mean"),
+            n_households=("folio", "size"),
         )
-        .reset_index()
     )
 
-    # Keep states with at least 5 households
-    agg = agg[agg["households"] >= 5].copy()
+    result = result[result["n_households"] >= 5]
+    result = result.sort_values(by=["avg_feel_safe", "avg_leave_lights", "ent"], ascending=[True, True, True]).reset_index(drop=True)
 
-    # Order from safest (lower avg_feel_safe_at_home) to least safe
-    agg = agg.sort_values(
-        by=["avg_feel_safe_at_home", "avg_leave_lights_as_security"],
-        ascending=[True, True],
-        kind="mergesort",
-    )
-
-    # Optional: map state codes to names from provided metadata
-    ent_to_state = {
-        2: "Baja California",
-        3: "Baja California Sur",
-        4: "Campeche",
-        5: "Coahuila",
-        6: "Colima",
-        7: "Chiapas",
-        9: "Distrito Federal",
-        10: "Durango",
-        11: "Guanajuato",
-        12: "Guerrero",
-        13: "Hidalgo",
-        14: "Jalisco",
-        15: "Estado de México",
-        16: "Michoacán",
-        17: "Morelos",
-        18: "Nayarit",
-        19: "Nuevo León",
-        20: "Oaxaca",
-        21: "Puebla",
-        22: "Querétaro",
-        25: "Sinaloa",
-        26: "Sonora",
-        28: "Tamaulipas",
-        29: "Tlaxcala",
-        30: "Veracruz",
-        31: "Yucatán",
-        32: "Zacatecas",
-    }
-    agg["state"] = agg["ent_code"].map(lambda x: ent_to_state.get(int(x)) if pd.notna(x) else None)
-    agg = agg.rename(columns={"ent_code": "ent"})
-
-    # Final column order
-    return agg[["state", "ent", "avg_feel_safe_at_home", "avg_leave_lights_as_security", "households"]]
+    return result

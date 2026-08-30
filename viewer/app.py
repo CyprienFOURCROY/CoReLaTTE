@@ -60,6 +60,12 @@ def safe_value(value, default=""):
     return value
 
 
+def safe_int_value(value):
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return None
+    return int(value)
+
+
 def parse_json_list(value):
     if isinstance(value, list):
         return value
@@ -272,6 +278,7 @@ def api_queries():
             "tables": parse_json_list(row["tables"]),
             "check_if_code_works": safe_value(row.get("check_if_code_works")),
             "bias": safe_value(row.get("bias")),
+            "number_of_nested_queries": safe_int_value(row.get("number_of_nested_queries")),
             "eval": None,
         }
 
@@ -309,6 +316,7 @@ def api_query_detail():
         "text_files": parse_json_list(row["text"]),
         "check_if_code_works": safe_value(row.get("check_if_code_works")),
         "bias": safe_value(row.get("bias")),
+        "number_of_nested_queries": safe_int_value(row.get("number_of_nested_queries")),
         "gold_script_path": str(gold_script_path.relative_to(ROOT)),
         "gold_script": read_text_or_none(gold_script_path),
         "gold_answer": read_csv_preview(gold_path),

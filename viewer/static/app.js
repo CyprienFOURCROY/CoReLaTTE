@@ -45,6 +45,14 @@ async function fetchJSON(url) {
   return res.json();
 }
 
+function nestedQueriesCompact(n) {
+  return n === null || n === undefined ? "N –" : `N ${n}`;
+}
+
+function nestedQueriesFull(n) {
+  return `Nested queries: ${n === null || n === undefined ? "not defined" : n}`;
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -229,6 +237,7 @@ function renderSidebar() {
             <span class="dot ${dotCls}" title="check_if_code_works: ${escapeHtml(q.check_if_code_works || "unknown")}"></span>
             <span class="query-name">${escapeHtml(q.query_name)}</span>
             ${q.bias ? `<span class="bias-tag">${escapeHtml(q.bias)}</span>` : ""}
+            <span class="nested-tag" title="${escapeHtml(nestedQueriesFull(q.number_of_nested_queries))}">${escapeHtml(nestedQueriesCompact(q.number_of_nested_queries))}</span>
             ${badge ? `<span class="badge ${badge.cls}">${badge.label}</span>` : ""}
           </div>
           <div class="query-question">${escapeHtml(q.question || "(no question text)")}</div>
@@ -286,7 +295,8 @@ function renderBenchmarkCard(benchmark) {
     <div class="card">
       <div class="card-header">
         <span class="card-title">Benchmark (ground truth)</span>
-        ${benchmark.bias ? `<span class="bias-tag" style="margin-left:auto">${escapeHtml(benchmark.bias)}</span>` : ""}
+        <span class="nested-tag" style="margin-left:auto">${escapeHtml(nestedQueriesFull(benchmark.number_of_nested_queries))}</span>
+        ${benchmark.bias ? `<span class="bias-tag">${escapeHtml(benchmark.bias)}</span>` : ""}
       </div>
       <div class="card-body">
         <div class="section-label">Tables engaged</div>

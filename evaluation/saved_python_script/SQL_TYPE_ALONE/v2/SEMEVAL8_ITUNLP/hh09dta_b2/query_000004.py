@@ -1,37 +1,29 @@
 import pandas as pd
 
 def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
-    df_portad = tables["ii_portad"]
-    df_su = tables["ii_su"]
-    df_vlh = tables["ii_vlh"]
+    df_su = tables["ii_su"][["folio", "su01"]].copy()
+    df_vlh = tables["ii_vlh"][["folio", "vlh04"]].copy()
+    df_portad = tables["ii_portad"][["folio", "ent"]].copy()
 
-    # Households that use a plot/land for farming (su01 == 1)
-    su_yes = df_su.loc[df_su["su01"] == 1.0, ["folio"]].dropna().drop_duplicates()
+    # One state per household
+    df_ent = df_portad.drop_duplicates(subset=["folio"])
 
-    # Valid 'feel safe at home' responses
-    vlh_valid = df_vlh.loc[~df_vlh["vlh04"].isna(), ["folio", "vlh04"]]
-
-    # Merge to get households with both conditions
-    hh = su_yes.merge(vlh_valid, on="folio", how="inner")
-
-    # Map households to state (ent)
-    ent_map = (
-        df_portad.loc[~df_portad["ent"].isna(), ["folio", "ent"]]
-        .drop_duplicates(subset=["folio"], keep="first")
+    # Merge and filter households that use plot/land and have valid safety score and state
+    df = (
+        df_su.merge(df_vlh, on="folio", how="inner")
+        .merge(df_ent, on="folio", how="left")
     )
-    hh = hh.merge(ent_map, on="folio", how="inner")
+    df = df[(df["su01"] == 1.0) & df["vlh04"].notna() & df["ent"].notna()]
 
-    # Group by state and compute average vlh04 and count of households
-    grouped = hh.groupby("ent").agg(
-        avg_vlh04=("vlh04", "mean"),
-        households=("folio", "nunique"),
-    ).reset_index()
+    # Aggregate by state, requiring at least two households
+    agg = (
+        df.groupby("ent", as_index=False)
+        .agg(avg_vlh04=("vlh04", "mean"), n_households=("vlh04", "size"))
+    )
+    agg = agg[agg["n_households"] >= 2].copy()
 
-    # Keep states with at least two households
-    grouped = grouped[grouped["households"] >= 2]
-
-    # Sort by lowest average vlh04 and take five states
-    grouped = grouped.sort_values(by=["avg_vlh04", "ent"]).head(5)
+    # Sort to get five states with lowest average score
+    agg = agg.sort_values(["avg_vlh04", "ent"], ascending=[True, True]).head(5).copy()
 
     # Map state codes to names
     state_map = {
@@ -63,10 +55,7 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
         31: "Yucatán",
         32: "Zacatecas",
     }
+    agg["ent"] = agg["ent"].astype(int)
+    agg["state"] = agg["ent"].map(state_map)
 
-    grouped["ent"] = grouped["ent"].astype("Int64")
-    grouped["state"] = grouped["ent"].map(state_map).fillna("Unknown")
-
-    # Reorder columns
-    result = grouped[["ent", "state", "avg_vlh04", "households"]].reset_index(drop=True)
-    return result
+    return agg[["ent", "state", "avg_vlh04", "n_households"]]

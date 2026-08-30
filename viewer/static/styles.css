@@ -236,6 +236,20 @@ select:focus, input:focus {
   background: var(--accent-dim);
 }
 
+.nested-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  color: var(--text-dim);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
 .hidden {
   display: none !important;
 }

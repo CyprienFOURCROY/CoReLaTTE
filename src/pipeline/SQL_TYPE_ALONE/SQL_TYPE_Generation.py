@@ -49,6 +49,7 @@ CSV_COLUMNS = [
     "source_dataset",
     "check_if_code_works",
     "bias",
+    "number_of_nested_queries",
 ]
 
 # v1 has no structural bias. v2 rotates deterministically through forcing a
@@ -403,6 +404,7 @@ def generate_one_query(
         "source_dataset": SOURCE_DATASET,
         "check_if_code_works": "no",
         "bias": bias or "",
+        "number_of_nested_queries": number_of_nested_queries,
     }
 
     append_row(row, version=version)
@@ -459,6 +461,7 @@ def main(
             f"bias={bias}  |  nested_queries={number_of_nested_queries}"
         )
         logger.info(f"Tables: {table_names}")
+        logger.info(f"Number of nested queries planned: {number_of_nested_queries} ")
 
         query_start = time.perf_counter()
 

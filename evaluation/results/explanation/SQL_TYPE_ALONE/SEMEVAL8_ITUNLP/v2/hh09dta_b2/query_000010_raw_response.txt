@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The household counts per state differ from the gold answer for all rows; the question requires the correct number of households per state."
+}

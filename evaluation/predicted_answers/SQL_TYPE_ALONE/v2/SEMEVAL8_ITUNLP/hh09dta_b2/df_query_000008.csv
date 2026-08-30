@@ -1,11 +1,11 @@
-state_code,state_name,avg_total_debt
-16,Michoacán,85553.84
-9,Distrito Federal,72500.0
-11,Guanajuato,58493.184
-21,Puebla,51083.332
-14,Jalisco,44364.285
-15,Estado de México,42365.75
-19,Nuevo León,36801.445
-10,Durango,35394.07
-3,Baja California Sur,33412.5
-30,Veracruz,32493.334
+ent,average_total_debt
+16.0,85553.84
+9.0,72500.0
+11.0,58493.184
+21.0,51083.332
+14.0,44364.285
+15.0,42365.75
+19.0,36801.445
+10.0,35394.07
+3.0,33412.5
+30.0,32493.334

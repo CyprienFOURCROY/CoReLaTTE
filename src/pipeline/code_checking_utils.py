@@ -18,6 +18,7 @@ CSV_COLUMNS = [
     "source_dataset",
     "check_if_code_works",
     "bias",
+    "number_of_nested_queries",
 ]
 
 

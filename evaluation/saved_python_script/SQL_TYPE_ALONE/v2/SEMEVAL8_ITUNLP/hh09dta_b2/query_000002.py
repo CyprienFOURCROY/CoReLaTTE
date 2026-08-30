@@ -4,34 +4,18 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     df_portad = tables["ii_portad"].copy()
     df_crh = tables["ii_crh"].copy()
 
-    # Compute overall average age among individuals with non-missing age
-    avg_age = df_portad["edad"].mean()
+    # Compute overall average age
+    avg_age = df_portad["edad"].mean(skipna=True)
 
-    # Individuals older than overall average age
-    df_older = df_portad[df_portad["edad"] > avg_age].copy()
+    # Filter interviewed individuals older than overall average age
+    df_older = df_portad[df_portad["edad"] > avg_age][["folio", "ent"]].copy()
 
     # Merge with household debts
-    df_m = df_older.merge(
-        df_crh[["folio", "crh04_1", "crh04_2"]],
-        on="folio",
-        how="left"
-    )
+    df_crh_sub = df_crh[["folio", "crh04_2"]].copy()
+    df = df_older.merge(df_crh_sub, on="folio", how="inner")
 
-    # Keep households that reported a positive debt amount with a valid value
-    df_m = df_m[(df_m["crh04_1"] == 1.0) & (df_m["crh04_2"].notna()) & (df_m["crh04_2"] > 0)]
-
-    if df_m.empty:
-        return pd.DataFrame(columns=["state", "avg_household_total_debts_plus_interests_pesos", "num_individuals"])
-
-    # Aggregate by state
-    agg = (
-        df_m.groupby("ent", dropna=False)
-        .agg(
-            avg_household_total_debts_plus_interests_pesos=("crh04_2", "mean"),
-            num_individuals=("ls", "count"),
-        )
-        .reset_index()
-    )
+    # Keep only positive reported debt amounts
+    df = df[df["crh04_2"].notna() & (df["crh04_2"] > 0)]
 
     # Map state codes to names
     state_map = {
@@ -63,10 +47,31 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
         31: "Yucatán",
         32: "Zacatecas",
     }
-    agg["ent_code"] = agg["ent"].astype("Int64")
-    agg["state"] = agg["ent_code"].map(state_map)
 
-    # Sort and select top 5 states by average debt
-    top5 = agg.sort_values("avg_household_total_debts_plus_interests_pesos", ascending=False).head(5)
+    # Count individuals per state (among filtered)
+    ind_counts = (
+        df.groupby("ent", dropna=False)
+        .size()
+        .reset_index(name="n_individuals")
+    )
 
-    return top5[["state", "avg_household_total_debts_plus_interests_pesos", "num_individuals"]]
+    # Compute average household debt per state using unique households
+    households = df.drop_duplicates(subset=["folio"])[["folio", "ent", "crh04_2"]]
+    avg_debt_by_ent = (
+        households.groupby("ent", dropna=False)["crh04_2"]
+        .mean()
+        .reset_index(name="avg_debt")
+    )
+
+    # Merge results
+    res = avg_debt_by_ent.merge(ind_counts, on="ent", how="inner")
+
+    # Add state names and filter valid states
+    res["ent_int"] = res["ent"].astype("Int64")
+    res["state"] = res["ent_int"].map(state_map)
+    res = res[res["state"].notna()]
+
+    # Get top five states by average debt
+    res = res.sort_values(by="avg_debt", ascending=False).head(5)
+
+    return res[["state", "avg_debt", "n_individuals"]].reset_index(drop=True)

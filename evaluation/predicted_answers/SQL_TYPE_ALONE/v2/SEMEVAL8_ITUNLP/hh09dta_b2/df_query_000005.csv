@@ -1,10 +1,10 @@
-state,average_amount,num_households
-Tamaulipas,73550.0,4
-Distrito Federal,43542.61,46
-Michoacán,42493.727,175
-Coahuila,42292.13,101
-Guanajuato,37635.41,270
-Nuevo León,36960.51,191
-Jalisco,35512.613,157
-Baja California Sur,32312.344,102
-Durango,31784.297,260
+state,avg_total_debt_pesos,n_households
+28,73550.0,4
+9,43542.61,46
+16,42493.727,175
+5,42292.13,101
+11,37635.41,270
+19,36960.51,191
+14,35512.613,157
+3,32312.344,102
+10,31784.297,260

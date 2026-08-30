@@ -4,55 +4,28 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     df_portad = tables["ii_portad"].copy()
     df_vlh = tables["ii_vlh"][["folio", "vlh04"]].copy()
 
-    # Filter households that feel unsafe or very unsafe at home
-    unsafe_codes = {3.0, 4.0}
-    df_unsafe = df_vlh[df_vlh["vlh04"].isin(unsafe_codes)]
+    # Filter interviewed individuals (assuming rel == 20 indicates successful interview)
+    df_portad = df_portad[df_portad["rel"] == 20.0]
 
-    # Keep individuals with a valid interviewed age
-    df_people = df_portad[["folio", "ent", "edad"]].dropna(subset=["edad", "ent"])
+    # Merge individuals with household safety perception
+    df = pd.merge(df_portad, df_vlh, on="folio", how="inner")
 
-    # Merge individuals with unsafe households
-    dfm = df_people.merge(df_unsafe, on="folio", how="inner")
+    # Households that feel unsafe or very unsafe at home
+    df = df[df["vlh04"].isin([3.0, 4.0])]
 
-    # Group by state and compute counts and average age
-    grouped = dfm.groupby("ent").agg(n=("edad", "size"), average_age=("edad", "mean")).reset_index()
+    # Valid ages and states
+    df = df.dropna(subset=["edad", "ent"])
 
-    # Keep only states with at least 10 individuals
-    grouped = grouped[grouped["n"] >= 10]
+    grouped = (
+        df.groupby("ent")
+        .agg(n_individuals=("edad", "size"), average_age=("edad", "mean"))
+        .reset_index()
+    )
 
-    # Map state codes to names
-    state_map = {
-        2.0: "Baja California",
-        3.0: "Baja California Sur",
-        4.0: "Campeche",
-        5.0: "Coahuila",
-        6.0: "Colima",
-        7.0: "Chiapas",
-        9.0: "Distrito Federal",
-        10.0: "Durango",
-        11.0: "Guanajuato",
-        12.0: "Guerrero",
-        13.0: "Hidalgo",
-        14.0: "Jalisco",
-        15.0: "Estado de México",
-        16.0: "Michoacán",
-        17.0: "Morelos",
-        18.0: "Nayarit",
-        19.0: "Nuevo León",
-        20.0: "Oaxaca",
-        21.0: "Puebla",
-        22.0: "Querétaro",
-        25.0: "Sinaloa",
-        26.0: "Sonora",
-        28.0: "Tamaulipas",
-        29.0: "Tlaxcala",
-        30.0: "Veracruz",
-        31.0: "Yucatán",
-        32.0: "Zacatecas",
-    }
-    grouped["state"] = grouped["ent"].map(state_map).fillna(grouped["ent"].astype(str))
+    # Only states with at least 10 such individuals
+    grouped = grouped[grouped["n_individuals"] >= 10]
 
-    # Sort by average age descending
-    result = grouped.sort_values("average_age", ascending=False)[["state", "average_age"]].reset_index(drop=True)
+    # Rank from highest to lowest average age
+    grouped = grouped.sort_values(by="average_age", ascending=False)
 
-    return result
+    return grouped[["ent", "average_age"]].reset_index(drop=True)
