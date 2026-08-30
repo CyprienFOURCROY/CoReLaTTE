@@ -1,6 +1,7 @@
 # prompt.py
 
 import json
+import random
 import pandas as pd
 
 
@@ -45,7 +46,7 @@ QUERY_PLAN_TEMPLATE = {
 }
 
 
-JSON_RULES = """
+JSON_RULES_PREAMBLE = """
 STRICT JSON RULES
 =================
 
@@ -93,41 +94,132 @@ Incorrect:
 }
 
 because "n9" was not defined before "n2".
+"""
 
 
-SCAN NODE
+# Illustrative-only flavors for the per-node-type example snippets below.
+# These are NOT the real tables/columns for a given query -- the real dataframe
+# schema is injected separately in the DATAFRAMES section. A random flavor and
+# random node ids are picked fresh on every prompt build (and the doc section
+# order is shuffled too, scan always first) so the model sees a worked example
+# every time, but never always the exact same one -- otherwise every generated
+# query plan tends to structurally mimic whichever single example it always saw.
+EXAMPLE_FLAVORS = [
+    {
+        "table": "ii_portad",
+        "filter_column": "edad",
+        "filter_operator": ">=",
+        "filter_value": 18,
+        "select_columns": ["ent", "edad"],
+        "join_key": "folio",
+        "group_column": "ent",
+        "agg_column": "edad",
+        "agg_function": "mean",
+        "agg_alias": "avg_age",
+        "count_alias": "n_individuals",
+        "limit_n": 10,
+        "scalar_column": "edad",
+        "scalar_operator": ">",
+        "scalar_alias": "avg_age",
+    },
+    {
+        "table": "ii_in",
+        "filter_column": "in02a10",
+        "filter_operator": ">",
+        "filter_value": 0,
+        "select_columns": ["folio", "in02a10"],
+        "join_key": "folio",
+        "group_column": "ent",
+        "agg_column": "in02a10",
+        "agg_function": "sum",
+        "agg_alias": "total_income",
+        "count_alias": "n_households",
+        "limit_n": 5,
+        "scalar_column": "in02a10",
+        "scalar_operator": ">=",
+        "scalar_alias": "avg_income",
+    },
+    {
+        "table": "ii_su",
+        "filter_column": "su01",
+        "filter_operator": "=",
+        "filter_value": 1,
+        "select_columns": ["folio", "su01"],
+        "join_key": "folio",
+        "group_column": "ent",
+        "agg_column": "su01",
+        "agg_function": "count",
+        "agg_alias": "n_farming_households",
+        "count_alias": "n_households",
+        "limit_n": 3,
+        "scalar_column": "su234",
+        "scalar_operator": "<",
+        "scalar_alias": "avg_seed_expense",
+    },
+    {
+        "table": "ii_vlh",
+        "filter_column": "vlh04",
+        "filter_operator": "in",
+        "filter_value": [3, 4],
+        "select_columns": ["folio", "vlh04"],
+        "join_key": "folio",
+        "group_column": "ent",
+        "agg_column": "vlh04",
+        "agg_function": "mean",
+        "agg_alias": "avg_safety_score",
+        "count_alias": "n_respondents",
+        "limit_n": 10,
+        "scalar_column": "vlh18a",
+        "scalar_operator": ">",
+        "scalar_alias": "avg_robbery_count",
+    },
+]
+
+
+def _random_ids(count: int) -> list[str]:
+    return [f"n{i}" for i in random.sample(range(1, 9), count)]
+
+
+def _scan_node_doc(flavor: dict) -> str:
+    (node_id,) = _random_ids(1)
+
+    return f"""SCAN NODE
 =========
 
 A scan node loads one dataframe.
 
 Required format:
 
-{
-  "id": "n1",
+{{
+  "id": "{node_id}",
   "operation": "scan",
   "table": "table_name"
-}
+}}"""
 
 
-FILTER NODE
+def _filter_node_doc(flavor: dict) -> str:
+    node_id, input_id = _random_ids(2)
+    value = json.dumps(flavor["filter_value"])
+
+    return f"""FILTER NODE
 ===========
 
 A filter node corresponds to SQL WHERE.
 
 Required format:
 
-{
-  "id": "n2",
+{{
+  "id": "{node_id}",
   "operation": "filter",
-  "input": "n1",
+  "input": "{input_id}",
   "conditions": [
-    {
-      "column": "column_name",
-      "operator": "=",
-      "value": 123
-    }
+    {{
+      "column": "{flavor['filter_column']}",
+      "operator": "{flavor['filter_operator']}",
+      "value": {value}
+    }}
   ]
-}
+}}
 
 Allowed operators:
 
@@ -135,32 +227,39 @@ Allowed operators:
 
 Incorrect:
 
-{
-  "id": "n2",
+{{
+  "id": "{node_id}",
   "operation": "filter",
-  "input": "n1",
-  "condition": "age > 30"
-}
+  "input": "{input_id}",
+  "condition": "{flavor['filter_column']} {flavor['filter_operator']} {flavor['filter_value']}"
+}}
 
-Reason: never use "condition" as a string. Use "conditions" as a list of structured objects.
+Reason: never use "condition" as a string. Use "conditions" as a list of structured objects."""
 
 
-SELECT NODE
+def _select_node_doc(flavor: dict) -> str:
+    node_id, input_id = _random_ids(2)
+    columns = json.dumps(flavor["select_columns"])
+
+    return f"""SELECT NODE
 ===========
 
 A select node keeps only selected columns.
 
 Required format:
 
-{
-  "id": "n3",
+{{
+  "id": "{node_id}",
   "operation": "select",
-  "input": "n2",
-  "columns": ["column_1", "column_2"]
-}
+  "input": "{input_id}",
+  "columns": {columns}
+}}"""
 
 
-JOIN NODE
+def _join_node_doc(flavor: dict) -> str:
+    node_id, left_id, right_id = _random_ids(3)
+
+    return f"""JOIN NODE
 =========
 
 A join node corresponds to SQL JOIN.
@@ -169,15 +268,15 @@ It keeps columns from both the left and right inputs.
 
 Required format:
 
-{
-  "id": "n4",
+{{
+  "id": "{node_id}",
   "operation": "join",
-  "left_input": "n1",
-  "right_input": "n2",
-  "left_on": "key_column_left",
-  "right_on": "key_column_right",
+  "left_input": "{left_id}",
+  "right_input": "{right_id}",
+  "left_on": "{flavor['join_key']}",
+  "right_on": "{flavor['join_key']}",
   "join_type": "inner"
-}
+}}
 
 Allowed join types:
 
@@ -185,18 +284,21 @@ Allowed join types:
 
 Incorrect:
 
-{
-  "id": "n4",
+{{
+  "id": "{node_id}",
   "operation": "join",
-  "left": "n1",
-  "right": "n2",
-  "on": ["folio"]
-}
+  "left": "{left_id}",
+  "right": "{right_id}",
+  "on": ["{flavor['join_key']}"]
+}}
 
-Reason: use "left_input", "right_input", "left_on", and "right_on".
+Reason: use "left_input", "right_input", "left_on", and "right_on"."""
 
 
-SEMI_JOIN NODE
+def _semi_join_node_doc(flavor: dict) -> str:
+    node_id, left_id, right_id = _random_ids(3)
+
+    return f"""SEMI_JOIN NODE
 ==============
 
 A semi_join corresponds to SQL WHERE key IN (subquery).
@@ -207,19 +309,20 @@ It only keeps columns from the left input.
 
 Required format:
 
-{
-  "id": "n5",
+{{
+  "id": "{node_id}",
   "operation": "semi_join",
-  "left_input": "n1",
-  "right_input": "n2",
-  "left_on": "folio",
-  "right_on": "folio"
-}
+  "left_input": "{left_id}",
+  "right_input": "{right_id}",
+  "left_on": "{flavor['join_key']}",
+  "right_on": "{flavor['join_key']}"
+}}"""
 
 
+def _anti_join_node_doc(flavor: dict) -> str:
+    node_id, left_id, right_id = _random_ids(3)
 
-
-ANTI_JOIN NODE
+    return f"""ANTI_JOIN NODE
 ==============
 
 An anti_join corresponds to SQL WHERE key NOT IN (subquery).
@@ -230,36 +333,39 @@ It only keeps columns from the left input.
 
 Required format:
 
-{
-  "id": "n5",
+{{
+  "id": "{node_id}",
   "operation": "anti_join",
-  "left_input": "n1",
-  "right_input": "n2",
-  "left_on": "folio",
-  "right_on": "folio"
-}
+  "left_input": "{left_id}",
+  "right_input": "{right_id}",
+  "left_on": "{flavor['join_key']}",
+  "right_on": "{flavor['join_key']}"
+}}"""
 
 
-GROUPBY NODE
+def _groupby_node_doc(flavor: dict) -> str:
+    node_id, input_id = _random_ids(2)
+
+    return f"""GROUPBY NODE
 ============
 
 A groupby node corresponds to SQL GROUP BY with aggregations.
 
 Required format:
 
-{
-  "id": "n6",
+{{
+  "id": "{node_id}",
   "operation": "groupby",
-  "input": "n5",
-  "by": ["group_column"],
+  "input": "{input_id}",
+  "by": ["{flavor['group_column']}"],
   "aggregations": [
-    {
-      "column": "numeric_column",
-      "function": "mean",
-      "alias": "avg_value"
-    }
+    {{
+      "column": "{flavor['agg_column']}",
+      "function": "{flavor['agg_function']}",
+      "alias": "{flavor['agg_alias']}"
+    }}
   ]
-}
+}}
 
 Allowed aggregation functions:
 
@@ -267,73 +373,112 @@ Allowed aggregation functions:
 
 Incorrect:
 
-{
-  "column": "age",
-  "agg": "mean",
-  "as": "avg_age"
-}
+{{
+  "column": "{flavor['agg_column']}",
+  "agg": "{flavor['agg_function']}",
+  "as": "{flavor['agg_alias']}"
+}}
 
-Reason: use "function" and "alias", not "agg" and "as".
+Reason: use "function" and "alias", not "agg" and "as"."""
 
 
-SORT NODE
+def _sort_node_doc(flavor: dict) -> str:
+    node_id, input_id = _random_ids(2)
+
+    return f"""SORT NODE
 =========
 
 A sort node corresponds to SQL ORDER BY.
 
 Required format:
 
-{
-  "id": "n7",
+{{
+  "id": "{node_id}",
   "operation": "sort",
-  "input": "n6",
-  "by": "avg_value",
+  "input": "{input_id}",
+  "by": "{flavor['agg_alias']}",
   "ascending": false
-}
+}}"""
 
 
-LIMIT NODE
+def _limit_node_doc(flavor: dict) -> str:
+    node_id, input_id = _random_ids(2)
+
+    return f"""LIMIT NODE
 ==========
 
 A limit node corresponds to SQL LIMIT.
 
 Required format:
 
-{
-  "id": "n8",
+{{
+  "id": "{node_id}",
   "operation": "limit",
-  "input": "n7",
-  "n": 10
-}
+  "input": "{input_id}",
+  "n": {flavor['limit_n']}
+}}"""
 
 
-SCALAR_FILTER NODE
+def _scalar_filter_node_doc(flavor: dict) -> str:
+    node_id, input_id, scalar_input_id = _random_ids(3)
+
+    return f"""SCALAR_FILTER NODE
 ==================
 
 A scalar_filter corresponds to a comparison with a scalar subquery.
 
 Example SQL idea:
 
-WHERE age > (SELECT AVG(age) FROM table)
+WHERE {flavor['scalar_column']} {flavor['scalar_operator']} (SELECT AVG({flavor['scalar_column']}) FROM table)
 
 Required format:
 
-{
-  "id": "n5",
+{{
+  "id": "{node_id}",
   "operation": "scalar_filter",
-  "input": "n1",
-  "column": "age",
-  "operator": ">",
-  "scalar_input": "n4",
-  "scalar_column": "avg_age"
+  "input": "{input_id}",
+  "column": "{flavor['scalar_column']}",
+  "operator": "{flavor['scalar_operator']}",
+  "scalar_input": "{scalar_input_id}",
+  "scalar_column": "{flavor['scalar_alias']}"
+}}
+
+The scalar_input must be a previous node that returns one row and contains scalar_column."""
+
+
+# scan always comes first (every other node type builds on the idea of a
+# scanned dataframe); the rest have no real reading-order dependency on each
+# other, so their order is shuffled on every call.
+_SHUFFLABLE_NODE_DOCS = {
+    "filter": _filter_node_doc,
+    "select": _select_node_doc,
+    "join": _join_node_doc,
+    "semi_join": _semi_join_node_doc,
+    "anti_join": _anti_join_node_doc,
+    "groupby": _groupby_node_doc,
+    "sort": _sort_node_doc,
+    "limit": _limit_node_doc,
+    "scalar_filter": _scalar_filter_node_doc,
 }
 
-The scalar_input must be a previous node that returns one row and contains scalar_column.
-"""
+
+def build_json_rules() -> str:
+    flavor = random.choice(EXAMPLE_FLAVORS)
+
+    shuffled_ops = list(_SHUFFLABLE_NODE_DOCS)
+    random.shuffle(shuffled_ops)
+
+    sections = [_scan_node_doc(flavor)] + [
+        _SHUFFLABLE_NODE_DOCS[op](flavor) for op in shuffled_ops
+    ]
+
+    return JSON_RULES_PREAMBLE.strip() + "\n\n\n" + "\n\n\n".join(sections)
 
 
-HAVING_BIAS_BLOCK = """
-REQUIRED PATTERN: POST-AGGREGATION FILTER (SQL HAVING-STYLE)
+def _having_bias_block(flavor: dict) -> str:
+    input_id, group_id, having_id = _random_ids(3)
+
+    return f"""REQUIRED PATTERN: POST-AGGREGATION FILTER (SQL HAVING-STYLE)
 ============================================================
 
 The query plan MUST include a HAVING-style pattern: first aggregate rows
@@ -355,37 +500,37 @@ The required structure is:
 
 Generic example:
 
-{
-"id": "n_group",
+{{
+"id": "{group_id}",
 "operation": "groupby",
-"input": "n_prev",
-"by": ["group_column"],
+"input": "{input_id}",
+"by": ["{flavor['group_column']}"],
 "aggregations": [
-{
-"column": "value_column",
-"function": "mean",
-"alias": "aggregated_value"
-},
-{
-"column": "value_column",
+{{
+"column": "{flavor['agg_column']}",
+"function": "{flavor['agg_function']}",
+"alias": "{flavor['agg_alias']}"
+}},
+{{
+"column": "{flavor['agg_column']}",
 "function": "count",
-"alias": "group_count"
-}
+"alias": "{flavor['count_alias']}"
+}}
 ]
-}
+}}
 
-{
-"id": "n_having",
+{{
+"id": "{having_id}",
 "operation": "filter",
-"input": "n_group",
+"input": "{group_id}",
 "conditions": [
-{
-"column": "group_count",
+{{
+"column": "{flavor['count_alias']}",
 "operator": ">=",
 "value": "<threshold>"
-}
+}}
 ]
-}
+}}
 
 The essential requirement is that the filter is evaluated AFTER
 aggregation and operates on the groupby output.
@@ -403,8 +548,7 @@ The natural-language question MUST explicitly reflect the
 post-aggregation restriction. For example, it may ask for results
 "among groups with at least <threshold> observations",
 "for categories whose average exceeds <threshold>",
-or any equivalent condition defined on aggregated groups.
-"""
+or any equivalent condition defined on aggregated groups."""
 
 
 
@@ -448,6 +592,99 @@ The final question must reflect this comparison against the computed
 scalar (e.g. "... above the overall average ...").
 """
 
+COLUMN_PROVENANCE_BIAS_BLOCK = """
+REQUIRED PATTERN: COLUMN PROVENANCE AFTER JOIN
+===============================================
+
+This query plan MUST include at least one real "join" between two tables
+that contain one or more overlapping non-key column names.
+
+The purpose is to require reasoning about which table a column originates
+from after the join.
+
+After a pandas-style join, overlapping non-key columns may be renamed with
+suffixes such as "_x" and "_y".
+
+Example:
+
+Table A:
+folio | ent | income
+
+Table B:
+folio | ent | safety
+
+After joining on "folio":
+
+folio | ent_x | income | ent_y | safety
+
+Any later filter, groupby, sort, or select MUST reference the actual
+post-join column name.
+
+The generated question MUST genuinely require:
+- at least one value originating from the left table; and
+- at least one value originating from the right table.
+
+Do not use semi_join or anti_join to satisfy this requirement.
+
+Do not create a join if all required information can be obtained from
+only one of the participating tables.
+
+Internally verify column provenance after every join:
+1. determine which input each required column came from;
+2. determine its resulting column name after the join;
+3. use that resulting name in all subsequent nodes.
+"""
+
+JOIN_FANOUT_BIAS_BLOCK = """
+REQUIRED PATTERN: JOIN CARDINALITY / FAN-OUT REASONING
+=======================================================
+
+This query MUST require reasoning about row multiplication caused by joins.
+
+Use tables for which the join key is not necessarily unique on both sides,
+so that directly joining raw rows could duplicate observations and produce
+an incorrect aggregation.
+
+The query plan must avoid incorrect double counting.
+
+When necessary, aggregate a one-to-many branch BEFORE joining it with
+another one-to-many branch.
+
+Example conceptual structure:
+
+Table A:
+one row per household
+
+Table B:
+multiple persons per household
+
+Table C:
+multiple expenses per household
+
+Incorrect pattern:
+
+A -> join B -> join C -> sum(expense)
+
+because joining B and C on household may create a Cartesian multiplication
+within each household.
+
+Correct pattern when the question requires household-level statistics:
+
+B -> groupby household -> person_count
+C -> groupby household -> total_expense
+join aggregated B and aggregated C on household
+
+The generated question MUST require information from multiple tables in a
+way where naïve raw-row joining could alter counts, sums, or averages.
+
+The plan must preserve the intended unit of observation.
+
+Before returning the plan, internally verify:
+- what one row represents in each input table;
+- whether the join key is unique in either input;
+- whether the join can multiply rows;
+- whether an aggregation must occur before the join to avoid duplication.
+"""
 
 MULTI_JOIN_BIAS_BLOCK = """
 REQUIRED PATTERN: CHAINED JOINS ACROSS 3 TABLES
@@ -513,6 +750,7 @@ def summarize_dataframe(
 
     summary = {
         "name": name,
+        "n_rows": len(df),
         "columns": list(df.columns),
         "dtypes": {col: str(dtype) for col, dtype in df.dtypes.items()},
         "sample_rows": sample,
@@ -533,10 +771,14 @@ def summarize_dataframes(
     return "\n\n".join(parts)
 
 
+# "having" is flavored/randomized like the JSON_RULES node docs (a callable
+# taking a flavor dict); the others are still static strings for now.
 BIAS_BLOCKS: dict[str, str] = {
-    "having": HAVING_BIAS_BLOCK,
+    "having": _having_bias_block,
     "scalar_filter": SCALAR_FILTER_BIAS_BLOCK,
     "multi_join": MULTI_JOIN_BIAS_BLOCK,
+    "column_provenance": COLUMN_PROVENANCE_BIAS_BLOCK,
+    "join_fanout": JOIN_FANOUT_BIAS_BLOCK,
 }
 
 
@@ -559,6 +801,8 @@ def build_query_plan_prompt(
     )
 
     allowed_operations = ", ".join(ALLOWED_OPERATIONS)
+
+    json_rules = build_json_rules()
 
     prompt = f"""
 You are a query-planning assistant.
@@ -627,7 +871,7 @@ Before returning the JSON, internally check that:
 
 If your JSON contains any forbidden field, rewrite it before answering.
 
-{JSON_RULES}
+{json_rules}
 
 OUTPUT TEMPLATE
 ===============
@@ -648,7 +892,12 @@ Return only the JSON object.
                 f"Unsupported bias: {bias!r}. Expected one of {sorted(BIAS_BLOCKS)}."
             )
 
-        bias_block = BIAS_BLOCKS[bias].strip()
+        bias_block = BIAS_BLOCKS[bias]
+
+        if callable(bias_block):
+            bias_block = bias_block(random.choice(EXAMPLE_FLAVORS))
+
+        bias_block = bias_block.strip()
 
         prompt = prompt.replace(
             "Before returning the JSON, internally check that:",

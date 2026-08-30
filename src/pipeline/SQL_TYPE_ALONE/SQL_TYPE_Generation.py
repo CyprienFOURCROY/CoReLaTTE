@@ -52,9 +52,17 @@ CSV_COLUMNS = [
 ]
 
 # v1 has no structural bias. v2 rotates deterministically through forcing a
-# HAVING-style post-aggregation filter, a scalar_filter node, and a chained
-# multi-join across 3 tables.
-BIAS_ROTATION = ["having", "scalar_filter", "multi_join"]
+# HAVING-style post-aggregation filter, a scalar_filter node, a chained
+# multi-join across 3 tables, a join with overlapping (non-key) column names
+# that requires tracking post-join column provenance, and a join where a
+# fan-out (row multiplication) has to be avoided/handled correctly.
+BIAS_ROTATION = [
+    "having",
+    "scalar_filter",
+    "multi_join",
+    "column_provenance",
+    "join_fanout",
+]
 
 
 def get_csv_path(version: int) -> Path:
@@ -443,9 +451,13 @@ def main(
     for offset, table_names in enumerate(subsets):
         query_index = next_index + offset
         bias = get_bias_for_query_index(version=version, query_index=query_index)
+        number_of_nested_queries = random.randint(1, 3)
 
         logger.info("=" * 80)
-        logger.info(f"Query {offset + 1}/{n_queries}  |  script index {query_index:06d}  |  bias={bias}")
+        logger.info(
+            f"Query {offset + 1}/{n_queries}  |  script index {query_index:06d}  |  "
+            f"bias={bias}  |  nested_queries={number_of_nested_queries}"
+        )
         logger.info(f"Tables: {table_names}")
 
         query_start = time.perf_counter()
@@ -457,7 +469,7 @@ def main(
                 query_index=query_index,
                 version=version,
                 model=model,
-                number_of_nested_queries=n_extra_tables,
+                number_of_nested_queries=number_of_nested_queries,
                 bias=bias,
             )
 

@@ -199,7 +199,12 @@ raw_data/hh09dta_b2/
 Every SQL-Type pipeline script accepts a `--version {1,2}` flag (default `1`). Each version reads and writes its own CSV (`processed/dataset_query_v{version}.csv`) and its own output directories, so v1 and v2 queries never mix.
 
 * `--version 1` — the original, unbiased query-plan generation.
-* `--version 2` — rotates the query-plan prompt between three structural biases, one per generated query in turn: a HAVING-style post-aggregation filter (filter on a groupby's aggregated output), a `scalar_filter` comparison (row value vs. a scalar computed by a separate branch, e.g. an overall average), and a chained multi-join (2+ real `join` nodes across 3 tables, instead of the semi/anti-join shortcut).
+* `--version 2` — rotates the query-plan prompt between five structural biases, one per generated query in turn:
+  1. a HAVING-style post-aggregation filter (filter on a groupby's aggregated output);
+  2. a `scalar_filter` comparison (row value vs. a scalar computed by a separate branch, e.g. an overall average);
+  3. a chained multi-join (2+ real `join` nodes across 3 tables, instead of the semi/anti-join shortcut);
+  4. a column-provenance join (two joined tables share a non-key column name, so pandas' `_x`/`_y` suffixes kick in — later nodes must reference the correct post-join column);
+  5. a join-fan-out join (the join key isn't unique on both sides, so a naive join before aggregating would double-count — the plan must aggregate the one-to-many branch first).
 
 `SQL_TYPE_Generation.py` also accepts `--n-queries` (default `1`, generates that many queries in one run), `--n-extra-tables` (default `2`, tables beyond the always-included base table `ii_portad`), and `--model` (default `gpt-5`):
 
