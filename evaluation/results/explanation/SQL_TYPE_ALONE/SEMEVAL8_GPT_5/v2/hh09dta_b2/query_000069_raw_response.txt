@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer includes an extra state (Yucatán, 3) that is not in the gold answer and likely does not meet the average-threshold criterion."
+}

@@ -50,6 +50,7 @@ CSV_COLUMNS = [
     "check_if_code_works",
     "bias",
     "number_of_nested_queries",
+    "error_message",
 ]
 
 # v1 has no structural bias. v2 rotates deterministically through forcing a
@@ -187,12 +188,30 @@ def check_environment(version: int) -> None:
 
 def make_table_subsets(
     n_queries: int,
-    n_extra_tables: int,
+    min_extra_tables: int,
+    max_extra_tables: int,
 ) -> list[list[str]]:
-    subsets = []
+    if min_extra_tables < 1:
+        raise ValueError("min_extra_tables must be >= 1")
+
     available_numbers = list(range(2, 10))
 
+    if max_extra_tables > len(available_numbers):
+        raise ValueError(
+            f"max_extra_tables must be <= {len(available_numbers)} "
+            f"(only that many extra tables exist beyond ii_portad)"
+        )
+
+    if min_extra_tables > max_extra_tables:
+        raise ValueError("min_extra_tables must be <= max_extra_tables")
+
+    subsets = []
+
     for _ in range(n_queries):
+        # Randomized independently per query, not once for the whole batch --
+        # every query gets its own table count within [min, max].
+        n_extra_tables = random.randint(min_extra_tables, max_extra_tables)
+
         subset_numbers = [1]
 
         sampled = random.sample(
@@ -405,6 +424,7 @@ def generate_one_query(
         "check_if_code_works": "no",
         "bias": bias or "",
         "number_of_nested_queries": number_of_nested_queries,
+        "error_message": "",
     }
 
     append_row(row, version=version)
@@ -418,7 +438,8 @@ def generate_one_query(
 
 def main(
     n_queries: int = 10,
-    n_extra_tables: int = 2,
+    min_extra_tables: int = 2,
+    max_extra_tables: int = 4,
     model: str = "gpt-5",
     version: int = 1,
 ) -> None:
@@ -437,13 +458,17 @@ def main(
 
     subsets = make_table_subsets(
         n_queries=n_queries,
-        n_extra_tables=n_extra_tables,
+        min_extra_tables=min_extra_tables,
+        max_extra_tables=max_extra_tables,
     )
 
     next_index = get_next_query_index(version=version)
 
     logger.info(f"Version: {version}  |  Model: {model}")
-    logger.info(f"Queries requested: {n_queries}  |  Extra tables per query: {n_extra_tables}")
+    logger.info(
+        f"Queries requested: {n_queries}  |  "
+        f"Extra tables per query: random in [{min_extra_tables}, {max_extra_tables}]"
+    )
     logger.info(f"Starting script index: {next_index:06d}")
 
     n_succeeded = 0
@@ -460,7 +485,7 @@ def main(
             f"Query {offset + 1}/{n_queries}  |  script index {query_index:06d}  |  "
             f"bias={bias}  |  nested_queries={number_of_nested_queries}"
         )
-        logger.info(f"Tables: {table_names}")
+        logger.info(f"Tables: {table_names} ({len(table_names) - 1} extra)")
         logger.info(f"Number of nested queries planned: {number_of_nested_queries} ")
 
         query_start = time.perf_counter()
@@ -513,13 +538,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--version", type=int, choices=[1, 2], default=1)
     parser.add_argument("--n-queries", type=int, default=1)
-    parser.add_argument("--n-extra-tables", type=int, default=2)
+    parser.add_argument(
+        "--min-extra-tables",
+        type=int,
+        default=2,
+        help="Minimum number of extra tables beyond ii_portad, randomized per query.",
+    )
+    parser.add_argument(
+        "--max-extra-tables",
+        type=int,
+        default=4,
+        help="Maximum number of extra tables beyond ii_portad, randomized per query.",
+    )
     parser.add_argument("--model", type=str, default="gpt-5")
     args = parser.parse_args()
 
     main(
         n_queries=args.n_queries,
-        n_extra_tables=args.n_extra_tables,
+        min_extra_tables=args.min_extra_tables,
+        max_extra_tables=args.max_extra_tables,
         model=args.model,
         version=args.version,
     )

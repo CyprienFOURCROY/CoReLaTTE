@@ -1,0 +1,23 @@
+QUERY: query_000057
+ERROR TYPE: ValueError
+ERROR MESSAGE: Judge failed after 3 attempts. Last error: ValueError: Empty LLM response.. Last raw response: ''
+
+TRACEBACK:
+Traceback (most recent call last):
+  File "/Users/cyprienfourcroy/Desktop/CoReLaTTe/evaluation/compare_answers.py", line 367, in main
+    judgment, raw_response = call_judge(
+                             ~~~~~~~~~~^
+        client=client,
+        ^^^^^^^^^^^^^^
+        prompt=prompt,
+        ^^^^^^^^^^^^^^
+        model=args.judge_model,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/cyprienfourcroy/Desktop/CoReLaTTe/evaluation/compare_answers.py", line 200, in call_judge
+    raise ValueError(
+    ...<3 lines>...
+    )
+ValueError: Judge failed after 3 attempts. Last error: ValueError: Empty LLM response.. Last raw response: ''
+

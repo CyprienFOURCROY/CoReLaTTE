@@ -4,6 +4,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
+PROCESSED_ROOT = ROOT / "processed"
+
 import os
 import json
 import re
@@ -109,7 +111,7 @@ def repair_code_with_llm(
 
 
 def repaired_script_path(original_script_path: str) -> Path:
-    path = ROOT / original_script_path
+    path = PROCESSED_ROOT / original_script_path
 
     stem = path.stem
 
@@ -166,7 +168,7 @@ def main(
             new_path = repaired_script_path(row["python_script_path"])
             new_path.write_text(repaired_code, encoding="utf-8")
 
-            relative_path = new_path.relative_to(ROOT)
+            relative_path = new_path.relative_to(PROCESSED_ROOT)
 
             df.loc[idx, "python_script_path"] = str(relative_path)
             df.loc[idx, "check_if_code_works"] = "no"

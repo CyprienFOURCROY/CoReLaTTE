@@ -1,0 +1,1 @@
+The gold answer is empty (only headers), while the predicted answer contains multiple rows with values, adding results that are not present in the gold.

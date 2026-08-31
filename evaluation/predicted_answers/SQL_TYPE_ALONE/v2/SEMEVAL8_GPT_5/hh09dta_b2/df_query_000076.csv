@@ -1,0 +1,14 @@
+state_code,state_name,n_households,avg_feel_safe,rank
+31.0,Yucatán,69,1.3913044,1
+25.0,Sinaloa,115,1.4086957,2
+5.0,Coahuila,37,1.4324324,3
+30.0,Veracruz,145,1.6275862,4
+17.0,Morelos,57,1.6666666,5
+14.0,Jalisco,42,1.6904762,6
+11.0,Guanajuato,100,1.71,7
+16.0,Michoacán,116,1.7155173,8
+19.0,Nuevo León,47,1.7234043,9
+10.0,Durango,190,1.7789474,10
+15.0,Estado de México,133,1.7969925,11
+20.0,Oaxaca,216,1.8055556,12
+21.0,Puebla,94,1.8085107,13

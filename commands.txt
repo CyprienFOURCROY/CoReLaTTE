@@ -1,35 +1,54 @@
-# v1 (already evaluated once -- re-running is a no-op, it skips
-# query_names already marked "success" in the existing results CSV)
+# v1, SEMEVAL8 on gpt-5 (already evaluated once -- re-running is a no-op,
+# it skips query_names already marked "success" in the existing results CSV)
 
 python3 evaluation/generate_and_execute_semeval.py --version 1
 
 python3 evaluation/compare_answers.py \
   --version 1 \
   --question-type SQL_TYPE_ALONE \
-  --model-name SEMEVAL8_ITUNLP \
+  --model-name SEMEVAL8_GPT_5 \
   --dataset hh09dta_b2
 
 python3 evaluation/compute_metrics.py \
   --version 1 \
   --question-type SQL_TYPE_ALONE \
-  --model-name SEMEVAL8_ITUNLP \
+  --model-name SEMEVAL8_GPT_5 \
   --dataset hh09dta_b2
 
 
-# v2 -- all three scripts are version-aware now, so --dataset stays
-# "hh09dta_b2" for both versions; --version alone keeps v1/v2 results,
-# predictions, and gold answers from colliding.
+# v2, SEMEVAL8 on gpt-5 -- all three scripts are version-aware now, so
+# --dataset stays "hh09dta_b2" for both versions; --version alone keeps
+# v1/v2 results, predictions, and gold answers from colliding.
 
 python3 evaluation/generate_and_execute_semeval.py --version 2
 
 python3 evaluation/compare_answers.py \
   --version 2 \
   --question-type SQL_TYPE_ALONE \
-  --model-name SEMEVAL8_ITUNLP \
+  --model-name SEMEVAL8_GPT_5 \
   --dataset hh09dta_b2
 
 python3 evaluation/compute_metrics.py \
   --version 2 \
   --question-type SQL_TYPE_ALONE \
-  --model-name SEMEVAL8_ITUNLP \
+  --model-name SEMEVAL8_GPT_5 \
+  --dataset hh09dta_b2
+
+
+# v2, SEMEVAL8 on gpt-4.1-nano -- same agent code, different underlying
+# model and a separate SEMEVAL8_NANO output tree, so it never collides
+# with the gpt-5 predictions above. Swap --model-name to compare them.
+
+python3 evaluation/generate_and_execute_semeval_nano.py --version 2
+
+python3 evaluation/compare_answers.py \
+  --version 2 \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_NANO \
+  --dataset hh09dta_b2
+
+python3 evaluation/compute_metrics.py \
+  --version 2 \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_NANO \
   --dataset hh09dta_b2

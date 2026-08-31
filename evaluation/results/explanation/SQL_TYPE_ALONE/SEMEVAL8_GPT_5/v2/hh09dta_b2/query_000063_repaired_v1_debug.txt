@@ -1,0 +1,10 @@
+QUERY: query_000063_repaired_v1
+ERROR TYPE: FileNotFoundError
+ERROR MESSAGE: Missing gold answer: processed/gold_answer/SQL_TYPE_ALONE/v2/hh09dta_b2/df_query_000063_repaired_v1.csv
+
+TRACEBACK:
+Traceback (most recent call last):
+  File "/Users/cyprienfourcroy/Desktop/CoReLaTTe/evaluation/compare_answers.py", line 342, in main
+    raise FileNotFoundError(f"Missing gold answer: {gold_path}")
+FileNotFoundError: Missing gold answer: processed/gold_answer/SQL_TYPE_ALONE/v2/hh09dta_b2/df_query_000063_repaired_v1.csv
+

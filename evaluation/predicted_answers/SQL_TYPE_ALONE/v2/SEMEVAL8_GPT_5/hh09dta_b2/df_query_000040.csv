@@ -1,0 +1,5 @@
+response_code,response,avg_adults
+1.0,Very safe,0.9923076923076923
+2.0,Safe,0.9975609756097561
+3.0,Unsafe,1.0
+4.0,Very unsafe,1.0

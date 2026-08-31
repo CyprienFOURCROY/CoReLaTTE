@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Predicted answer is missing required groups (nna02_total=0.0 with vlh08a=1.0 and 3.0), so the aggregation is incomplete."
+}

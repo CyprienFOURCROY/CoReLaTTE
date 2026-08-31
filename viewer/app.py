@@ -158,31 +158,44 @@ def eval_csv_path(question_type: str, model: str, dataset: str, version) -> Path
     return EVAL_ROOT / "results" / f"{question_type}_{model}_{dataset}{suffix}_eval.csv"
 
 
-@functools.lru_cache(maxsize=16)
+# Cached readers are keyed on (path, mtime), not just path: this is a live
+# view over files the pipeline scripts keep rewriting while the server stays
+# up (re-running compare_answers.py, adding queries, re-checking code), so a
+# plain lru_cache-by-path would keep serving a pre-edit snapshot forever.
+# Stat-ing the file on every request is effectively free next to parsing it.
+
+@functools.lru_cache(maxsize=64)
+def _read_csv_cached(path: Path, mtime_ns: int) -> pd.DataFrame:
+    return pd.read_csv(path)
+
+
+@functools.lru_cache(maxsize=64)
+def _read_stata_cached(path: Path, mtime_ns: int) -> pd.DataFrame:
+    return pd.read_stata(path)
+
+
 def load_dataset_csv(question_type: str, version) -> pd.DataFrame:
     csv_path = dataset_csv_path(question_type, version)
     if not csv_path.exists():
         raise FileNotFoundError(f"CSV not found: {csv_path}")
 
-    df = pd.read_csv(csv_path)
+    df = _read_csv_cached(csv_path, csv_path.stat().st_mtime_ns).copy()
     df["query_name"] = df["python_script_path"].apply(query_name_from_script_path)
     return df
 
 
-@functools.lru_cache(maxsize=32)
 def load_eval_csv(question_type: str, model: str, dataset: str, version):
     path = eval_csv_path(question_type, model, dataset, version)
     if not path.exists():
         return None
-    return pd.read_csv(path)
+    return _read_csv_cached(path, path.stat().st_mtime_ns)
 
 
-@functools.lru_cache(maxsize=32)
 def load_raw_table(dataset: str, table: str) -> pd.DataFrame:
     path = RAW_DATA_ROOT / dataset / f"{table}.dta"
     if not path.exists():
         raise FileNotFoundError(f"Missing table: {path}")
-    return pd.read_stata(path)
+    return _read_stata_cached(path, path.stat().st_mtime_ns)
 
 
 def eval_row_for_query(question_type: str, model: str, dataset: str, query_name: str, version):

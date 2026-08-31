@@ -1,0 +1,1 @@
+Incorrect values for states 17 and 20: gold has ent 17 avg=9000 n=3 and ent 20 avg=8000 n=2, but predicted shows ent 17 avg=10000 n=2 and ent 20 avg=10000 n=1, altering the ranking and counts.

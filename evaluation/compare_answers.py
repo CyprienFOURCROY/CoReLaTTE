@@ -174,7 +174,7 @@ def call_judge(
                     }
                 ],
                 response_format={"type": "json_object"},
-                max_completion_tokens=800,
+                max_completion_tokens=2000,
             )
 
             raw = response.choices[0].message.content or ""

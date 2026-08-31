@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Gold CSV contains only a header with no rows, while the predicted CSV includes values and a boolean; they do not match."
+}

@@ -19,6 +19,7 @@ CSV_COLUMNS = [
     "check_if_code_works",
     "bias",
     "number_of_nested_queries",
+    "error_message",
 ]
 
 
@@ -38,6 +39,15 @@ def load_dataset_csv(version: int) -> pd.DataFrame:
 
     if missing:
         raise ValueError(f"Missing CSV columns: {missing}")
+
+    # Free-text columns that default to "" -- if every row happens to be
+    # empty, pandas infers an all-NaN float64 column, and later assigning a
+    # real string into a single cell (e.g. an error message) then triggers a
+    # dtype-incompatible warning (a hard error in future pandas). Force these
+    # to string dtype on load so they stay stable regardless of content.
+    for col in ("bias", "error_message"):
+        if col in df.columns:
+            df[col] = df[col].fillna("").astype(str)
 
     return df
 
@@ -110,7 +120,10 @@ def execute_python_script_code(
     return result
 
 
-def check_generated_code_for_row(row: pd.Series) -> str:
+def check_generated_code_for_row(row: pd.Series) -> tuple[str, str]:
+    """Returns (status, error_message). status is "yes" or "runtime_error";
+    error_message is the exception text on failure, "" on success."""
+
     try:
         code = load_python_script(row)
         tables = load_tables_for_row(row)
@@ -121,11 +134,22 @@ def check_generated_code_for_row(row: pd.Series) -> str:
         )
 
         if not isinstance(result, pd.DataFrame):
-            return "no"
+            error_message = f"run_query(tables) must return a pandas DataFrame, got {type(result)}"
 
-        return "yes"
+            print("\n" + "=" * 80)
+            print("FAILED SCRIPT")
+            print(row["python_script_path"])
+            print("-" * 80)
+            print(error_message)
+            print("=" * 80 + "\n")
+
+            return "runtime_error", error_message
+
+        return "yes", ""
 
     except Exception as e:
+        error_message = f"{type(e).__name__}: {e}"
+
         print("\n" + "=" * 80)
         print("FAILED SCRIPT")
         print(row["python_script_path"])
@@ -134,4 +158,4 @@ def check_generated_code_for_row(row: pd.Series) -> str:
         print(str(e))
         print("=" * 80 + "\n")
 
-        return "no"
+        return "runtime_error", error_message

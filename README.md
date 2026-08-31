@@ -206,19 +206,25 @@ Every SQL-Type pipeline script accepts a `--version {1,2}` flag (default `1`). E
   4. a column-provenance join (two joined tables share a non-key column name, so pandas' `_x`/`_y` suffixes kick in — later nodes must reference the correct post-join column);
   5. a join-fan-out join (the join key isn't unique on both sides, so a naive join before aggregating would double-count — the plan must aggregate the one-to-many branch first).
 
-`SQL_TYPE_Generation.py` also accepts `--n-queries` (default `1`, generates that many queries in one run), `--n-extra-tables` (default `2`, tables beyond the always-included base table `ii_portad`), and `--model` (default `gpt-5`):
+`SQL_TYPE_Generation.py` also accepts `--n-queries` (default `1`, generates that many queries in one run), `--min-extra-tables`/`--max-extra-tables` (default `2`/`4`, tables beyond the always-included base table `ii_portad`), and `--model` (default `gpt-5`):
 
 ```bash
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 1
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 2
 python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 2 --n-queries 20
+python3 src/pipeline/SQL_TYPE_ALONE/SQL_TYPE_Generation.py --version 2 --min-extra-tables 3 --max-extra-tables 4
 ```
+
+Two things are randomized independently per query, not fixed once for the whole batch:
+
+* **Number of extra tables** — a fresh integer in `[min-extra-tables, max-extra-tables]` is drawn for every query, so a single run mixes 3-table, 4-table, and 5-table (incl. `ii_portad`) plans. The floor defaults to `2` (not lower) because `multi_join` needs at least 3 tables total to chain; the ceiling defaults to `4` since only 8 non-`ii_portad` tables exist in the sampling pool (`--max-extra-tables` can't exceed `8`).
+* **Number of nested query operations** — a fresh integer in `[1, 3]` is drawn per query (the "contain at least N nested query operation(s)" requirement in the prompt).
 
 Progress (per-query status, timing, running success/fail tally, and a final summary) is logged to both the console and a timestamped file under `processed/logs/SQL_TYPE_ALONE/v{version}/generation_<timestamp>.log`, so a long batch run's history isn't lost if the terminal scrolls or the run is backgrounded.
 
 Each query takes roughly 30–70s (one `gpt-5` call to plan the query, up to 2 repair-retry calls if the plan fails schema validation, and one call to phrase the natural-language question), so budget run time accordingly for large `--n-queries` batches.
 
-There is no hard cap on `--n-queries` itself, but table-subset diversity is bounded: the base table is always `ii_portad`, and the extra tables are sampled from the remaining 8 tables, giving C(8, `n_extra_tables`) distinct table-subset combinations (28 for the default `n_extra_tables=2`). Beyond that many queries, table subsets start repeating within a run — the model still generates a different question/plan each time, so this isn't a hard limit, just a point where topical variety plateaus.
+There is no hard cap on `--n-queries` itself, but table-subset diversity is bounded: the base table is always `ii_portad`, and the extra tables are sampled from the remaining 8 tables, giving C(8, k) distinct table-subset combinations for each extra-table count k in range (28 for k=2, 56 for k=3, 70 for k=4 — summing to 154 across the default `[2, 4]` range). Beyond that many queries, table subsets start repeating within a run — the model still generates a different question/plan each time, so this isn't a hard limit, just a point where topical variety plateaus.
 
 Validate generated code:
 
@@ -252,12 +258,15 @@ The repository includes an evaluation framework for comparing model predictions 
 
 Every evaluation script also accepts `--version {1,2}` (default `1`), keeping v1 and v2 predictions, gold answers, and results completely separate — v1 and v2 both restart query numbering at `query_000001`, so without a version tag "the same" query name would silently mean two different queries.
 
-1. Run the baseline model (SEMEVAL8-ITUNLP) and save its predictions:
+1. Run the baseline agent (SEMEVAL8-ITUNLP, code in `src/model/semeval8-itunlp/`) and save its predictions. Two entrypoints run the *same* agent code against different underlying LLMs, each with its own output tree so they never collide:
 
 ```bash
-python3 evaluation/generate_and_execute_semeval.py --version 1
-python3 evaluation/generate_and_execute_semeval.py --version 2
+python3 evaluation/generate_and_execute_semeval.py --version 1        # gpt-5      -> SEMEVAL8_GPT_5
+python3 evaluation/generate_and_execute_semeval.py --version 2        # gpt-5      -> SEMEVAL8_GPT_5
+python3 evaluation/generate_and_execute_semeval_nano.py --version 2   # gpt-4.1-nano -> SEMEVAL8_NANO
 ```
+
+`--model` picks the actual LLM sent to the API (default `gpt-5` / `gpt-4.1-nano` respectively) and can be overridden on either script, e.g. `--model gpt-5-mini`; the resulting predictions still land under that script's fixed `SEMEVAL8_GPT_5`/`SEMEVAL8_NANO` folder label, so use `--model-name` in the next two steps to match whichever one you actually ran.
 
 By default this only (re)runs queries that don't already have a saved prediction — safe to re-run after adding new queries, it won't re-spend API calls on ones already done. Two options change that:
 
@@ -275,13 +284,19 @@ python3 evaluation/generate_and_execute_semeval.py --version 2 --force
 python3 evaluation/compare_answers.py \
     --version 1 \
     --question-type SQL_TYPE_ALONE \
-    --model-name SEMEVAL8_ITUNLP \
+    --model-name SEMEVAL8_GPT_5 \
     --dataset hh09dta_b2
 
 python3 evaluation/compare_answers.py \
     --version 2 \
     --question-type SQL_TYPE_ALONE \
-    --model-name SEMEVAL8_ITUNLP \
+    --model-name SEMEVAL8_GPT_5 \
+    --dataset hh09dta_b2
+
+python3 evaluation/compare_answers.py \
+    --version 2 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_NANO \
     --dataset hh09dta_b2
 ```
 
@@ -291,13 +306,19 @@ python3 evaluation/compare_answers.py \
 python3 evaluation/compute_metrics.py \
     --version 1 \
     --question-type SQL_TYPE_ALONE \
-    --model-name SEMEVAL8_ITUNLP \
+    --model-name SEMEVAL8_GPT_5 \
     --dataset hh09dta_b2
 
 python3 evaluation/compute_metrics.py \
     --version 2 \
     --question-type SQL_TYPE_ALONE \
-    --model-name SEMEVAL8_ITUNLP \
+    --model-name SEMEVAL8_GPT_5 \
+    --dataset hh09dta_b2
+
+python3 evaluation/compute_metrics.py \
+    --version 2 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_NANO \
     --dataset hh09dta_b2
 ```
 

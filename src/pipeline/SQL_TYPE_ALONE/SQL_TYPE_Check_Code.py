@@ -27,12 +27,10 @@ def main(version: int = 1) -> None:
         print(f"Checking row {idx} ({i}/{len(indices)})")
         print(row["python_script_path"])
 
-        status = check_generated_code_for_row(row)
+        status, error_message = check_generated_code_for_row(row)
 
-
-
-        if status == "yes":
-            df.loc[idx, "check_if_code_works"] = "yes"
+        df.loc[idx, "check_if_code_works"] = status
+        df.loc[idx, "error_message"] = error_message
 
         save_dataset_csv(df, version=version)
 

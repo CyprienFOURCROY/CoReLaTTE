@@ -1,0 +1,1 @@
+The numerator values differ: the gold answer has blank/missing numer_households for both states, while the prediction reports 0. Denominators match, but the differing numerators mean the answers are not equivalent.

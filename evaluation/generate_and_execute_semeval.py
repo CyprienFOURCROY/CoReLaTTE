@@ -19,6 +19,12 @@ EVAL_ROOT = ROOT / "evaluation"
 
 SOURCE_DATASET = "hh09dta_b2"
 
+# Folder label for this script's output -- distinct from the underlying LLM
+# model string (DEFAULT_MODEL / --model), which is what actually gets sent
+# to the API. Keeps runs from different models from overwriting each other.
+MODEL_LABEL = "SEMEVAL8_GPT_5"
+DEFAULT_MODEL = "gpt-5"
+
 
 def get_csv_path(version: int) -> Path:
     return PROCESSED_ROOT / f"dataset_query_v{version}.csv"
@@ -30,7 +36,7 @@ def get_semeval_script_root(version: int) -> Path:
         / "saved_python_script"
         / "SQL_TYPE_ALONE"
         / f"v{version}"
-        / "SEMEVAL8_ITUNLP"
+        / MODEL_LABEL
         / SOURCE_DATASET
     )
 
@@ -41,7 +47,7 @@ def get_semeval_pred_root(version: int) -> Path:
         / "predicted_answers"
         / "SQL_TYPE_ALONE"
         / f"v{version}"
-        / "SEMEVAL8_ITUNLP"
+        / MODEL_LABEL
         / SOURCE_DATASET
     )
 
@@ -198,7 +204,7 @@ def execute_generated_code(
 # ==================================================
 
 def main(
-    model: str = "gpt-5",
+    model: str = DEFAULT_MODEL,
     version: int = 1,
     queries: list[str] | None = None,
     force: bool = False,
@@ -227,6 +233,7 @@ def main(
     query_filter = set(queries) if queries else None
 
     print(f"Version: {version}")
+    print(f"Model: {model}  (label: {MODEL_LABEL})")
     print(f"Rows in CSV: {len(df)}")
     if query_filter:
         print(f"Restricted to: {sorted(query_filter)} (always (re)run, ignoring existing predictions)")
@@ -275,6 +282,7 @@ def main(
                 question=question,
                 schema=schema,
                 temperature=0,
+                model=model,
             )
 
             script_path.write_text(
@@ -313,7 +321,7 @@ def main(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--version", type=int, choices=[1, 2], default=1)
-    parser.add_argument("--model", type=str, default="gpt-5")
+    parser.add_argument("--model", type=str, default=DEFAULT_MODEL)
     parser.add_argument(
         "--queries",
         type=str,

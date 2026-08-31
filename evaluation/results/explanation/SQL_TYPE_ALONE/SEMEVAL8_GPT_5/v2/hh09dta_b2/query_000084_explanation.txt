@@ -1,0 +1,1 @@
+States and values don’t match the gold: gold has Michoacán (50723.08) and Coahuila (11500.0), while prediction has Michoacán (21586.766) and Oaxaca (12045.833). Coahuila is missing and Oaxaca is extra, with incorrect values and ranking.
