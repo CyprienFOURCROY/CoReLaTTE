@@ -1,0 +1,1 @@
+The predicted average amount for state 20.0 (20000.0) does not match the gold value (1870.0), and it omits the required ranking and household count.

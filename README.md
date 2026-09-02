@@ -258,15 +258,18 @@ The repository includes an evaluation framework for comparing model predictions 
 
 Every evaluation script also accepts `--version {1,2}` (default `1`), keeping v1 and v2 predictions, gold answers, and results completely separate — v1 and v2 both restart query numbering at `query_000001`, so without a version tag "the same" query name would silently mean two different queries.
 
-1. Run the baseline agent (SEMEVAL8-ITUNLP, code in `src/model/semeval8-itunlp/`) and save its predictions. Two entrypoints run the *same* agent code against different underlying LLMs, each with its own output tree so they never collide:
+1. Run the baseline agent (SEMEVAL8-ITUNLP, code in `src/model/semeval8-itunlp/`) and save its predictions. Each entrypoint runs the *same* agent code against a different underlying LLM, with its own output tree so they never collide:
 
 ```bash
-python3 evaluation/generate_and_execute_semeval.py --version 1        # gpt-5      -> SEMEVAL8_GPT_5
-python3 evaluation/generate_and_execute_semeval.py --version 2        # gpt-5      -> SEMEVAL8_GPT_5
+python3 evaluation/generate_and_execute_semeval.py --version 1        # gpt-5        -> SEMEVAL8_GPT_5
+python3 evaluation/generate_and_execute_semeval.py --version 2        # gpt-5        -> SEMEVAL8_GPT_5
 python3 evaluation/generate_and_execute_semeval_nano.py --version 2   # gpt-4.1-nano -> SEMEVAL8_NANO
+python3 evaluation/generate_and_execute_semeval_gpt41.py --version 2  # gpt-4.1      -> SEMEVAL8_GPT_4.1
 ```
 
-`--model` picks the actual LLM sent to the API (default `gpt-5` / `gpt-4.1-nano` respectively) and can be overridden on either script, e.g. `--model gpt-5-mini`; the resulting predictions still land under that script's fixed `SEMEVAL8_GPT_5`/`SEMEVAL8_NANO` folder label, so use `--model-name` in the next two steps to match whichever one you actually ran.
+`--model` picks the actual LLM sent to the API (default `gpt-5` / `gpt-4.1-nano` / `gpt-4.1` respectively) and can be overridden on any of the three, e.g. `--model gpt-5-mini`; the resulting predictions still land under that script's fixed folder label (`SEMEVAL8_GPT_5` / `SEMEVAL8_NANO` / `SEMEVAL8_GPT_4.1`), so use `--model-name` in the next two steps to match whichever one you actually ran. Adding another model is a ~5-line change: copy one of these three scripts and change its `MODEL_LABEL`/`DEFAULT_MODEL` constants.
+
+If code generation or execution fails for a query, the prediction file is written with the literal content `thecodefailed` instead of being skipped — `compare_answers.py` recognizes that sentinel and auto-classifies it `no` / `"code failed"` without spending a judge call, so failures still count against accuracy instead of silently vanishing from the results.
 
 By default this only (re)runs queries that don't already have a saved prediction — safe to re-run after adding new queries, it won't re-spend API calls on ones already done. Two options change that:
 
@@ -298,6 +301,12 @@ python3 evaluation/compare_answers.py \
     --question-type SQL_TYPE_ALONE \
     --model-name SEMEVAL8_NANO \
     --dataset hh09dta_b2
+
+python3 evaluation/compare_answers.py \
+    --version 2 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_GPT_4.1 \
+    --dataset hh09dta_b2
 ```
 
 3. Summarize accuracy:
@@ -319,6 +328,12 @@ python3 evaluation/compute_metrics.py \
     --version 2 \
     --question-type SQL_TYPE_ALONE \
     --model-name SEMEVAL8_NANO \
+    --dataset hh09dta_b2
+
+python3 evaluation/compute_metrics.py \
+    --version 2 \
+    --question-type SQL_TYPE_ALONE \
+    --model-name SEMEVAL8_GPT_4.1 \
     --dataset hh09dta_b2
 ```
 

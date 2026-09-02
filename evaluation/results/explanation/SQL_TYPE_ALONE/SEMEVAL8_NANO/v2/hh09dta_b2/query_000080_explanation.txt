@@ -1,0 +1,1 @@
+The gold answer contains only a header with no rows, while the predicted answer includes numerical values and a boolean. Extra rows change the answer and are not equivalent.

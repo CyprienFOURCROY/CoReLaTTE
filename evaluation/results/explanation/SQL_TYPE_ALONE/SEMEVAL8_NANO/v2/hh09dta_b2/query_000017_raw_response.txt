@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted CSV has only headers and no rows, missing the two required result rows present in the gold answer."
+}

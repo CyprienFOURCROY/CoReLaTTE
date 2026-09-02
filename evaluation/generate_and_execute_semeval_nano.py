@@ -25,6 +25,14 @@ SOURCE_DATASET = "hh09dta_b2"
 MODEL_LABEL = "SEMEVAL8_NANO"
 DEFAULT_MODEL = "gpt-4.1-nano"
 
+# Written as the prediction file's entire content when code generation or
+# execution fails, instead of leaving no prediction file at all -- a missing
+# file makes compare_answers.py silently skip the query (never counted
+# either way), which hides real failures from accuracy. compare_answers.py
+# recognizes this exact sentinel and auto-classifies it "no" / "code failed"
+# without spending a judge call on it.
+CODE_FAILED_MARKER = "thecodefailed"
+
 
 def get_csv_path(version: int) -> Path:
     return PROCESSED_ROOT / f"dataset_query_v{version}.csv"
@@ -184,7 +192,15 @@ def execute_generated_code(
 ) -> pd.DataFrame:
     namespace = {}
 
-    exec(code, namespace)
+    # Weaker models (e.g. gpt-4.1-nano) frequently write
+    # def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    # as the signature but put "import pandas as pd" *inside* the function
+    # body. Annotations are evaluated at def-time, before the body runs, so
+    # that always raises NameError: name 'pd' is not defined -- even though
+    # the function body itself would work fine once called. Deferring
+    # annotation evaluation (PEP 563) sidesteps this generically, without
+    # needing to know the model's exact mistake.
+    exec("from __future__ import annotations\n" + code, namespace)
 
     if "run_query" not in namespace:
         raise RuntimeError("Generated code does not define run_query(tables).")
@@ -312,6 +328,10 @@ def main(
         except Exception as e:
             print("Status: failed")
             print(type(e).__name__, ":", e)
+
+            fail_pred_path = prediction_path(query_name, version=version)
+            fail_pred_path.write_text(CODE_FAILED_MARKER + "\n", encoding="utf-8")
+            print(f"Saved failure marker: {fail_pred_path.relative_to(ROOT)}")
 
     print("=" * 80)
     if n_skipped:

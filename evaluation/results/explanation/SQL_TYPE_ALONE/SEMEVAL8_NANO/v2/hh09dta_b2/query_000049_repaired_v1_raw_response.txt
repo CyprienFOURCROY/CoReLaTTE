@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted counts and states do not match the gold result (values differ, extra/missing rows), so the aggregation is incorrect."
+}

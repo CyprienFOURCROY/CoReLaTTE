@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer only includes one group and its values don’t match the gold. It’s missing multiple required groups by non‑ag businesses and robbery knowledge, and the average and household counts differ."
+}

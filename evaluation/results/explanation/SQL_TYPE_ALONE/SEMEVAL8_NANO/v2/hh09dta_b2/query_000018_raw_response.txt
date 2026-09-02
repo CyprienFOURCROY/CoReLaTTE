@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted average (1.0) does not match the gold answer (1.5)."
+}

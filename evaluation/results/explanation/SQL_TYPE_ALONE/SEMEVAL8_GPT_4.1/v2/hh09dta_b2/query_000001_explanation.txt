@@ -1,0 +1,1 @@
+The predicted averages and household counts differ from the gold values for the same states (e.g., Coahuila, Yucatán). Sample sizes are much smaller in the prediction, and the average safety and lights-on values do not match the gold results, so the aggregation is incorrect.

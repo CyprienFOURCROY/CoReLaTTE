@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer lists household_size as 6, but the gold answer’s household size (member_count) is 1; thus the values do not match."
+}

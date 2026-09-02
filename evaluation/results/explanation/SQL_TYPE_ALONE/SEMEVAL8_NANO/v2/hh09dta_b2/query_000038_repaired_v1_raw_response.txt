@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer only provides one count (10) and omits the total number of unsafe households (58) required by the question."
+}

@@ -52,3 +52,21 @@ python3 evaluation/compute_metrics.py \
   --question-type SQL_TYPE_ALONE \
   --model-name SEMEVAL8_NANO \
   --dataset hh09dta_b2
+
+
+# v2, SEMEVAL8 on gpt-4.1 (full, not nano) -- same pattern again, own
+# SEMEVAL8_GPT_4.1 output tree.
+
+python3 evaluation/generate_and_execute_semeval_gpt41.py --version 2
+
+python3 evaluation/compare_answers.py \
+  --version 2 \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_GPT_4.1 \
+  --dataset hh09dta_b2
+
+python3 evaluation/compute_metrics.py \
+  --version 2 \
+  --question-type SQL_TYPE_ALONE \
+  --model-name SEMEVAL8_GPT_4.1 \
+  --dataset hh09dta_b2

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Predicted list has different states (includes 17.0 and 25.0, missing 2.0 and 11.0) and differing averages/counts for overlapping states, so the top-10 and aggregates don’t match the gold."
+}

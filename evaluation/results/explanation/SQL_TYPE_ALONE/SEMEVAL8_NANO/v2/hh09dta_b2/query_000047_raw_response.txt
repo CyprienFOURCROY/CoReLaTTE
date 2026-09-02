@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted output is missing many households present in the gold answer and does not include the required total column (vlh18a)."
+}

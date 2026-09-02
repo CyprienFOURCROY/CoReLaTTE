@@ -1,0 +1,1 @@
+Averages and counts differ from the gold for many states, and the prediction includes an extra state (ent=2) not in the gold. The aggregation/filtering and totals are incorrect, so the results are not equivalent.

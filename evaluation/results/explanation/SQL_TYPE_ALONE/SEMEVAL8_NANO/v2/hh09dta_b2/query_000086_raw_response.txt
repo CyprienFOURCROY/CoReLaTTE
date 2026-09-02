@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted CSV contains only headers and no rows, missing all required states, means, counts, and ordering present in the gold answer."
+}

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The sets of states do not match: the prediction includes 15, 16, 21 and misses 10, 11, 25, so required rows are missing and extra rows are present."
+}

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted value is 12, but the correct number of households above average is 7."
+}

@@ -1,0 +1,1 @@
+Predicted values differ from gold for multiple states (e.g., Sinaloa, Durango, Guanajuato, Veracruz, Nuevo León) and the set of top 10 states is incorrect (includes Sonora, misses Puebla). Averages and household counts do not match.

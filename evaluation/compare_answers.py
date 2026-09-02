@@ -11,6 +11,14 @@ from openai import OpenAI
 
 MAX_CHARS_PER_TABLE = 60_000
 
+# Written by generate_and_execute_semeval*.py as a prediction file's entire
+# content when code generation/execution failed, instead of no file at all.
+# Recognizing it here lets a code-failure be auto-classified "no" / "code
+# failed" without spending a judge call on it -- and, more importantly,
+# without silently vanishing from the results (a missing pred file was
+# never counted either way, which hid real failures from accuracy).
+CODE_FAILED_MARKER = "thecodefailed"
+
 RESULT_COLUMNS = [
     "question_type",
     "model",
@@ -341,56 +349,68 @@ def main() -> None:
             if not gold_path.exists():
                 raise FileNotFoundError(f"Missing gold answer: {gold_path}")
 
-            gold_text, gold_error, gold_chars = safe_linearize_csv(gold_path)
-            pred_text, pred_error, pred_chars = safe_linearize_csv(pred_path)
+            if pred_path.read_text(encoding="utf-8").strip() == CODE_FAILED_MARKER:
+                write_text(explanation_path, "code failed")
 
-            row["gold_chars"] = gold_chars
-            row["pred_chars"] = pred_chars
+                row["comparison_status"] = "success"
+                row["answer"] = "no"
+                row["pred_chars"] = len(CODE_FAILED_MARKER)
+                row["explanation_path"] = str(explanation_path)
 
-            print(f"Gold chars: {gold_chars}")
-            print(f"Pred chars: {pred_chars}")
+                print("Prediction is the code-failed marker -- classified as incorrect, no judge call.")
+                print("Answer: no (code failed)")
 
-            if gold_error:
-                raise ValueError(gold_error)
+            else:
+                gold_text, gold_error, gold_chars = safe_linearize_csv(gold_path)
+                pred_text, pred_error, pred_chars = safe_linearize_csv(pred_path)
 
-            if pred_error:
-                raise ValueError(pred_error)
+                row["gold_chars"] = gold_chars
+                row["pred_chars"] = pred_chars
 
-            prompt = build_prompt(
-                question=question_map[query_name],
-                gold_text=gold_text,
-                pred_text=pred_text,
-            )
+                print(f"Gold chars: {gold_chars}")
+                print(f"Pred chars: {pred_chars}")
 
-            row["prompt_chars"] = len(prompt)
+                if gold_error:
+                    raise ValueError(gold_error)
 
-            judgment, raw_response = call_judge(
-                client=client,
-                prompt=prompt,
-                model=args.judge_model,
-            )
+                if pred_error:
+                    raise ValueError(pred_error)
 
-            answer = judgment.get("answer", "no")
-            explanation = judgment.get("explanation", "")
+                prompt = build_prompt(
+                    question=question_map[query_name],
+                    gold_text=gold_text,
+                    pred_text=pred_text,
+                )
 
-            if answer not in {"yes", "no"}:
-                answer = "no"
-                explanation = f"Invalid judge answer: {answer!r}"
+                row["prompt_chars"] = len(prompt)
 
-            if answer == "yes":
-                explanation = ""
+                judgment, raw_response = call_judge(
+                    client=client,
+                    prompt=prompt,
+                    model=args.judge_model,
+                )
 
-            write_text(raw_response_path, raw_response)
-            write_text(explanation_path, explanation)
+                answer = judgment.get("answer", "no")
+                explanation = judgment.get("explanation", "")
 
-            row["comparison_status"] = "success"
-            row["answer"] = answer
-            row["explanation_path"] = str(explanation_path)
-            row["raw_response_path"] = str(raw_response_path)
+                if answer not in {"yes", "no"}:
+                    answer = "no"
+                    explanation = f"Invalid judge answer: {answer!r}"
 
-            print("Answer:", answer)
-            if explanation:
-                print("Explanation file:", explanation_path)
+                if answer == "yes":
+                    explanation = ""
+
+                write_text(raw_response_path, raw_response)
+                write_text(explanation_path, explanation)
+
+                row["comparison_status"] = "success"
+                row["answer"] = answer
+                row["explanation_path"] = str(explanation_path)
+                row["raw_response_path"] = str(raw_response_path)
+
+                print("Answer:", answer)
+                if explanation:
+                    print("Explanation file:", explanation_path)
 
         except KeyboardInterrupt:
             print("\nInterrupted. Saving progress before exit...")
