@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer leaves the non‑agricultural business count blank for the groups that should be 0.0. This omits a key grouping value; the gold has nna02_total=0.0 for those rows."
+}

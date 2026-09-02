@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fault Lines — CoReLaTTe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --page:        #f9f9f7;
+    --surface:     #fcfcfb;
+    --ink:         #0b0b0b;
+    --ink-2:       #52514e;
+    --ink-muted:   #898781;
+    --grid:        #e1e0d9;
+    --border:      rgba(11,11,11,0.10);
+    --accent:      #38408a;
+    --accent-wash: rgba(56,64,138,0.08);
+    --good:        #0ca30c;
+    --warning:     #fab219;
+    --serious:     #ec835a;
+    --critical:    #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page:        #0d0d0d;
+      --surface:     #1a1a19;
+      --ink:         #ffffff;
+      --ink-2:       #c3c2b7;
+      --ink-muted:   #898781;
+      --grid:        #2c2c2a;
+      --border:      rgba(255,255,255,0.10);
+      --accent:      #9ba3ea;
+      --accent-wash: rgba(155,163,234,0.12);
+      --good:        #0ca30c;
+      --warning:     #fab219;
+      --serious:     #ec835a;
+      --critical:    #e66767;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  a { color: var(--accent); }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+
+  /* ---------- nav ---------- */
+
+  .toolnav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin-bottom: 22px;
+  }
+  .toolnav a {
+    color: var(--ink-2);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .toolnav a:hover { color: var(--accent); }
+
+  /* ---------- header ---------- */
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .snapshot {
+    font-size: 12px;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .snapshot button {
+    font: inherit;
+    font-size: 11.5px;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: var(--accent);
+    background: var(--accent-wash);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 9px;
+    cursor: pointer;
+  }
+  .snapshot button:hover { background: var(--accent); color: #fff; }
+  .snapshot button:disabled { opacity: 0.5; cursor: default; }
+  .subhead {
+    color: var(--ink-2);
+    font-size: 14.5px;
+    max-width: 62ch;
+    margin: 4px 0 26px;
+  }
+
+  /* ---------- model picker ---------- */
+
+  .picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 28px;
+  }
+  .picker button {
+    font: inherit;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .picker button .v {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+  .picker button:hover { background: var(--accent-wash); color: var(--ink); }
+  .picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .picker button.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  .picker button.active .v { color: rgba(255,255,255,0.75); }
+
+  /* ---------- KPI row ---------- */
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 34px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .kpi .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .kpi .value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .kpi .value.good { color: var(--good); }
+  .kpi .value.serious { color: var(--serious); }
+  .kpi .value.critical { color: var(--critical); }
+  .kpi .sub {
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    margin-top: 5px;
+  }
+
+  @media (max-width: 720px) {
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- legend ---------- */
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 10px 0 22px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+  }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .legend .swatch { width: 10px; height: 10px; border-radius: 2px; flex: 0 0 auto; }
+
+  /* ---------- panel ---------- */
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px 18px;
+    margin-bottom: 20px;
+  }
+  .panel h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 3px;
+  }
+  .panel .caption {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin: 0 0 18px;
+    max-width: 62ch;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 168px 1fr 46px;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+  }
+  .row .rowlabel {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .row .rowlabel .n {
+    color: var(--ink-muted);
+    font-size: 11px;
+  }
+  .barwrap {
+    position: relative;
+    height: 20px;
+    background: var(--grid);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+  }
+  .seg {
+    height: 100%;
+    cursor: pointer;
+    outline-offset: -2px;
+  }
+  .seg:not(:last-child) { border-right: 2px solid var(--surface); }
+  .seg.correct { background: var(--good); }
+  .seg.incorrect { background: var(--serious); }
+  .seg.code_failed { background: var(--critical); }
+  .seg.judge_infra_failed { background: var(--warning); }
+  .seg:focus-visible { outline: 2px solid var(--accent); }
+  .row .acc {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--ink-2);
+  }
+
+  details.tableview {
+    margin-top: 14px;
+  }
+  details.tableview summary {
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--ink-muted);
+    user-select: none;
+  }
+  details.tableview summary:hover { color: var(--accent); }
+  .tv-wrap { overflow-x: auto; margin-top: 10px; }
+  table.tv {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    font-family: "IBM Plex Mono", monospace;
+  }
+  table.tv th, table.tv td {
+    text-align: right;
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  table.tv th:first-child, table.tv td:first-child { text-align: left; }
+  table.tv thead th {
+    color: var(--ink-muted);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  footer {
+    margin-top: 30px;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+  }
+
+  .state-msg {
+    color: var(--ink-muted);
+    font-size: 13px;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  /* ---------- tooltip ---------- */
+
+  #tooltip {
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 12px;
+    border-radius: 6px;
+    padding: 7px 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    transition: opacity 0.08s ease;
+    max-width: 240px;
+  }
+  #tooltip.show { opacity: 1; }
+  #tooltip .t-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  #tooltip .t-label { color: var(--ink-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    #tooltip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="toolnav"><a href="/">&larr; Query Explorer</a></nav>
+
+  <header>
+    <h1>Fault Lines</h1>
+    <span class="snapshot mono">
+      <span id="snapshotStamp"></span>
+      <button type="button" id="refreshBtn">Refresh</button>
+    </span>
+  </header>
+  <p class="subhead">
+    Where CoReLaTTe's SQL-type benchmark models break, live from
+    <span class="mono">evaluation/results/</span>. Each v2 query is built
+    around one of five deliberately injected structural biases. Pick a model
+    to see where its failures cluster.
+  </p>
+
+  <div id="content">
+    <div class="state-msg">Loading…</div>
+  </div>
+
+  <footer>
+    Live view over <span class="mono">evaluation/results/</span> — reflects the
+    current files on disk each time you load or refresh this page.
+    <span class="mono">code_failed</span> = the generated script never produced
+    an answer; <span class="mono">judge_infra_failed</span> = the LLM judge
+    itself errored out, not a verdict on the model.
+  </footer>
+</div>
+
+<div id="tooltip" role="tooltip"></div>
+
+<script>
+"use strict";
+
+const QUESTION_TYPE = "SQL_TYPE_ALONE";
+
+const OUTCOME_ORDER = ["correct", "incorrect", "code_failed", "judge_infra_failed"];
+const OUTCOME_META = {
+  correct:            { label: "Correct" },
+  incorrect:          { label: "Incorrect" },
+  code_failed:        { label: "Code failed" },
+  judge_infra_failed: { label: "Judge errored" },
+};
+
+const MODEL_LABELS = {
+  SEMEVAL8_GPT_5: "GPT-5",
+  "SEMEVAL8_GPT_4.1": "GPT-4.1",
+  SEMEVAL8_NANO: "Nano",
+};
+
+const BIAS_LABELS = {
+  having: "HAVING filter",
+  scalar_filter: "Scalar filter",
+  multi_join: "Multi-join",
+  column_provenance: "Column provenance",
+  join_fanout: "Join fan-out",
+};
+
+let DATA = null;
+let activeKey = null;
+
+async function fetchJSON(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`${url} -> ${res.status}`);
+  return res.json();
+}
+
+function escapeHtml(v) {
+  return String(v ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function orderedKeys() {
+  const keys = Object.keys(DATA.models);
+  // Prefer v2 (biased) runs first, sorted by model name, then anything else (e.g. v1 baseline).
+  const withMeta = keys.map((k) => ({ key: k, ...DATA.models[k] }));
+  withMeta.sort((a, b) => {
+    if (a.version !== b.version) return (b.version || 0) - (a.version || 0);
+    return modelDisplayName(a.model).localeCompare(modelDisplayName(b.model));
+  });
+  return withMeta.map((m) => m.key);
+}
+
+function modelDisplayName(model) {
+  return MODEL_LABELS[model] || model;
+}
+
+function total(counts) {
+  return OUTCOME_ORDER.reduce((s, k) => s + (counts[k] || 0), 0);
+}
+
+function accuracyPct(counts) {
+  const t = total(counts);
+  return t ? Math.round(((counts.correct || 0) / t) * 1000) / 10 : 0;
+}
+
+function buildLayout() {
+  document.getElementById("content").innerHTML = `
+    <div class="picker" id="picker" role="tablist" aria-label="Model and version"></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="legend" id="legend"></div>
+    <section class="panel">
+      <h2>By structural bias</h2>
+      <p class="caption">
+        Each v2 query is built to force one specific pattern in the generated
+        pandas code — a post-aggregation filter, a comparison against a
+        computed scalar, a multi-table join, a join with clashing non-key
+        column names, or a join with a real row-fan-out risk. Sorted worst
+        accuracy first.
+      </p>
+      <div id="panelBias"></div>
+    </section>
+    <section class="panel">
+      <h2>By join width</h2>
+      <p class="caption">Number of raw tables the query has to reason across at once.</p>
+      <div id="panelTables"></div>
+    </section>
+    <section class="panel">
+      <h2>By table involved</h2>
+      <p class="caption">
+        Accuracy across every query that touches a given table (a query
+        touching 3 tables counts once toward each of them).
+      </p>
+      <div id="panelTable"></div>
+    </section>
+  `;
+}
+
+// ---------- picker ----------
+
+function renderPicker() {
+  const el = document.getElementById("picker");
+  const keys = orderedKeys();
+
+  el.innerHTML = keys
+    .map((key) => {
+      const m = DATA.models[key];
+      const isActive = key === activeKey;
+      return `<button type="button" role="tab" class="${isActive ? "active" : ""}" data-key="${escapeHtml(key)}" aria-selected="${isActive}">
+        ${escapeHtml(modelDisplayName(m.model))} ${m.version != null ? `<span class="v">v${m.version}</span>` : ""}
+      </button>`;
+    })
+    .join("");
+
+  el.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeKey = btn.dataset.key;
+      renderAll();
+    });
+  });
+}
+
+// ---------- KPI row ----------
+
+function renderKpis(entry) {
+  const c = entry.overall;
+  const t = total(c);
+  const acc = accuracyPct(c);
+  const codeFailedPct = t ? Math.round(((c.code_failed || 0) / t) * 1000) / 10 : 0;
+  const incorrectPct = t ? Math.round(((c.incorrect || 0) / t) * 1000) / 10 : 0;
+
+  const cards = [
+    { label: "Queries evaluated", value: t, cls: "", sub: entry.version != null ? `v${entry.version} · ${modelDisplayName(entry.model)}` : modelDisplayName(entry.model) },
+    { label: "Accuracy", value: acc + "%", cls: "good", sub: `${c.correct || 0} correct` },
+    { label: "Incorrect", value: incorrectPct + "%", cls: "serious", sub: `${c.incorrect || 0} of ${t}` },
+    { label: "Code failed", value: codeFailedPct + "%", cls: "critical", sub: `${c.code_failed || 0} of ${t}` },
+  ];
+
+  document.getElementById("kpis").innerHTML = cards
+    .map(
+      (k) => `<div class="kpi">
+        <div class="label">${escapeHtml(k.label)}</div>
+        <div class="value ${k.cls}">${escapeHtml(k.value)}</div>
+        <div class="sub">${escapeHtml(k.sub)}</div>
+      </div>`
+    )
+    .join("");
+}
+
+// ---------- legend ----------
+
+function renderLegend() {
+  document.getElementById("legend").innerHTML = OUTCOME_ORDER.map(
+    (o) => `<span class="item"><span class="swatch" style="background:var(--${o === "correct" ? "good" : o === "incorrect" ? "serious" : o === "code_failed" ? "critical" : "warning"})"></span>${escapeHtml(OUTCOME_META[o].label)}</span>`
+  ).join("");
+}
+
+// ---------- bar panels ----------
+
+function showTooltip(x, y, label, value, sub) {
+  const tt = document.getElementById("tooltip");
+  tt.innerHTML = `<div class="t-value">${escapeHtml(value)}</div><div class="t-label">${escapeHtml(label)}${sub ? " · " + escapeHtml(sub) : ""}</div>`;
+  tt.style.left = x + "px";
+  tt.style.top = (y - 10) + "px";
+  tt.classList.add("show");
+}
+
+function hideTooltip() {
+  document.getElementById("tooltip").classList.remove("show");
+}
+
+function renderBarRow(displayLabel, counts) {
+  const t = total(counts);
+  const acc = accuracyPct(counts);
+
+  const segs = OUTCOME_ORDER.filter((o) => counts[o] > 0)
+    .map((o) => {
+      const pct = (counts[o] / t) * 100;
+      const meta = OUTCOME_META[o];
+      return `<div class="seg ${o}" style="width:${pct}%" tabindex="0"
+        data-cat="${escapeHtml(displayLabel)}" data-outcome="${escapeHtml(meta.label)}"
+        data-n="${counts[o]}" data-pct="${Math.round((counts[o] / t) * 1000) / 10}"></div>`;
+    })
+    .join("");
+
+  return `<div class="row">
+    <div class="rowlabel mono" title="${escapeHtml(displayLabel)}">${escapeHtml(displayLabel)} <span class="n">(${t})</span></div>
+    <div class="barwrap">${segs}</div>
+    <div class="acc">${acc}%</div>
+  </div>`;
+}
+
+function renderTableView(rows, categoryLabel) {
+  const head = `<tr><th>${escapeHtml(categoryLabel)}</th>${OUTCOME_ORDER.map((o) => `<th>${escapeHtml(OUTCOME_META[o].label)}</th>`).join("")}<th>Total</th><th>Accuracy</th></tr>`;
+  const body = rows
+    .map(
+      ([label, counts]) =>
+        `<tr><td>${escapeHtml(label)}</td>${OUTCOME_ORDER.map((o) => `<td>${counts[o] || 0}</td>`).join("")}<td>${total(counts)}</td><td>${accuracyPct(counts)}%</td></tr>`
+    )
+    .join("");
+  return `<details class="tableview"><summary>Show as table</summary><div class="tv-wrap"><table class="tv"><thead>${head}</thead><tbody>${body}</tbody></table></div></details>`;
+}
+
+function renderPanel(containerId, dataObj, labelMap, categoryLabel) {
+  const container = document.getElementById(containerId);
+  const entries = Object.entries(dataObj);
+
+  if (!entries.length) {
+    container.innerHTML = `<p style="color:var(--ink-muted);font-size:13px;margin:0;">Not applicable for this version.</p>`;
+    return;
+  }
+
+  entries.sort((a, b) => accuracyPct(a[1]) - accuracyPct(b[1]));
+
+  const rowsHtml = entries.map(([key, counts]) => renderBarRow(labelMap ? labelMap(key) : key, counts)).join("");
+  const tableHtml = renderTableView(
+    entries.map(([key, counts]) => [labelMap ? labelMap(key) : key, counts]),
+    categoryLabel
+  );
+
+  container.innerHTML = rowsHtml + tableHtml;
+
+  container.querySelectorAll(".seg").forEach((seg) => {
+    const show = () => {
+      const rect = seg.getBoundingClientRect();
+      showTooltip(rect.left + rect.width / 2, rect.top, seg.dataset.cat, `${seg.dataset.n} (${seg.dataset.pct}%)`, seg.dataset.outcome);
+    };
+    seg.addEventListener("pointerenter", show);
+    seg.addEventListener("pointermove", show);
+    seg.addEventListener("pointerleave", hideTooltip);
+    seg.addEventListener("focus", show);
+    seg.addEventListener("blur", hideTooltip);
+  });
+}
+
+// ---------- top-level render ----------
+
+function renderAll() {
+  const entry = DATA.models[activeKey];
+
+  renderPicker();
+  renderKpis(entry);
+  renderPanel("panelBias", entry.by_bias, (k) => BIAS_LABELS[k] || k, "Bias");
+  renderPanel("panelTables", entry.by_n_tables, (k) => `${k} tables`, "Tables");
+  renderPanel("panelTable", entry.by_table, (k) => k, "Table");
+}
+
+async function load() {
+  const refreshBtn = document.getElementById("refreshBtn");
+  refreshBtn.disabled = true;
+
+  try {
+    const config = await fetchJSON("/api/config");
+    const dataset = config.source_datasets[0];
+
+    if (!dataset) {
+      document.getElementById("content").innerHTML = `<p class="state-msg">No dataset found under raw_data/.</p>`;
+      return;
+    }
+
+    DATA = await fetchJSON(`/api/analysis?question_type=${encodeURIComponent(QUESTION_TYPE)}&dataset=${encodeURIComponent(dataset)}`);
+    document.getElementById("snapshotStamp").textContent = "as of " + DATA.generated_at;
+
+    const keys = Object.keys(DATA.models);
+    if (!keys.length) {
+      document.getElementById("content").innerHTML = `<p class="state-msg">No evaluated model runs found yet for ${escapeHtml(QUESTION_TYPE)}. Run compare_answers.py first.</p>`;
+      return;
+    }
+
+    if (!keys.includes(activeKey)) {
+      activeKey = orderedKeys()[0];
+    }
+
+    buildLayout();
+    renderLegend();
+    renderAll();
+  } catch (err) {
+    document.getElementById("content").innerHTML = `<p class="state-msg">Failed to load: ${escapeHtml(err.message)}</p>`;
+  } finally {
+    refreshBtn.disabled = false;
+  }
+}
+
+document.getElementById("refreshBtn").addEventListener("click", load);
+load();
+</script>
+</body>
+</html>

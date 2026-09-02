@@ -330,7 +330,10 @@ def main(
             print(type(e).__name__, ":", e)
 
             fail_pred_path = prediction_path(query_name, version=version)
-            fail_pred_path.write_text(CODE_FAILED_MARKER + "\n", encoding="utf-8")
+            fail_pred_path.write_text(
+                f"{CODE_FAILED_MARKER}\nexplanation_text: {type(e).__name__}: {e}\n",
+                encoding="utf-8",
+            )
             print(f"Saved failure marker: {fail_pred_path.relative_to(ROOT)}")
 
     print("=" * 80)

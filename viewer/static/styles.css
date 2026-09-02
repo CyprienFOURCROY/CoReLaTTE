@@ -88,6 +88,19 @@ body {
   font-size: 13px;
 }
 
+.nav-link {
+  margin-left: 6px;
+  padding-left: 14px;
+  border-left: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
 .controls {
   display: flex;
   gap: 14px;

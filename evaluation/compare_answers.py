@@ -349,16 +349,29 @@ def main() -> None:
             if not gold_path.exists():
                 raise FileNotFoundError(f"Missing gold answer: {gold_path}")
 
-            if pred_path.read_text(encoding="utf-8").strip() == CODE_FAILED_MARKER:
-                write_text(explanation_path, "code failed")
+            pred_raw = pred_path.read_text(encoding="utf-8")
+            pred_lines = pred_raw.splitlines()
+
+            if pred_lines and pred_lines[0].strip() == CODE_FAILED_MARKER:
+                # Lines after the marker are "explanation_text: <the actual
+                # Python error>", written by generate_and_execute_semeval*.py.
+                # Older sentinel files may have no detail line at all -- fall
+                # back to a generic message in that case.
+                detail = "\n".join(pred_lines[1:]).strip()
+                prefix = "explanation_text:"
+                if detail.startswith(prefix):
+                    detail = detail[len(prefix):].strip()
+                explanation = detail or "code failed"
+
+                write_text(explanation_path, explanation)
 
                 row["comparison_status"] = "success"
                 row["answer"] = "no"
-                row["pred_chars"] = len(CODE_FAILED_MARKER)
+                row["pred_chars"] = len(pred_raw)
                 row["explanation_path"] = str(explanation_path)
 
                 print("Prediction is the code-failed marker -- classified as incorrect, no judge call.")
-                print("Answer: no (code failed)")
+                print(f"Answer: no (code failed): {explanation}")
 
             else:
                 gold_text, gold_error, gold_chars = safe_linearize_csv(gold_path)

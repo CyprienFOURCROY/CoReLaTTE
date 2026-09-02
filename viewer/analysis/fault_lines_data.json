@@ -1,0 +1,438 @@
+{
+ "generated_at": "2026-09-02 09:49 UTC",
+ "models": {
+  "SEMEVAL8_GPT_4.1__v2": {
+   "model": "SEMEVAL8_GPT_4.1",
+   "version": 2,
+   "total": 91,
+   "overall": {
+    "correct": 56,
+    "incorrect": 11,
+    "code_failed": 24,
+    "judge_infra_failed": 0
+   },
+   "by_bias": {
+    "column_provenance": {
+     "correct": 5,
+     "incorrect": 3,
+     "code_failed": 9,
+     "judge_infra_failed": 0
+    },
+    "having": {
+     "correct": 14,
+     "incorrect": 4,
+     "code_failed": 2,
+     "judge_infra_failed": 0
+    },
+    "join_fanout": {
+     "correct": 13,
+     "incorrect": 2,
+     "code_failed": 3,
+     "judge_infra_failed": 0
+    },
+    "multi_join": {
+     "correct": 9,
+     "incorrect": 0,
+     "code_failed": 10,
+     "judge_infra_failed": 0
+    },
+    "scalar_filter": {
+     "correct": 15,
+     "incorrect": 2,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_n_tables": {
+    "3": {
+     "correct": 29,
+     "incorrect": 6,
+     "code_failed": 11,
+     "judge_infra_failed": 0
+    },
+    "4": {
+     "correct": 15,
+     "incorrect": 3,
+     "code_failed": 7,
+     "judge_infra_failed": 0
+    },
+    "5": {
+     "correct": 12,
+     "incorrect": 2,
+     "code_failed": 6,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_table": {
+    "ii_ah": {
+     "correct": 20,
+     "incorrect": 6,
+     "code_failed": 11,
+     "judge_infra_failed": 0
+    },
+    "ii_crh": {
+     "correct": 19,
+     "incorrect": 3,
+     "code_failed": 7,
+     "judge_infra_failed": 0
+    },
+    "ii_in": {
+     "correct": 17,
+     "incorrect": 5,
+     "code_failed": 5,
+     "judge_infra_failed": 0
+    },
+    "ii_inr": {
+     "correct": 17,
+     "incorrect": 2,
+     "code_failed": 7,
+     "judge_infra_failed": 0
+    },
+    "ii_nna": {
+     "correct": 17,
+     "incorrect": 2,
+     "code_failed": 13,
+     "judge_infra_failed": 0
+    },
+    "ii_portad": {
+     "correct": 56,
+     "incorrect": 11,
+     "code_failed": 24,
+     "judge_infra_failed": 0
+    },
+    "ii_se": {
+     "correct": 13,
+     "incorrect": 2,
+     "code_failed": 7,
+     "judge_infra_failed": 0
+    },
+    "ii_su": {
+     "correct": 24,
+     "incorrect": 3,
+     "code_failed": 8,
+     "judge_infra_failed": 0
+    },
+    "ii_vlh": {
+     "correct": 24,
+     "incorrect": 6,
+     "code_failed": 9,
+     "judge_infra_failed": 0
+    }
+   }
+  },
+  "SEMEVAL8_GPT_5__v1": {
+   "model": "SEMEVAL8_GPT_5",
+   "version": 1,
+   "total": 24,
+   "overall": {
+    "correct": 21,
+    "incorrect": 3,
+    "code_failed": 0,
+    "judge_infra_failed": 0
+   },
+   "by_bias": {},
+   "by_n_tables": {
+    "3": {
+     "correct": 21,
+     "incorrect": 3,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_table": {
+    "ii_ah": {
+     "correct": 1,
+     "incorrect": 0,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_crh": {
+     "correct": 1,
+     "incorrect": 0,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_in": {
+     "correct": 6,
+     "incorrect": 1,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_inr": {
+     "correct": 5,
+     "incorrect": 0,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_nna": {
+     "correct": 6,
+     "incorrect": 1,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_portad": {
+     "correct": 21,
+     "incorrect": 3,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_se": {
+     "correct": 7,
+     "incorrect": 2,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_su": {
+     "correct": 10,
+     "incorrect": 2,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_vlh": {
+     "correct": 6,
+     "incorrect": 0,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   }
+  },
+  "SEMEVAL8_GPT_5__v2": {
+   "model": "SEMEVAL8_GPT_5",
+   "version": 2,
+   "total": 91,
+   "overall": {
+    "correct": 74,
+    "incorrect": 17,
+    "code_failed": 0,
+    "judge_infra_failed": 0
+   },
+   "by_bias": {
+    "column_provenance": {
+     "correct": 12,
+     "incorrect": 5,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "having": {
+     "correct": 18,
+     "incorrect": 2,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "join_fanout": {
+     "correct": 11,
+     "incorrect": 7,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "multi_join": {
+     "correct": 18,
+     "incorrect": 1,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "scalar_filter": {
+     "correct": 15,
+     "incorrect": 2,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_n_tables": {
+    "3": {
+     "correct": 39,
+     "incorrect": 7,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "4": {
+     "correct": 20,
+     "incorrect": 5,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "5": {
+     "correct": 15,
+     "incorrect": 5,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_table": {
+    "ii_ah": {
+     "correct": 28,
+     "incorrect": 9,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_crh": {
+     "correct": 24,
+     "incorrect": 5,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_in": {
+     "correct": 21,
+     "incorrect": 6,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_inr": {
+     "correct": 22,
+     "incorrect": 4,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_nna": {
+     "correct": 27,
+     "incorrect": 5,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_portad": {
+     "correct": 74,
+     "incorrect": 17,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_se": {
+     "correct": 16,
+     "incorrect": 6,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_su": {
+     "correct": 29,
+     "incorrect": 6,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    },
+    "ii_vlh": {
+     "correct": 31,
+     "incorrect": 8,
+     "code_failed": 0,
+     "judge_infra_failed": 0
+    }
+   }
+  },
+  "SEMEVAL8_NANO__v2": {
+   "model": "SEMEVAL8_NANO",
+   "version": 2,
+   "total": 91,
+   "overall": {
+    "correct": 14,
+    "incorrect": 32,
+    "code_failed": 45,
+    "judge_infra_failed": 0
+   },
+   "by_bias": {
+    "column_provenance": {
+     "correct": 2,
+     "incorrect": 6,
+     "code_failed": 9,
+     "judge_infra_failed": 0
+    },
+    "having": {
+     "correct": 5,
+     "incorrect": 6,
+     "code_failed": 9,
+     "judge_infra_failed": 0
+    },
+    "join_fanout": {
+     "correct": 1,
+     "incorrect": 9,
+     "code_failed": 8,
+     "judge_infra_failed": 0
+    },
+    "multi_join": {
+     "correct": 3,
+     "incorrect": 6,
+     "code_failed": 10,
+     "judge_infra_failed": 0
+    },
+    "scalar_filter": {
+     "correct": 3,
+     "incorrect": 5,
+     "code_failed": 9,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_n_tables": {
+    "3": {
+     "correct": 9,
+     "incorrect": 18,
+     "code_failed": 19,
+     "judge_infra_failed": 0
+    },
+    "4": {
+     "correct": 3,
+     "incorrect": 8,
+     "code_failed": 14,
+     "judge_infra_failed": 0
+    },
+    "5": {
+     "correct": 2,
+     "incorrect": 6,
+     "code_failed": 12,
+     "judge_infra_failed": 0
+    }
+   },
+   "by_table": {
+    "ii_ah": {
+     "correct": 3,
+     "incorrect": 15,
+     "code_failed": 19,
+     "judge_infra_failed": 0
+    },
+    "ii_crh": {
+     "correct": 7,
+     "incorrect": 11,
+     "code_failed": 11,
+     "judge_infra_failed": 0
+    },
+    "ii_in": {
+     "correct": 3,
+     "incorrect": 7,
+     "code_failed": 17,
+     "judge_infra_failed": 0
+    },
+    "ii_inr": {
+     "correct": 2,
+     "incorrect": 6,
+     "code_failed": 18,
+     "judge_infra_failed": 0
+    },
+    "ii_nna": {
+     "correct": 6,
+     "incorrect": 12,
+     "code_failed": 14,
+     "judge_infra_failed": 0
+    },
+    "ii_portad": {
+     "correct": 14,
+     "incorrect": 32,
+     "code_failed": 45,
+     "judge_infra_failed": 0
+    },
+    "ii_se": {
+     "correct": 2,
+     "incorrect": 8,
+     "code_failed": 12,
+     "judge_infra_failed": 0
+    },
+    "ii_su": {
+     "correct": 4,
+     "incorrect": 11,
+     "code_failed": 20,
+     "judge_infra_failed": 0
+    },
+    "ii_vlh": {
+     "correct": 8,
+     "incorrect": 14,
+     "code_failed": 17,
+     "judge_infra_failed": 0
+    }
+   }
+  }
+ }
+}

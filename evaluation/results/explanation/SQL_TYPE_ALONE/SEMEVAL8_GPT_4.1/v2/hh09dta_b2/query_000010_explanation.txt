@@ -1,0 +1,1 @@
+States and average values match, but the household counts are incorrect for every state (n_households do not match respondent_count), so the required counts per state are wrong.

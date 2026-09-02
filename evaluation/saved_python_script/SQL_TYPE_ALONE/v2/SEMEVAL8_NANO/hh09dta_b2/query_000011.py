@@ -10,33 +10,37 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     adults = portad[portad["edad"] >= 18]
     
     # Merge portad with crh on 'folio'
-    merged_crh = pd.merge(adults, crh, on="folio", how="inner")
+    portad_crh = pd.merge(adults, crh, on="folio", how="inner")
     
     # Filter for households that use a plot/land for farming (su01 == 1)
     su_farming = su[su["su01"] == 1]
     
-    # Merge with households that farm
-    merged = pd.merge(merged_crh, su_farming[["folio"]], on="folio", how="inner")
+    # Merge with households that use land for farming
+    merged = pd.merge(portad_crh, su_farming[["folio"]], on="folio", how="inner")
     
-    # Filter for households with positive total debt including interest (crh04_1 == 1)
-    debt_positive = merged[merged["crh04_1"] == 1]
+    # Filter for households with total debt > 0 (crh04_2 > 0) and total debt info not missing
+    debt_positive = merged[(merged["crh04_2"].notna()) & (merged["crh04_2"] > 0)]
     
-    # Remove households with missing 'crh04_2' (total debt in pesos)
-    debt_positive = debt_positive[debt_positive["crh04_2"].notna()]
+    # Select relevant columns: 'ent' (state), 'crh04_2' (debt), 'folio'
+    debt_data = debt_positive[["ent", "crh04_2", "folio"]]
     
-    # Group by 'ent' (state)
-    grouped = debt_positive.groupby("ent")
+    # Group by 'ent' (state) and compute:
+    # - mean of 'crh04_2' (average debt)
+    # - count of households
+    result = (
+        debt_data
+        .groupby("ent")
+        .agg(
+            average_debt=("crh04_2", "mean"),
+            household_count=("folio", "count")
+        )
+        .reset_index()
+    )
     
-    # Calculate mean total debt in pesos and count households per state
-    result = grouped.agg(
-        average_debt_in_pesos=pd.NamedAgg(column="crh04_2", aggfunc="mean"),
-        household_count=pd.NamedAgg(column="folio", aggfunc="count")
-    ).reset_index()
+    # Get top 10 states with highest average debt
+    top10 = result.nlargest(10, "average_debt")
     
-    # Select top 10 states with highest average debt
-    top10 = result.sort_values(by="average_debt_in_pesos", ascending=False).head(10)
-    
-    # Map 'ent' codes to state names (optional, not required, but for clarity)
+    # Map 'ent' codes to state names for clarity
     state_mapping = {
         2: "Baja California",
         3: "Baja California Sur",
@@ -66,7 +70,9 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
         31: "Yucatán",
         32: "Zacatecas"
     }
-    top10["state_name"] = top10["ent"].map(state_mapping)
+    top10["state"] = top10["ent"].map(state_mapping)
     
-    # Return the final DataFrame with state name, average debt, and household count
-    return top10[["state_name", "average_debt_in_pesos", "household_count"]]
+    # Select and reorder columns
+    final_df = top10[["state", "average_debt", "household_count"]]
+    
+    return final_df

@@ -1,0 +1,1 @@
+States and counts don’t match the gold results: several required states (e.g., Guanajuato, Jalisco) are missing, extra states are included, and for overlapping states (e.g., Estado de México, Nuevo León, Oaxaca, Durango) the eligible and unsafe counts differ from the gold. Thus the filters/aggregation are incorrect.

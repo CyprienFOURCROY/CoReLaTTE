@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The prediction includes an extra household (000380AP00) not in the gold result; only one household meets the criteria, so the extra row changes the answer."
+}

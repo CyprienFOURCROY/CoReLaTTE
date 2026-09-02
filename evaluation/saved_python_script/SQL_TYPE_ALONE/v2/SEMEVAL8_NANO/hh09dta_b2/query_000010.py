@@ -10,53 +10,72 @@ def run_query(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
     merged = pd.merge(ah, se, on=["folio", "ls"], how="inner")
     
     # Filter households that experienced a disease, accident, or hospitalization in last 5 years
-    condition = (
-        (merged["se01b"] == 1) |  # disease/accident/hospital
-        (merged["se01c"] == 1) |  # unemployment/failure
-        (merged["se01d"] == 1) |  # natural disaster
-        (merged["se01e"] == 1) |  # lost crop
-        (merged["se01f"] == 1)    # lost/robbery/dead animal
-    )
-    households_with_event = merged[condition]
+    # Columns: se01b (disease/accident/hospital)
+    # Value: 1 indicates yes
+    disease_mask = merged["se01b"] == 1
+    filtered = merged[disease_mask]
     
-    # Keep only relevant columns
-    relevant = households_with_event[["folio", "se02fa_1", "se02fa_2"]]
+    # For each household, check if they have at least 2 such households
+    household_counts = filtered.groupby("folio").size()
+    households_with_min2 = household_counts[household_counts >= 2].index
     
-    # Merge with portad to get 'ent' (state)
-    full_data = pd.merge(relevant, portad[["folio", "ent"]], on="folio", how="left")
+    # Filter to only households with at least 2 such households
+    filtered = filtered[filtered["folio"].isin(households_with_min2)]
     
-    # Filter households that reported having electronic devices (se02fa_1 == 1)
-    electronic_devices = full_data[full_data["se02fa_1"] == 1]
+    # For these households, compute average number of electronic devices (ah03e)
+    # First, group by folio and compute mean of ah03e
+    household_avg = filtered.groupby("folio")["ah03e"].mean()
     
-    # Group by state ('ent') and compute:
-    # - count of households with at least one reported case (se02fa_1 == 1)
-    # - sum of reported number of electronic devices (se02fa_2)
-    group = electronic_devices.groupby("ent").agg(
-        households_count=pd.NamedAgg(column="folio", aggfunc="count"),
-        total_devices=pd.NamedAgg(column="se02fa_2", aggfunc="sum")
+    # Merge with portad to get state info
+    household_info = pd.DataFrame({"folio": household_avg.index, "avg_ah03e": household_avg.values})
+    household_info = pd.merge(household_info, portad[["folio", "ent"]], on="folio", how="left")
+    
+    # For each state, compute number of households and average electronic devices
+    state_stats = household_info.groupby("ent").agg(
+        household_count=pd.NamedAgg(column="folio", aggfunc="count"),
+        average_devices=pd.NamedAgg(column="avg_ah03e", aggfunc="mean")
     ).reset_index()
     
     # Filter states with at least 2 households
-    filtered = group[group["households_count"] >= 2]
+    state_stats = state_stats[state_stats["household_count"] >= 2]
     
-    # Calculate average number of electronic devices per household for each state
-    filtered["avg_devices"] = filtered["total_devices"] / filtered["households_count"]
+    # Select top 10 states by average_devices
+    top_states = state_stats.nlargest(10, "average_devices")
     
-    # Select top 10 states with highest average reported value
-    top10 = (
-        filtered.sort_values(by="avg_devices", ascending=False)
-        .head(10)
-        [["ent", "households_count", "avg_devices"]]
-    )
+    # Map state codes to state names (from metadata)
+    state_code_map = {
+        2: "Baja California",
+        3: "Baja California Sur",
+        4: "Campeche",
+        5: "Coahuila",
+        6: "Colima",
+        7: "Chiapas",
+        9: "Distrito Federal",
+        10: "Durango",
+        11: "Guanajuato",
+        12: "Guerrero",
+        13: "Hidalgo",
+        14: "Jalisco",
+        15: "Estado de México",
+        16: "Michoacán",
+        17: "Morelos",
+        18: "Nayarit",
+        19: "Nuevo León",
+        20: "Oaxaca",
+        21: "Puebla",
+        22: "Querétaro",
+        25: "Sinaloa",
+        26: "Sonora",
+        28: "Tamaulipas",
+        29: "Tlaxcala",
+        30: "Veracruz",
+        31: "Yucatán",
+        32: "Zacatecas"
+    }
+    top_states["state_name"] = top_states["ent"].map(state_code_map)
     
-    # Map 'ent' codes to state names (optional, not required for output)
-    # But since only codes are present, output as is.
+    # Prepare final output DataFrame
+    result = top_states[["state_name", "household_count", "average_devices"]]
+    result.columns = ["State", "Households", "Avg Electronic Devices"]
     
-    # Rename columns for clarity
-    top10 = top10.rename(columns={
-        "ent": "state_code",
-        "households_count": "households",
-        "avg_devices": "average_reported_devices"
-    })
-    
-    return top10.reset_index(drop=True)
+    return result

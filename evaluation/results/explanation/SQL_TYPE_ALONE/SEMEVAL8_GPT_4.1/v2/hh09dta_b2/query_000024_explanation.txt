@@ -1,0 +1,1 @@
+The predicted answer contains only headers with no rows, missing the required states, averages, and sorting present in the gold answer.

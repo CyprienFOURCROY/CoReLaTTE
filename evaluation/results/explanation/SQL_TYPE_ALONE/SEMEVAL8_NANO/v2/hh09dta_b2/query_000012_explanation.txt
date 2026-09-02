@@ -1,1 +1,1 @@
-The predicted average household sizes differ from the gold answer (gold shows 1.0 for all states), so a required metric is incorrect.
+SyntaxError: closing parenthesis ']' does not match opening parenthesis '(' (<string>, line 15)

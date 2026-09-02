@@ -1,0 +1,1 @@
+The gold answer has no result rows, implying no states meet the criteria, while the predicted answer lists multiple states with counts; they do not match.

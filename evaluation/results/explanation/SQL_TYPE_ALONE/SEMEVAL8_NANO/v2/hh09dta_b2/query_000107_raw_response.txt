@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer is empty and missing all required rows and amounts present in the gold answer."
+}

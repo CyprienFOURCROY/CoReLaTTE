@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Predicted answer includes extra states (10, 11, 15, 20) that are not in the gold result for above-average counts, altering the filtered set and ranking."
+}

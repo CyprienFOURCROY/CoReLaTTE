@@ -1,0 +1,1 @@
+Values and counts for multiple states differ from the gold answer. Specifically: Morelos should be avg 9000 with 3 households (predicted 10000 with 2), and Oaxaca should be avg 8000 with 2 households (predicted 10000 with 1). These errors change the ranking and aggregates.

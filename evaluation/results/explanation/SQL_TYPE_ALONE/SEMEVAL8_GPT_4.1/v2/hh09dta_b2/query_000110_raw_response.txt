@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The household_count matches, but the average expense value for 1 adult differs (5033.5293 vs 2178.1455), so the predicted values are incorrect."
+}

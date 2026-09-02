@@ -10,6 +10,7 @@ Then open http://127.0.0.1:5057
 import functools
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -32,6 +33,14 @@ UNVERSIONED_QUESTION_TYPE_CSV = {
 }
 
 KNOWN_QUESTION_TYPES = ["SQL_TYPE_ALONE", "ML_ALONE"]
+
+# Written by generate_and_execute_semeval*.py as a prediction file's entire
+# content when code generation/execution failed. compare_answers.py auto-
+# classifies that "no" without a judge call; the analysis view distinguishes
+# it from a judge-based "incorrect" since it's a different failure mode.
+CODE_FAILED_MARKER = "thecodefailed"
+
+OUTCOMES = ["correct", "incorrect", "code_failed", "judge_infra_failed"]
 
 MAX_ANSWER_ROWS = 500
 MAX_TABLE_PAGE_SIZE = 1000
@@ -247,24 +256,26 @@ def api_config():
     })
 
 
-@app.get("/api/models")
-def api_models():
-    question_type = request.args["question_type"]
-    dataset = request.args["dataset"]
-    version = get_version_arg()
-
+def discover_models(question_type: str, dataset: str, version) -> list[str]:
     root = EVAL_ROOT / "saved_python_script" / question_type
     if is_versioned(question_type):
         root = root / f"v{version}"
 
     if not root.exists():
-        return jsonify([])
+        return []
 
-    models = sorted(
+    return sorted(
         p.name for p in root.iterdir()
         if p.is_dir() and (p / dataset).exists()
     )
-    return jsonify(models)
+
+
+@app.get("/api/models")
+def api_models():
+    question_type = request.args["question_type"]
+    dataset = request.args["dataset"]
+    version = get_version_arg()
+    return jsonify(discover_models(question_type, dataset, version))
 
 
 # ==================================================
@@ -388,6 +399,105 @@ def api_codebook():
     table = request.args["table"]
     path = RAW_DATA_ROOT / dataset / "codebook_json" / f"{table}_enriched.txt"
     return jsonify({"text": read_text_or_none(path)})
+
+
+# ==================================================
+# API — failure analysis (by bias / join width / table)
+# ==================================================
+
+def is_code_failed_pred(pred_path: Path) -> bool:
+    if not pred_path.exists():
+        return False
+    try:
+        return pred_path.read_text(encoding="utf-8").strip() == CODE_FAILED_MARKER
+    except Exception:
+        return False
+
+
+def empty_outcome_counts() -> dict:
+    return {o: 0 for o in OUTCOMES}
+
+
+@app.get("/api/analysis")
+def api_analysis():
+    question_type = request.args["question_type"]
+    dataset = request.args["dataset"]
+
+    versions = available_versions(question_type) if is_versioned(question_type) else [None]
+    models_out = {}
+
+    for version in versions:
+        try:
+            df = load_dataset_csv(question_type, version)
+        except FileNotFoundError:
+            continue
+
+        subset = df[df["source_dataset"] == dataset]
+        if subset.empty:
+            continue
+
+        meta_by_query = {
+            row["query_name"]: {
+                "bias": safe_value(row.get("bias")),
+                "tables": parse_json_list(row["tables"]),
+            }
+            for _, row in subset.iterrows()
+        }
+
+        for model in discover_models(question_type, dataset, version):
+            eval_df = load_eval_csv(question_type, model, dataset, version)
+            if eval_df is None:
+                continue
+
+            overall = empty_outcome_counts()
+            by_bias: dict = {}
+            by_n_tables: dict = {}
+            by_table: dict = {}
+
+            for _, r in eval_df.iterrows():
+                meta = meta_by_query.get(r.get("query_name"))
+                if meta is None:
+                    continue
+
+                if safe_value(r.get("comparison_status")) != "success":
+                    outcome = "judge_infra_failed"
+                else:
+                    pred_path = (
+                        predicted_answer_dir(question_type, model, dataset, version)
+                        / f"df_{r['query_name']}.csv"
+                    )
+                    if is_code_failed_pred(pred_path):
+                        outcome = "code_failed"
+                    else:
+                        outcome = "correct" if r.get("answer") == "yes" else "incorrect"
+
+                overall[outcome] += 1
+
+                bias = meta["bias"]
+                if bias:
+                    by_bias.setdefault(bias, empty_outcome_counts())[outcome] += 1
+
+                n_tables = str(len(meta["tables"]))
+                by_n_tables.setdefault(n_tables, empty_outcome_counts())[outcome] += 1
+
+                for t in meta["tables"]:
+                    by_table.setdefault(t, empty_outcome_counts())[outcome] += 1
+
+            key = f"{model}__v{version}" if version is not None else model
+            models_out[key] = {
+                "model": model,
+                "version": version,
+                "total": sum(overall.values()),
+                "overall": overall,
+                "by_bias": by_bias,
+                "by_n_tables": by_n_tables,
+                "by_table": by_table,
+            }
+
+    return jsonify({
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "models": models_out,
+    })
 
 
 # ==================================================
