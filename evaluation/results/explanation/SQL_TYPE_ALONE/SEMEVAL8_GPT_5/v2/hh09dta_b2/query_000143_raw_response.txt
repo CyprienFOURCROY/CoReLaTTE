@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted count (2) differs from the gold count (3), so the numeric result is incorrect."
+}

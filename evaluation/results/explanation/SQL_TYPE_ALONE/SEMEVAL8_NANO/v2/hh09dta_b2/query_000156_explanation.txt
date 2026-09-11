@@ -1,0 +1,1 @@
+The predicted CSV contains only headers and no rows, while the gold answer has five state rows with averages; required results are missing.

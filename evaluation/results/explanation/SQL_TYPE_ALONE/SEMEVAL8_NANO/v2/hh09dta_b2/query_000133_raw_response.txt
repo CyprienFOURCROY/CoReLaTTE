@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted average debt (25976.309) does not match the gold value (28592.4), so the result is incorrect."
+}

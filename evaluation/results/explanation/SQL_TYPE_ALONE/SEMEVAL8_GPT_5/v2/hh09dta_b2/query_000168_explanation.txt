@@ -1,0 +1,1 @@
+RuntimeError: Generated code does not define run_query(tables).

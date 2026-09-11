@@ -1,0 +1,1 @@
+The counts do not match: gold has 4 and 24 households (total 28), while the prediction has 2 and 56 (total 58). The aggregation/filtering is incorrect.

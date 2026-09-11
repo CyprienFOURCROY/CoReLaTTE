@@ -1,0 +1,1 @@
+The predicted answer is missing three required households (045380AP00, 089800AP00, 034480AP00) present in the gold answer.

@@ -1,0 +1,1 @@
+The predicted answer lists different states and household counts than the gold, includes many extra rows, and the values do not match the required filtered/ranked results.

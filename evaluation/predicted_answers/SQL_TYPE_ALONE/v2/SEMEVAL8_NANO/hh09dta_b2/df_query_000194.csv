@@ -1,0 +1,2 @@
+thecodefailed
+explanation_text: ValueError: You are trying to merge on object and float32 columns for key 'ls'. If you wish to proceed you should use pd.concat

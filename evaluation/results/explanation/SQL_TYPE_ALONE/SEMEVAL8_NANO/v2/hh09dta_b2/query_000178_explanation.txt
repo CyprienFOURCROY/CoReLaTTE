@@ -1,0 +1,1 @@
+The predicted average (1.3333334) differs from the gold answer (1.25).

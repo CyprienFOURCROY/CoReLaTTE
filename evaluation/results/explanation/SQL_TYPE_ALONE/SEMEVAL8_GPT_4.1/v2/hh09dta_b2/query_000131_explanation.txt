@@ -1,0 +1,1 @@
+Predicted answer is missing states 16 (Michoacán) and 11 (Guanajuato) and has incorrect household counts for the included states, so required rows and values are wrong.

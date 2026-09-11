@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer gives a single overall count and average, but the question requires results by state. It is missing the per-state rows present in the gold answer."
+}

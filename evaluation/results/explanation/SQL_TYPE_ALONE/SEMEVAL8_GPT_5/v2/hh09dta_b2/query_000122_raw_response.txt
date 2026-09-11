@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Missing required row folio 003490AP00 with amount 2760.0."
+}

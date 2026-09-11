@@ -1,0 +1,1 @@
+The predicted answer contains only headers with no result rows, while the gold answer lists four states and their mean quantities.

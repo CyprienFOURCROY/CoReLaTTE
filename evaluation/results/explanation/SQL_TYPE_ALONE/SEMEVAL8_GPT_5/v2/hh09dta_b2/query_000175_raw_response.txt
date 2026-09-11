@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted average (4000.0) differs from the gold answer (3800.0), so the value is incorrect."
+}

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted average (1.9) does not match the gold average (1.0) for the specified filtered group."
+}

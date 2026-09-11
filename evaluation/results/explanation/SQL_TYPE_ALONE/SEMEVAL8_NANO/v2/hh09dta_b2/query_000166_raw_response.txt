@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted CSV has no result rows, while the gold answer includes one state (18) with avg 3.0 and 1 household. The required row is missing."
+}

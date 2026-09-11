@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The gold answer is empty/missing (no result), while the predicted answer provides a numeric value (0). These are not equivalent."
+}

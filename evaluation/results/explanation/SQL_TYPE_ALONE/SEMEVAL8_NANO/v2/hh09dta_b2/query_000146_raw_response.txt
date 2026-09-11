@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted CSV contains only headers and no rows, missing the required states, averages, counts, and ranking."
+}

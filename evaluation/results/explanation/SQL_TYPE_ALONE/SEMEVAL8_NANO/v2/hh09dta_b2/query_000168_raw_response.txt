@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer is missing most required states and counts from the gold answer and includes an extra incorrect row (12.0,1)."
+}

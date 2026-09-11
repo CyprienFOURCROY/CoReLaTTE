@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted count (1) does not match the gold answer (2)."
+}

@@ -1,0 +1,1 @@
+SyntaxError: unmatched ']' (<string>, line 21)

@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer reports 0 dairy households, while the gold answer has no value for dairy (blank/NA). This is a mismatch in values."
+}

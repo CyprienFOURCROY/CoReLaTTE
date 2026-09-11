@@ -1,0 +1,1 @@
+The predicted CSV has no rows, missing the three households and their amounts present in the gold answer.

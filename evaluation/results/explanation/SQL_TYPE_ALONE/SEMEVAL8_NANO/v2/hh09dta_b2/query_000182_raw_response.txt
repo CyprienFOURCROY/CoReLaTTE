@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "States and counts don’t match the gold: missing Morelos (9), wrong counts for Estado de México (10 vs 9) and Durango (8 vs 6), and includes an extra state (Baja California Sur) not in the top five."
+}

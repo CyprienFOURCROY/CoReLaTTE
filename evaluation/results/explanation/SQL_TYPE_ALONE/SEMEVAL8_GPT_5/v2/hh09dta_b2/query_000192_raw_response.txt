@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted CSV contains no rows, while the gold answer includes household 005160AP00 with 1000 eggs; the required result is missing."
+}

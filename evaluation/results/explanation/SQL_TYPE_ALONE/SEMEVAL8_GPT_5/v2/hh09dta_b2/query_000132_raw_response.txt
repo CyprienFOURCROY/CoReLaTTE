@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer is missing three households present in the gold answer (045380AP00, 089800AP00, 034480AP00) and thus does not include all required rows."
+}

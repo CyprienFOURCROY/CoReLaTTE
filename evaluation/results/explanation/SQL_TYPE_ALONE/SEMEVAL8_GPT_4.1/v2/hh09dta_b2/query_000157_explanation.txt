@@ -1,0 +1,1 @@
+The predicted answer omits three qualifying households (047890AP00, 098140AP00, 098630AP00) present in the gold answer, so required rows are missing.

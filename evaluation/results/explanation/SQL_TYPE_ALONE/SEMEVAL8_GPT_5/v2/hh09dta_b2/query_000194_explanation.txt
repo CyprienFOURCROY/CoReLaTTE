@@ -1,0 +1,1 @@
+The predicted answer includes extra states (ent 26, 14, 17) not in the gold result, indicating incorrect filtering by the average threshold.

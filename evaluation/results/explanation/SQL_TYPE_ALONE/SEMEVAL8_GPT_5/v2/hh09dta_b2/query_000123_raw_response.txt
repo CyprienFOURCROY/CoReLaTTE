@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer includes extra states (Durango and Sinaloa) that are not above-average, while the gold answer has only one state with count 3. The filters/grouping for above-average are incorrect."
+}

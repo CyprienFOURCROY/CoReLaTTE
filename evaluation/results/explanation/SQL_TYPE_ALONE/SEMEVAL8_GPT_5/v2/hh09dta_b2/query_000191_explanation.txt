@@ -1,0 +1,1 @@
+States and averages match, but the household counts are incorrect for all rows (e.g., Morelos 55 vs 65, Estado de México 72 vs 78), so the values are wrong.

@@ -1,0 +1,1 @@
+Predicted answer includes extra states (3.0, 5.0, 31.0) with lower counts not meeting the >= average threshold, altering the set of qualifying states.

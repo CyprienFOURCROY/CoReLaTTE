@@ -1,0 +1,1 @@
+The counts do not match the gold answer (19 and 1192 vs 20 and 1279), indicating incorrect aggregation/filtering. Also, group labels differ (1.0/3.0 vs Yes/No), and totals are inconsistent.

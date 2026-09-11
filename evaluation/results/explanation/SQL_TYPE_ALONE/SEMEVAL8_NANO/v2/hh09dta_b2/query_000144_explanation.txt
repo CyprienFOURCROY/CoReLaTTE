@@ -1,0 +1,1 @@
+The predicted count (5) does not match the gold answer (2); the value is incorrect.

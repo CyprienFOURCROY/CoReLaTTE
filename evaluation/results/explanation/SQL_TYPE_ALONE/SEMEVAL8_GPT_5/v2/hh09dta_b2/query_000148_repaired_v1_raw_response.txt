@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The gold answer has no result rows, while the predicted answer returns a state and value, so they do not match."
+}

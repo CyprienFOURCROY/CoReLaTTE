@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The mean ages differ substantially from the gold answer (39.0 vs 48.0/54.83), and the poultry group coding does not align; thus the aggregations are incorrect."
+}

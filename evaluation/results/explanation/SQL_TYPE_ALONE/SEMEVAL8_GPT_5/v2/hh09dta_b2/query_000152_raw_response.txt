@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "The predicted answer includes an extra row for state ent=12 (with count_older=0 and missing avg_age) that is not in the gold answer, changing the set of states reported."
+}

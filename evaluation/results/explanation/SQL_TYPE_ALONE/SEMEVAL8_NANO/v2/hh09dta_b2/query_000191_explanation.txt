@@ -1,0 +1,1 @@
+The predicted answer includes extra states that are not above the national average and should be excluded, and the household counts for the matching five states differ from the gold answer (only the averages match).

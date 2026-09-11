@@ -1,0 +1,4 @@
+{
+  "answer": "no",
+  "explanation": "Gold reports 0 total households and 0 produced canned goods, while the prediction reports 451 total and 1 produced—values do not match."
+}
