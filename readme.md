@@ -12,13 +12,11 @@ Unlike traditional benchmark construction approaches that rely heavily on manual
 
 Tabular reasoning encompasses a broad range of analytical tasks. Some questions require classical database operations such as filtering, joining, grouping, and aggregation. Others require statistical analysis, machine learning techniques, or a combination of both.
 
-To capture this diversity, CoReLaTTe organizes benchmark questions into three categories:
+For now, CoReLaTTe organizes benchmark questions into one category :
 
 * **SQL-Type Queries**
-* **ML-Type Queries**
-* **SQL+ML Queries**
 
-Each category evaluates a different aspect of an LLM agent's reasoning capabilities while maintaining a common generation and evaluation framework.
+
 
 ---
 
