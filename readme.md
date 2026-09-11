@@ -22,7 +22,6 @@ Each category evaluates a different aspect of an LLM agent's reasoning capabilit
 
 ---
 
-# Query Categories
 
 ## SQL-Type Queries
 
@@ -48,51 +47,6 @@ Example:
 
 These questions assess whether an agent can correctly interpret and execute structured data manipulation tasks.
 
----
-
-## ML-Type Queries
-
-ML-Type Queries evaluate an agent's ability to perform statistical and machine learning analysis directly on tabular data.
-
-Supported analytical families include:
-
-* Correlation Analysis
-* Regression-Based Analysis
-* Clustering
-* Feature Importance Estimation
-* Statistical Hypothesis Testing
-* Dimensionality Reduction
-* Anomaly Detection
-
-Current implementation focuses on:
-
-* Linear Regression
-* K-Means Clustering
-
-Example:
-
-> Is there a relationship between household income and household assets?
-
-These questions assess whether an agent can identify patterns, relationships, and structures within data.
-
----
-
-## SQL+ML Queries
-
-SQL+ML Queries combine relational reasoning and analytical modeling.
-
-They require:
-
-1. Data preparation through SQL-style operations.
-2. Statistical or machine learning analysis on the resulting dataset.
-
-Example:
-
-> Among households located in Oaxaca, what relationship exists between agricultural income and land ownership?
-
-These questions evaluate an agent's ability to perform complete analytical workflows.
-
----
 
 # Benchmark Generation Framework
 
