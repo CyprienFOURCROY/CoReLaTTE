@@ -3,3 +3,7 @@
 .DS_Store
 __pycache__/
 processed/logs/
+
+main.ipynb
+main2.ipynb
+main3.ipynb
