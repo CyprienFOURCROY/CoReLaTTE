@@ -21,6 +21,27 @@ For now, CoReLaTTe organizes benchmark questions into one category :
 
 ---
 
+# Environment
+
+Every gold and model-generated script is `pandas` code, executed directly
+against these library versions -- the pandas/numpy version is therefore
+part of the reported result (dtype inference, `NaN` handling, groupby
+behavior, and Stata `.dta` parsing can all differ across versions), not
+just tooling. Reproduce a result with the exact pins:
+
+```bash
+python3 --version   # 3.13.7 -- see .python-version
+pip install -r requirements.txt
+```
+
+`requirements.txt` pins `pandas`, `numpy`, `openai`, `python-dotenv`,
+`Flask`, `pydantic`, `matplotlib`, and `scipy` (the last two are used by
+the analysis notebooks, `main*.ipynb`). The `src/model/semeval8-itunlp`
+submodule is a separate git repository with its own `requirements.txt`;
+install it separately, it is not duplicated here.
+
+---
+
 
 ## SQL-Type Queries
 

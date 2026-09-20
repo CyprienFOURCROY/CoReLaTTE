@@ -1,0 +1,23 @@
+# Exact-pinned dependencies for the CoReLaTTe query-generation, evaluation,
+# and analysis pipeline (everything under src/, evaluation/, viewer/, and
+# the main*.ipynb notebooks). Python 3.13.7 -- see .python-version.
+#
+# The generated pandas code produced by the pipeline is executed directly
+# (exec()) against these exact library versions, so the pandas/numpy
+# version is not just tooling -- it is part of the reported result: a
+# different version can change dtype inference, NaN handling, groupby
+# behavior, or Stata (.dta) parsing on the same generated code. Pin these
+# exactly when reproducing any result from this repository.
+#
+# The semeval8-itunlp submodule (src/model/semeval8-itunlp/) is a separate
+# git repository with its own requirements.txt -- install that separately;
+# its dependencies are not duplicated here.
+
+pandas==2.3.3
+numpy==2.3.3
+openai==2.38.0
+python-dotenv==1.2.2
+Flask==3.1.3
+pydantic==2.13.4
+matplotlib==3.10.6
+scipy==1.16.2
