@@ -7,6 +7,7 @@ Developed as part of a Master's thesis, CoReLaTTe automatically generates benchm
 Unlike traditional benchmark construction approaches that rely heavily on manual annotation, CoReLaTTe generates benchmark instances automatically through structured query plans that can be validated, executed, and reproduced.
 
 The repository also includes a pipeline for evaluating SemEval-8 (ITUNLP) on our generated benchmarks, using several LLMs (GPT-5, GPT-4.1, GPT-4.1 nano). This evaluation is independent of the benchmark generation step based on the CoRELaTTe methodology.
+
 ---
 
 # Overview
