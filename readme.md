@@ -293,7 +293,7 @@ evaluation/saved_python_script/{question_type}/v{version}/{model_name}/{dataset}
 
 The objective of CoReLaTTe is to provide a reproducible framework for generating and evaluating tabular reasoning benchmarks for LLM agents.
 
-By supporting SQL reasoning, machine learning reasoning, and hybrid analytical workflows within the same framework, CoReLaTTe enables a more comprehensive evaluation of agent capabilities on structured data.
+By supporting SQL reasoning, and hybrid analytical workflows within the same framework, CoReLaTTe enables a more comprehensive evaluation of agent capabilities on structured data.
 
 ---
 
