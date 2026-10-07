@@ -106,42 +106,6 @@ This approach ensures that every generated question is accompanied by:
 * Executable Python code.
 * A reproducible ground-truth answer.
 
----
-
-# Architecture
-
-The repository is organized around independent query-generation modules.
-
-```text
-src/
-├── model/
-│   └── Corelatte/
-│       └── QueryGeneration/
-│           ├── SQL_TYPE_ALONE/
-│           ├── ML_ALONE/
-│           └── SQL_TYPE_ML/
-│
-├── pipeline/
-│   ├── SQL_TYPE_ALONE/
-│   └── ML_ALONE/
-│   └── ML_ALONE/
-│
-└── evaluation/
-```
-
-Each query-generation module contains:
-
-```text
-prompt.py
-query_plan_schema.py
-extract_llm_output.py
-repair_query_json.py
-json_to_pandas.py
-execute_code.py
-query_plan_to_question.py
-```
-
-This modular architecture makes it straightforward to extend the framework with new analytical operations or benchmark categories.
 
 ---
 
